@@ -12,7 +12,7 @@
             <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="barmenu">
                 <a class="navbar-brand" href="#"><img src="bear-footprint.png" width="50" height="50" alt=""></a>
                 <div class="collapse navbar-collapse d-flex justify-content-center wrapper" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav menuPrincipal">
                         <li class="nav-item active link-wrapper">
                             <a class="nav-link link sixth before after" href="#">Accueil <span class="sr-only">(current)</span></a>
                         </li>

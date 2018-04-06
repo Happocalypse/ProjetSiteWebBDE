@@ -11,6 +11,14 @@ body {
     text-transform: uppercase;
 }
 
+/*---Ecart li menuPricipal---*/
+
+.menuPrincipal li{
+	margin-right: 30px;
+}
+
+/*---NAVBAR---*/
+
 a,
 a:visited,
 a:hover,
