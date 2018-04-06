@@ -1,0 +1,2 @@
+# ProjetSiteWebBDE
+Notre BDE souhaite un site internent à la hauteur d’une école d’ingénieur informatique afin de gérer principalement la promotion des manifestations et une boutique de vente en ligne. Les personnes qui auront un rôle seront bien sûr les membres du BDE mais aussi les étudiants et certains salariés du CESI. L’objectif est de faciliter l’organisation et la communication de manifestation au sein de l’école. D’autre part, le site d’avoir avoir également une partie dédiée à la vente en ligne de goodies.
