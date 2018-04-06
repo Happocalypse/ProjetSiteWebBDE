@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <title>TITRE</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
         <link rel="stylesheet" href="navbar.css"/>
@@ -17,10 +17,19 @@
                             <a class="nav-link link sixth before after" href="#">Accueil <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item link-wrapper">
-                            <a class="nav-link link sixth before after" href="#">Connexion</a>
+                            <a class="nav-link link sixth before after" href="#">Staff</a>
                         </li>
                         <li class="nav-item link-wrapper">
-                            <a class="nav-link link sixth before after" href="#">Disabble</a>
+                            <a class="nav-link link sixth before after" href="#">Evenements</a>
+                        </li>
+                        <li class="nav-item link-wrapper">
+                            <a class="nav-link link sixth before after" href="#">Boite à idées</a>
+                        </li>
+                        <li class="nav-item link-wrapper">
+                            <a class="nav-link link sixth before after" href="#">Photos</a>
+                        </li>
+                        <li class="nav-item link-wrapper">
+                            <a class="nav-link link sixth before after" href="#">Boutique</a>
                         </li>
                     </ul>
                 </div>
