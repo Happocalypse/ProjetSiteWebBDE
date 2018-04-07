@@ -33,4 +33,6 @@ else{
     $inscription->execute();
 }
 $bdd=null;
+$requeteVerifMail=null;
+$inscription=null;
 ?>
