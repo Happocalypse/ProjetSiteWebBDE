@@ -7,25 +7,11 @@ catch (PDOException $e) {
     die();
 }
 
-function securite_bdd($string)
-{
-    if(ctype_digit($string))//si la string est un entier
-    {
-        $string = intval($string);//on force le int
-    }
-    else// Pour tous les autres types
-    {
-        $string = mysql_real_escape_string($string);//echappement des caractères particulier
-        $string = addcslashes($string, '%_');//echappement du %
-    }
-    return $string;
-}
-
-$mail = securite_bdd($_POST['mail']);
-$mdp = securite_bdd($_POST['mdp']);
-$nom = secutite_bdd($_POST['nom']);
-$prenom = securite_bdd($_POST['prenom']);
-$adresse = securite_bdd($_POST['adresse']);
+$mail = Securite::bdd($_POST['mail']);
+$mdp = Securite::bdd($_POST['mdp']);
+$nom = Securite::bdd($_POST['nom']);
+$prenom = Securite::bdd($_POST['prenom']);
+$adresse = Securite::bdd($_POST['adresse']);
 
 $requeteVerifMail = $bdd->prepare("SELECT mail FROM utilisateurs WHERE mail= :mail");
 $requeteVerifMail->bindValue(':mail',$mail,PDO::PARAM_STR);
