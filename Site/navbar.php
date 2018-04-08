@@ -13,25 +13,25 @@
                 <a class="navbar-brand" href="#"><img src="images/bear-footprint.png" width="50" height="50" alt=""></a>
                 <div class="collapse navbar-collapse d-flex justify-content-center wrapper" id="navbarSupportedContent">
                     <ul class="navbar-nav menuPrincipal">
-                        <li class="nav-item link-wrapper">
+                        <li class="nav-item link-wrapper accueil">
                             <a class="nav-link link sixth before after" href="index.php">Accueil</a>
                         </li>
-                        <li class="nav-item link-wrapper">
+                        <li class="nav-item link-wrapper staff">
                             <a class="nav-link link sixth before after" href="staff.php">Staff</a>
                         </li>
-                        <li class="nav-item link-wrapper">
-                            <a class="nav-link link sixth before after" href="evenement.php">Evenements</a>
+                        <li class="nav-item link-wrapper evenements">
+                            <a class="nav-link link sixth before after" href="evenements.php">Evenements</a>
                         </li>
-                        <li class="nav-item link-wrapper">
+                        <li class="nav-item link-wrapper boiteAIdees">
                             <a class="nav-link link sixth before after" href="boiteAIdees.php">Boite à idées</a>
                         </li>
-                        <li class="nav-item link-wrapper">
-                            <a class="nav-link link sixth before after" href="photo.php">Photos</a>
+                        <li class="nav-item link-wrapper photos">
+                            <a class="nav-link link sixth before after" href="photos.php">Photos</a>
                         </li>
-                        <li class="nav-item link-wrapper">
-                            <a class="nav-link link sixth before after" href="#">Boutique</a>
+                        <li class="nav-item link-wrapper boutique">
+                            <a class="nav-link link sixth before after" href="boutique.php">Boutique</a>
                         </li>
-                        <li class="nav-item link-wrapper">
+                        <li class="nav-item link-wrapper connexion">
                             <a class="nav-link link sixth before after" href="formsInscription.php">Connexion</a>
                         </li>
                     </ul>
