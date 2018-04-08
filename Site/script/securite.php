@@ -1,6 +1,5 @@
 <?php
 class Securite{
-
     public static function bdd($string)
     {
         if(ctype_digit($string))//si la string est un entier
@@ -14,6 +13,5 @@ class Securite{
         }
         return $string;
     }
-
 }
 ?>
