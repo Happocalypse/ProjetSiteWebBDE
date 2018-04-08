@@ -32,7 +32,7 @@
                             <a class="nav-link link sixth before after" href="boutique.php">Boutique</a>
                         </li>
                         <li class="nav-item link-wrapper connexion">
-                            <a class="nav-link link sixth before after" href="formsInscription.php">Connexion</a>
+                            <a class="nav-link link sixth before after" href="formsConnexion.php">Connexion</a>
                         </li>
                     </ul>
                 </div>
