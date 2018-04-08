@@ -40,7 +40,7 @@
 
 				do {
 				?>
-					<option value="<?php echo $donnees['nom']; ?>"><?php echo $donnees['nom']; ?></option>
+					<option> value="<?php echo $donnees['nom']; ?>"><?php echo $donnees['nom']; ?></option>
 
 				<?php
 
