@@ -28,7 +28,7 @@
 
 		<?php if($donnees = $reponse->fetch()){ ?>
 
-			<form method="post" action="result_add_photo.php" enctype="multipart/form-data">
+			<form method="post" action="script/result_add_photo.php" enctype="multipart/form-data">
 
 			<p>Titre de la photo :
 			<input type="text" name="title_image"/></p>
