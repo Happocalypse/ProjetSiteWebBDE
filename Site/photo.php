@@ -13,7 +13,7 @@
 		try
 		{
 			// On se connecte à MySQL
-			$bdd = new PDO('mysql:host=localhost;dbname=workshop;charset=utf8', 'root', '');
+			$bdd = new PDO('mysql:host=178.62.4.64;dbname=SiteBDEG1','groupeMN','1234', 'root', '');
 		}
 		catch(Exception $e)
 		{
