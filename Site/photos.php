@@ -5,10 +5,8 @@
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="CSS/photos.css">
 		<title>Publication d'une photo</title>
+        <?php include 'navbar.php' ?>
 
-	</head>
-	<body>
-	<?php include 'navbar.php' ?>
 	<?php
 		try
 		{
@@ -22,7 +20,7 @@
 		}
 
 		// On récupère le contenu du champ nom_evenement
-		$reponse = $bdd->query('SELECT (nom_evenement) FROM evenements WHERE valide=1');
+		$reponse = $bdd->query('SELECT (nom_evenement) FROM Evenement');
 
 	?>
 
@@ -64,7 +62,7 @@
 
 		<?php
 		}else{
-			echo "<h1>Vous ne pouvez pas publier une photo car il n'y a pas d'événement.</h1>";
+			echo "<br/><br /><br /><h1>Vous ne pouvez pas publier une photo car il n'y a pas d'événement.</h1>";
 		}
 	?>
 
