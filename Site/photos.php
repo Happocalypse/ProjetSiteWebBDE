@@ -4,7 +4,7 @@
 
         <meta charset="utf-8" />
         <link rel="stylesheet" href="CSS/photos.css">
-        <?php include('script/navbarhead.php')?>
+        <?php include 'script/scriptBootStrapHead.php' ?>
         <title>Publication d'une photo</title>
 
     </head>
@@ -70,6 +70,6 @@
     echo "<br/><br /><br /><h1>Vous ne pouvez pas publier une photo car il n'y a pas d'événement.</h1>";
 }
         ?>
-        <?php include 'script/navbarbodyscript.php' ?>
-        </body>
+        <?php include 'script/scriptBootStrapBody.php' ?>
+    </body>
 </html>
