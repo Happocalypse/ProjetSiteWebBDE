@@ -4,7 +4,13 @@
 
         <meta charset="utf-8" />
         <link rel="stylesheet" href="CSS/photos.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="CSS/navbar.css"/>
         <title>Publication d'une photo</title>
+
+    </head>
+    <body data-spy="scroll" data-target="#barmenu" data-o>
+
         <?php include 'navbar.php' ?>
 
         <?php
@@ -52,7 +58,7 @@
             <p>Pièce Jointe
                 <input type="file" name="monfichier" /> <br />
                 Format accepté : png, jpeg et jpg <br />
-                Limite du fichier : 1 Mo
+                Limite du fichier : 15 Mo
             </p>
 
             <input type="hidden" name="username" value="his_username" />

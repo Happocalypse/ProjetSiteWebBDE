@@ -1,7 +1,3 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-<link rel="stylesheet" href="CSS/navbar.css"/>
-</head>
-<body data-spy="scroll" data-target="#barmenu" data-o>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="barmenu">
             <a class="navbar-brand" href="#"><img src="images/bear-footprint.png" width="50" height="50" alt=""></a>
