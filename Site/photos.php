@@ -10,13 +10,13 @@
     </head>
     <body>
 
-        <?php include 'navbar.php' ?>
+
 
         <?php
         try
         {
             // On se connecte à MySQL
-            $bdd = new PDO('mysql:host=178.62.4.64;dbname=SiteBDEG1','groupeMN','1234');
+            $bdd = new PDO('mysql:host=localhost;dbname=bddphoto','root','');
         }
         catch(Exception $e)
         {
@@ -25,7 +25,7 @@
         }
 
             // On récupère le contenu du champ nom_evenement
-            $reponse = $bdd->query('SELECT (nom_evenement) FROM Evenement');
+            $reponse = $bdd->query('SELECT * FROM evenements');
 
         ?>
 
@@ -35,15 +35,14 @@
             <br /><br /><br /><br />
 
             <p>Titre de la photo :
-            <input type="text" name="title_image"/></p>
+            <input type="text" name="titre_photo"/></p>
 
             <p> Veuillez choisir l'événement :
             <select name='choix'>
-
             <?php
             do {
             ?>
-                <option value="<?php echo $donnees['nom']; ?>"><?php echo $donnees['nom']; ?></option>
+                <option value="<?php echo $donnees['ID_evenement']; ?>"><?php echo $donnees['nom_evenement']; ?></option>
             <?php
             } while ($donnees = $reponse->fetch());
 
@@ -58,7 +57,7 @@
             Limite du fichier : 15 Mo
             </p>
 
-            <input type="hidden" name="username" value="his_username" />
+            <input type="hidden" name="username" value=1 />
             <p><input type="submit" value="Publier" /> </p>
 
             </form>
