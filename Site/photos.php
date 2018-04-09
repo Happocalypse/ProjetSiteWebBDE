@@ -4,12 +4,11 @@
 
         <meta charset="utf-8" />
         <link rel="stylesheet" href="CSS/photos.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-        <link rel="stylesheet" href="CSS/navbar.css"/>
+        <?php include('script/navbarhead.php')?>
         <title>Publication d'une photo</title>
 
     </head>
-    <body data-spy="scroll" data-target="#barmenu" data-o>
+    <body>
 
         <?php include 'navbar.php' ?>
 
@@ -71,6 +70,6 @@
     echo "<br/><br /><br /><h1>Vous ne pouvez pas publier une photo car il n'y a pas d'événement.</h1>";
 }
         ?>
-
+        <?php include 'script/navbarbodyscript.php' ?>
         </body>
 </html>
