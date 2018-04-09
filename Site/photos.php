@@ -13,63 +13,62 @@
         <?php include 'navbar.php' ?>
 
         <?php
-    try
-    {
-        // On se connecte à MySQL
-        $bdd = new PDO('mysql:host=178.62.4.64;dbname=SiteBDEG1','groupeMN','1234');
-    }
+        try
+        {
+            // On se connecte à MySQL
+            $bdd = new PDO('mysql:host=178.62.4.64;dbname=SiteBDEG1','groupeMN','1234');
+        }
         catch(Exception $e)
         {
             // En cas d'erreur, on affiche un message et on arrête tout
             die('Erreur : '.$e->getMessage());
         }
 
-        // On récupère le contenu du champ nom_evenement
-        $reponse = $bdd->query('SELECT (nom_evenement) FROM Evenement');
+            // On récupère le contenu du champ nom_evenement
+            $reponse = $bdd->query('SELECT (nom_evenement) FROM Evenement');
 
         ?>
 
         <?php if($donnees = $reponse->fetch()){ ?>
 
-        <form method="post" action="script/result_add_photo.php" enctype="multipart/form-data">
+            <form method="post" action="script/result_add_photo.php" enctype="multipart/form-data">
+            <br /><br /><br /><br />
 
             <p>Titre de la photo :
-                <input type="text" name="title_image"/></p>
+            <input type="text" name="title_image"/></p>
 
             <p> Veuillez choisir l'événement :
-                <select name='choix'>
+            <select name='choix'>
 
-                    <?php
+            <?php
+            do {
+            ?>
+                <option value="<?php echo $donnees['nom']; ?>"><?php echo $donnees['nom']; ?></option>
+            <?php
+            } while ($donnees = $reponse->fetch());
 
-    do {
-                    ?>
-                    <option value="<?php echo $donnees['nom']; ?>"><?php echo $donnees['nom']; ?></option>
-
-                    <?php
-
-    } while ($donnees = $reponse->fetch());
-
-    // Termine le traitement de la requête
-    $reponse->closeCursor();
-                    ?>
-                </select></p>
+            // Termine le traitement de la requête
+            $reponse->closeCursor();
+            ?>
+            </select></p>
 
             <p>Pièce Jointe
-                <input type="file" name="monfichier" /> <br />
-                Format accepté : png, jpeg et jpg <br />
-                Limite du fichier : 15 Mo
+            <input type="file" name="monfichier" /> <br />
+            Format accepté : png, jpeg et jpg <br />
+            Limite du fichier : 15 Mo
             </p>
 
             <input type="hidden" name="username" value="his_username" />
             <p><input type="submit" value="Publier" /> </p>
 
-        </form>
+            </form>
 
         <?php
-}else{
-    echo "<br/><br /><br /><h1>Vous ne pouvez pas publier une photo car il n'y a pas d'événement.</h1>";
-}
+        }else{
+            echo "<br/><br /><br /><h1>Vous ne pouvez pas publier une photo car il n'y a pas d'événement.</h1>";
+        }
         ?>
+
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>
