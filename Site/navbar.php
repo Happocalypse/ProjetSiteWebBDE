@@ -8,7 +8,7 @@
             <div class="collapse navbar-collapse d-flex justify-content-center wrapper" id="navbarSupportedContent">
                 <ul class="navbar-nav menuPrincipal">
                     <li class="nav-item link-wrapper accueil">
-                        <a class="nav-link link sixth before after" href="index.php">Accueil</a>
+                        <a class="nav-link link sixth before after" href="accueil.php">Accueil</a>
                     </li>
                     <li class="nav-item link-wrapper staff">
                         <a class="nav-link link sixth before after" href="staff.php">Staff</a>
