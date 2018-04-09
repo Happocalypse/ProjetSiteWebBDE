@@ -49,6 +49,12 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
         }
             if(in_array($extension_upload, $extension_autorisees)){
 
+                // Création automatique du répertoire
+                if (!file_exists("../uploads/")) {
+                    mkdir("../uploads/", 0777, true);
+                }
+
+
                 // Validation du fichier et stockage définitif sur le serveur à l'adresse uploads/
                 move_uploaded_file($_FILES['monfichier']['tmp_name'],'../uploads/' . $donnees['ID_photo'] . '.' . $extension_upload);
                 echo "L'envoi a bien été effectué <br />";
