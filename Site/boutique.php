@@ -76,6 +76,7 @@
         $reponse=$bdd->query('SELECT (ID_produit) FROM produits ORDER BY ID_produit Desc LIMIT 0,1');
 
         $data=$reponse->fetch();
+        $reponse->closeCursor();
             if($data==NULL){
 
                 echo "<br /><br /><br /><br /><br /><h1>Il n'y a pas de produit dans la base de données</h1>";
@@ -84,6 +85,7 @@
 
                 $nbLigneMax=5;
                 $nombre=$data['ID_produit'];
+
 
                 $nbLigne=$nombre/$nbLigneMax;
 
