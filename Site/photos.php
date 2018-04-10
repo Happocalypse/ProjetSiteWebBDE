@@ -9,8 +9,7 @@
 
     </head>
     <body>
-
-
+        <?php include 'navbar.php';?>
 
         <?php
         try
@@ -31,36 +30,43 @@
 
         <?php if($donnees = $reponse->fetch()){ ?>
 
-            <form method="post" action="script/result_add_photo.php" enctype="multipart/form-data">
-            <br /><br /><br /><br />
+        <div class="container" id="placement">
+        <h1>Formulaire publication photo</h1>
+        <form method="post" action="script/result_add_photo.php" enctype="multipart/form-data">
 
-            <p>Titre de la photo :
-            <input type="text" name="titre_photo"/></p>
+        <div class="form-group">
+            <label for="titre_photo">Titre de l'image</label>
+            <input class="form-control" type="text" name="titre_photo" id="titre_photo"/>
+        </div>
 
-            <p> Veuillez choisir l'événement :
-            <select name='choix'>
-            <?php
-            do {
-            ?>
-                <option value="<?php echo $donnees['ID_evenement']; ?>"><?php echo $donnees['nom_evenement']; ?></option>
-            <?php
-            } while ($donnees = $reponse->fetch());
+        <div class="form-group">
+            <label for="evenement">Veuillez choisir l'événement :</label>
+            <select class="form-control" id="evenement" name='choix'>
+                <?php
+                do {
+                ?>
+                    <option value="<?php echo $donnees['ID_evenement']; ?>"><?php echo $donnees['nom_evenement']; ?></option>
+                <?php
+                } while ($donnees = $reponse->fetch());
 
             // Termine le traitement de la requête
             $reponse->closeCursor();
             ?>
-            </select></p>
+            </select>
+        </div>
 
-            <p>Pièce Jointe
-            <input type="file" name="monfichier" /> <br />
-            Format accepté : png, jpeg et jpg <br />
-            Limite du fichier : 15 Mo
-            </p>
+        <div class="form-group">
+            <label for="piecejointe">Pièce Jointe :</label>
+            <input class="form-control" type="file" name="monfichier" id="piecejointe" />
+            <label for="piecejointe">Format accepté : png, jpeg et jpg <br />
+            Limite du fichier : 15 Mo</label>
+        </div>
 
-            <input type="hidden" name="username" value=1 />
-            <p><input type="submit" value="Publier" /> </p>
+        <input type="hidden" name="username" value=1 />
+        <button type="submit" class="btn btn-default">Publier</button>
 
-            </form>
+        </form>
+        </div>
 
         <?php
         }else{
