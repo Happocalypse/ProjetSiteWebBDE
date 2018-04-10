@@ -101,6 +101,8 @@
     ?>
 
         <?php
+                $reponse=$bdd->query('SELECT `nom_produit`, `image_produit`, `description_produit`, `prix_produit` FROM `produits`');
+
                 for($ligne=1;$ligne<=$lastLigne;$ligne++){?>
             <section id="flex_card">
                 <?php
@@ -110,22 +112,24 @@
                         }
                     ?>
                     <?php
-                    for($colonne=0;$colonne<$nbLigneMax;$colonne++){?>
+                    for($colonne=0;$colonne<$nbLigneMax;$colonne++){
+                            $data=$reponse->fetch();?>
                         <div class="card">
                             <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title">Pull sexy</h5>
-                                <p class="card-text">Description</p>
+                                <h5 class="card-title"><?php echo $data['nom_produit'] ?></h5>
+                                <p class="card-text"><?php echo $data['description_produit'] ?></p>
                                 <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
-                                <div class="card-footer">19.99$</div>
+
                             </div>
-                        </div>
+                            <div class="card-footer"><?php echo $data['prix_produit'] ?>€</div>
                         </div>
 
                         <?php }?>
 
             </section>
             <?php }?>
+            $reponse->closeCursor();
 
             <?php } ?>
 
