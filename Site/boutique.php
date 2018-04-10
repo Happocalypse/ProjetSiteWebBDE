@@ -62,7 +62,7 @@
 
     <section id="flex_card">
 
-        <div class="card" style="width: 18rem;">
+        <div class="card">
             <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">Pull sexy</h5>
@@ -70,7 +70,7 @@
                 <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
+        <div class="card">
             <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">Pull sexy</h5>
@@ -78,10 +78,7 @@
                 <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
             </div>
         </div>
-
     </section>
-
-
     <?php include 'script/scriptBootStrapBody.php' ?>
 </body>
 
