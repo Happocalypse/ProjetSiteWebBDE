@@ -18,10 +18,10 @@ body {
 
 /*---NAVBAR---*/
 
-a,
-a:visited,
-a:hover,
-a:active {
+.yes a,
+.yes a:visited,
+.yes a:hover,
+.yes a:active {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     position: relative;
@@ -31,12 +31,12 @@ a:active {
     font-size: 1em;
 }
 
-a:hover {
+.yes a:hover {
     color: #FFFFFF;
 }
 
-a.before:before,
-a.after:after {
+.yes a.before:before,
+.yes a.after:after {
     content: "";
     transition: 0.5s all ease;
     -webkit-backface-visibility: hidden;
@@ -44,29 +44,29 @@ a.after:after {
     position: absolute;
 }
 
-a.before:before {
+.yes a.before:before {
     top: 0.5em;
 }
 
-a.after:after {
+.yes a.after:after {
     bottom: 0.5em;
 }
 
-a.before:before,
-a.after:after {
+.yes a.before:before,
+.yes a.after:after {
     height: 1px;
     width: 0;
     background: #FFFFFF;
 }
 
-a.sixth:before,
-a.sixth:after {
+.yes a.sixth:before,
+.yes a.sixth:after {
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
 }
 
-a.before:hover:before,
-a.after:hover:after {
+.yes a.before:hover:before,
+.yes a.after:hover:after {
     width: 100%;
 }
