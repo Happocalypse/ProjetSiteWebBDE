@@ -1,4 +1,17 @@
-<?php
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="CSS/photos.css">
+        <meta http-equiv="refresh" content="10; URL=photos.php">
+        <?php include 'script/scriptBootStrapHead.php' ?>
+        <title>Publication d'une photo</title>
+
+    </head>
+    <body>
+        <?php include 'navbar.php';?>
+       <?php
 // Test si le fichier a bien été envoyé et s'il n'y a pas d'erreur
 if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0){
 
@@ -35,15 +48,15 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
             echo $today;
 
             //$sql = "INSERT INTO photos (titre_photo, url_image, ID_utilisateur, ID_evenement) VALUES ('".$_POST["titre_photo"]."','".$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username'].",".(int)$_POST['username'].")";
-            $sql = "INSERT INTO photos (titre_photo,date_publication, url_image, ID_utilisateur, ID_evenement) VALUES ('".$_POST["titre_photo"]."','". $today ."','".$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username'].",".(int)$_POST['username'].")";
+            $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur, ID_evenement) VALUES ('".$_POST["titre_photo"]."','". $today ."','".$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username'].",".(int)$_POST['username'].")";
 
 
             $bdd->exec($sql);
 
-            echo $_POST["titre_photo"];
-            echo 'Nom utilisateur : ' . (int)$_POST['username'] .'<br />';
-            echo 'Titre de l\'image : ' .$donnees['ID_photo'] . '.' . $extension_upload.'<br />';
-            echo 'Nom événement : ' .$_POST['choix'].'<br />';
+            //echo $_POST["titre_photo"];
+            //echo 'Nom utilisateur : ' . (int)$_POST['username'] .'<br />';
+            //echo 'Titre de l\'image : ' .$donnees['ID_photo'] . '.' . $extension_upload.'<br />';
+            //echo 'Nom événement : ' .$_POST['choix'].'<br />';
 
 
         }
@@ -57,9 +70,15 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
 
                 // Validation du fichier et stockage définitif sur le serveur à l'adresse uploads/
                 move_uploaded_file($_FILES['monfichier']['tmp_name'],'../uploads/' . $donnees['ID_photo'] . '.' . $extension_upload);
-                echo "L'envoi a bien été effectué <br />";
+                echo "<br /><br /><br /><h1>L'envoi a bien été effectué</h1>
+                <p>Redirection automatique dans 10s ou <a href='photos.php'>cliquez ici</a></p>";
             }
     }
 }
 
 ?>
+
+
+        <?php include 'script/scriptBootStrapBody.php' ?>
+    </body>
+</html>
