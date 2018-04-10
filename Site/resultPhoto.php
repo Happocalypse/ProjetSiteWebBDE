@@ -16,7 +16,7 @@
 if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0){
 
     // Test la taille du fichier
-    if($_FILES['monfichier']['size'] <= 15000000000){
+    if($_FILES['monfichier']['size'] <= 15000000){
 
         // Test si l'extension est autorisé
         $infosfichier=pathinfo($_FILES['monfichier']['name']);
