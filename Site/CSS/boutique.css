@@ -15,3 +15,8 @@
 body{
     height: 2000px;
 }
+
+
+#flex_card{
+    display: flex;
+}

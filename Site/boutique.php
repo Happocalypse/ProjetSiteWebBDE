@@ -60,50 +60,25 @@
         </article>
     </section>
 
-    <section>
-        <div class="card-deck" style="width: 85%;;margin: auto; margin-top: 100px;">
-            <div class="card">
-                <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Pull sexy</h5>
-                    <p class="card-text">Description</p>
-                    <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Tasse swag</h5>
-                    <p class="card-text">Description</p>
-                    <button type="button" class="btn float-right btn-outline-primary" id="button_" onclick="scadd_item.js">Ajouter au panier</button>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Tasse swag</h5>
-                    <p class="card-text">Description</p>
-                    <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Pull sexy</h5>
-                    <p class="card-text">Description</p>
-                    <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Pull sexy</h5>
-                    <p class="card-text">Description</p>
-                    <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
-                </div>
-            </div>
+    <section id="flex_card">
 
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Pull sexy</h5>
+                <p class="card-text">Description</p>
+                <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
+            </div>
         </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Pull sexy</h5>
+                <p class="card-text">Description</p>
+                <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
+            </div>
+        </div>
+
     </section>
 
 
