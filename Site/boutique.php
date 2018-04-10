@@ -100,10 +100,10 @@
                     }
     ?>
 
-                <?php
+        <?php
                 for($ligne=1;$ligne<=$lastLigne;$ligne++){?>
-                    <section id="flex_card">
-                    <?php
+            <section id="flex_card">
+                <?php
 
                         if($ligne == $lastLigne){
                             $nbLigneMax=$nbItemLastLigne;
@@ -117,17 +117,19 @@
                                 <h5 class="card-title">Pull sexy</h5>
                                 <p class="card-text">Description</p>
                                 <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
+                                <div class="card-footer">19.99$</div>
                             </div>
                         </div>
+                        </div>
 
-                    <?php }?>
+                        <?php }?>
 
-                    </section>
-                <?php }?>
+            </section>
+            <?php }?>
 
-        <?php } ?>
+            <?php } ?>
 
-        <?php include 'script/scriptBootStrapBody.php' ?>
-    </body>
+            <?php include 'script/scriptBootStrapBody.php' ?>
+</body>
 
 </html>
