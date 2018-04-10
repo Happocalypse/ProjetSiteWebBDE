@@ -8,7 +8,63 @@
     </head>
     <body>
         <?php include 'navbar.php' ?>
-        <h1>Connexion</h1>
+        <section>
+            <div class="mx-auto" id="formulaire" style="width: 700px;">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <form method="post" action="script/connexion.php" autocomplete="on">
+                            <h1>Connexion</h1>
+                            <div class="form-group">
+                                <label for="mail">Adresse mail</label>
+                                <input type="email" class="form-control" id="mailConnexion" name="mailConnexion" placeholder="Entrer votre email"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Mot de Passe</label>
+                                <input type="password" class="form-control" id="mdpConnexion" name="mdpConnexion" placeholder="Mot de Passe">
+                            </div>
+                            <button type="submit" class="btn btn-outline-danger" >Se connecter</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <form method="post" action="script/inscription.php" autocomplete="on">
+                            <h1>Inscription</h1>
+                            <div class="form-group">
+                                <label for="mail">Adresse mail</label>
+                                <input type="email" class="form-control" id="mailInscription" name="mailInscription" aria-describedby="descEmail" placeholder="prenom.nom@viacesi.fr"/>
+                                <small id="descEmail" class="form-text text-muted">Nous ne partagerons jamais votre email.</small>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="password">Mot de Passe</label>
+                                    <input type="password" class="form-control" id="motDePasseInscription" name="mdpInscription" aria-describedby="descMdP" placeholder="Mot de Passe">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="password">Confirmation</label>
+                                    <input type="password" class="form-control" id="motDePasseInscriptionConfirm" name="mdpInscriptionConfirm" placeholder="Mot de passe">
+                                </div>
+                                <small id="descMdP" class="form-text text-muted">Votre mot de passe doit contenir une majuscule et un chiffre.</small>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputNom">Nom</label>
+                                    <input type="text" class="form-control" id="Nom" name="nom" placeholder="Nom">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPrenom">Prenom</label>
+                                    <input type="text" class="form-control" id="Prenom" name="prenom" placeholder="Prenom">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress">Adresse</label>
+                                <input type="text" class="form-control" id="Adresse" name="adresse" aria-describedby="descAdresse" placeholder="Adresse">
+                                <small id="descAdresse" class="form-text text-muted">ex: 1 rue Solférino 64000 Pau</small>
+                            </div>
+                            <button type="submit" class="btn btn-outline-danger" >S'inscrire</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>
