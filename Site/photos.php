@@ -9,6 +9,7 @@
 
     </head>
     <body>
+        <?php include 'navbar.php';?>
 
         <?php
         try
@@ -29,7 +30,7 @@
 
         <?php if($donnees = $reponse->fetch()){ ?>
 
-        <div class="container">
+        <div class="container" id="placement">
         <h1>Formulaire publication photo</h1>
         <form method="post" action="script/result_add_photo.php" enctype="multipart/form-data">
 
@@ -41,12 +42,12 @@
         <div class="form-group">
             <label for="evenement">Veuillez choisir l'événement :</label>
             <select class="form-control" id="evenement" name='choix'>
-            <?php
-            do {
-            ?>
-                <option value="<?php echo $donnees['ID_evenement']; ?>"><?php echo $donnees['nom_evenement']; ?></option>
-            <?php
-            } while ($donnees = $reponse->fetch());
+                <?php
+                do {
+                ?>
+                    <option value="<?php echo $donnees['ID_evenement']; ?>"><?php echo $donnees['nom_evenement']; ?></option>
+                <?php
+                } while ($donnees = $reponse->fetch());
 
             // Termine le traitement de la requête
             $reponse->closeCursor();
@@ -57,13 +58,12 @@
         <div class="form-group">
             <label for="piecejointe">Pièce Jointe :</label>
             <input class="form-control" type="file" name="monfichier" id="piecejointe" />
-             <label for="piecejointe">Format accepté : png, jpeg et jpg <br />
+            <label for="piecejointe">Format accepté : png, jpeg et jpg <br />
             Limite du fichier : 15 Mo</label>
         </div>
 
-            <input type="hidden" name="username" value=1 />
-            <!--<input type="submit" value="Publier" />-->
-            <button type="submit" class="btn btn-default">Publier</button>
+        <input type="hidden" name="username" value=1 />
+        <button type="submit" class="btn btn-default">Publier</button>
 
         </form>
         </div>
