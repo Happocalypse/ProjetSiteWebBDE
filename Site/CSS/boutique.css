@@ -22,6 +22,11 @@ body{
     margin-left: 100px;
 }
 
+#flex_div{
+    display: flex;
+    margin-left: 100px;
+}
+
 .card{
     width: 18rem;
     margin-right: 50px;

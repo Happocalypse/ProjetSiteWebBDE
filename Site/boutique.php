@@ -60,26 +60,72 @@
         </article>
     </section>
 
-    <section id="flex_card">
+    <?php
 
-        <div class="card">
-            <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Pull sexy</h5>
-                <p class="card-text">Description</p>
-                <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Pull sexy</h5>
-                <p class="card-text">Description</p>
-                <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
-            </div>
-        </div>
-    </section>
-    <?php include 'script/scriptBootStrapBody.php' ?>
-</body>
+        try
+        {
+            // On se connecte à MySQL
+            $bdd = new PDO('mysql:host=localhost;dbname=bddphoto','root','');
+        }
+        catch(Exception $e)
+        {
+            // En cas d'erreur, on affiche un message et on arrête tout
+            die('Erreur : '.$e->getMessage());
+        }
+        // On récupère le contenu du champ nom_evenement
+        $reponse=$bdd->query('SELECT (ID_produit) FROM produits ORDER BY ID_produit Desc LIMIT 0,1');
+
+        $data=$reponse->fetch();
+            if($data==NULL){
+
+                echo "<br /><br /><br /><br /><br /><h1>Il n'y a pas de produit dans la base de données</h1>";
+
+            }else{
+
+                $nbLigneMax=5;
+                $nombre=$data['ID_produit'];
+
+                $nbLigne=$nombre/$nbLigneMax;
+
+                $lastLigne = ceil($nbLigne);    /*Nombre de ligne totale (dernière ligne)*/
+
+                $nbItemLastLigne=$nombre-($nbLigneMax * (floor($nbLigne))); /*nombre d'item sur la dernière ligne */
+
+                echo '<br /> Nombre d\'item sur la '.$lastLigne .'ème ligne : ' . $nbItemLastLigne;
+
+                    if($nbItemLastLigne==0){
+                        $nbItemLastLigne=5;
+                    }
+    ?>
+
+                <?php
+                for($ligne=1;$ligne<=$lastLigne;$ligne++){?>
+                    <section id="flex_card">
+                    <?php
+
+                        if($ligne == $lastLigne){
+                            $nbLigneMax=$nbItemLastLigne;
+                        }
+                    ?>
+                    <?php
+                    for($colonne=0;$colonne<$nbLigneMax;$colonne++){?>
+                        <div class="card">
+                            <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Pull sexy</h5>
+                                <p class="card-text">Description</p>
+                                <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
+                            </div>
+                        </div>
+
+                    <?php }?>
+
+                    </section>
+                <?php }?>
+
+        <?php } ?>
+
+        <?php include 'script/scriptBootStrapBody.php' ?>
+    </body>
 
 </html>
