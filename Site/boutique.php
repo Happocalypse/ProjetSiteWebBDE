@@ -128,8 +128,8 @@
                         <?php }?>
 
             </section>
-            <?php }?>
-            $reponse->closeCursor();
+            <?php }$reponse->closeCursor();?>
+
 
             <?php } ?>
 
