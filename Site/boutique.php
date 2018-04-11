@@ -4,14 +4,17 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="CSS/boutique.css">
+    <link rel="stylesheet" href="CSS/editButton.css">
     <title>Boutique</title>
     <?php include 'script/scriptBootStrapHead.php' ?>
 </head>
 
 <body>
     <?php include 'navbar.php' ?>
-    <h1>Boutique</h1>
+
+    <?php include('editButton.php');?>
     <section>
+
         <article>
             <div id="shopCarousel" class="carousel slide carousel-fade" data-ride="carousel">
                 <!--Indicators-->
@@ -73,25 +76,32 @@
             die('Erreur : '.$e->getMessage());
         }
         // On récupère le contenu du champ nom_evenement
-        $reponse=$bdd->query('SELECT (ID_produit) FROM produits ORDER BY ID_produit Desc LIMIT 0,1');
+        $reponse=$bdd->query('SELECT (ID_produit) FROM produits ');
 
         $data=$reponse->fetch();
-        $reponse->closeCursor();
+
+
             if($data==NULL){
 
                 echo "<br /><br /><br /><br /><br /><h1>Il n'y a pas de produit dans la base de données</h1>";
 
             }else{
 
+                $nbTotalProduits=0;
+
+                do{
+                    $nbTotalProduits++;
+
+                } while($data=$reponse->fetch());
+
+                $reponse->closeCursor();
                 $nbLigneMax=5;
-                $nombre=$data['ID_produit'];
 
-
-                $nbLigne=$nombre/$nbLigneMax;
+                $nbLigne=$nbTotalProduits/$nbLigneMax;
 
                 $lastLigne = ceil($nbLigne);    /*Nombre de ligne totale (dernière ligne)*/
 
-                $nbItemLastLigne=$nombre-($nbLigneMax * (floor($nbLigne))); /*nombre d'item sur la dernière ligne */
+                $nbItemLastLigne=$nbTotalProduits-($nbLigneMax * (floor($nbLigne))); /*nombre d'item sur la dernière ligne */
 
                 echo '<br /> Nombre d\'item sur la '.$lastLigne .'ème ligne : ' . $nbItemLastLigne;
 
