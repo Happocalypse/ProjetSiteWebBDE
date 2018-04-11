@@ -14,6 +14,8 @@
         <?php include 'navbar.php' ?>
 
         <?php include('editButton.php');?>
+        <?php include('top3Vente.php');?>
+
         <section>
 
             <article>
@@ -35,7 +37,7 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="images/slide2.jpg" alt="Second slide">
+                            <img src="images/slide3.jpg" alt="Second slide">
                             <div class="carousel-caption">
                                 <h3 class="h3-responsive">Strong mask</h3>
                                 <p>Secondary text</p>

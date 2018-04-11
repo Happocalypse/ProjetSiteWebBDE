@@ -1,21 +1,28 @@
+<?php include'script/connexionBDD.php' ?>
+
 <?php
+    $reponse=$bdd->query('SELECT produits.image_produit,produits.nom_produit,produits.description_produit,produits.prix_produit, SUM(quantite_vendu) AS quantite_vendu FROM produits INNER JOIN COMPORTER ON produits.ID_produit=COMPORTER.ID_produit GROUP BY COMPORTER.ID_produit ORDER BY quantite_vendu DESC LIMIT 0,3');
 
-        try
-        {
-            // On se connecte à MySQL
-            $bdd = new PDO('mysql:host=178.62.4.64;dbname=Projet_BDE','groupeMN','1234');
-        }
-        catch(Exception $e)
-        {
-            // En cas d'erreur, on affiche un message et on arrête tout
-            die('Erreur : '.$e->getMessage());
-        }
-    $reponse=$bdd->query('SELECT `nom_produit`, `image_produit`, `description_produit`, `prix_produit`, `quantite_produit` FROM `produits`');
+$data=$reponse->fetch();
 
-    $data=$reponse->fetch();
-    $reponse->closeCursor();
-echo "<pre>";
-print_r($data);
-echo "</pre>";
+        $urlTop1=$data[0];
+        $nomTop1=$data[1];
+        $descriptionTop1=$data[2];
+        $prixTop1=$data[3];
 
+$data=$reponse->fetch();
+
+        $urlTop2=$data[0];
+        $nomTop2=$data[1];
+        $descriptionTop2=$data[2];
+        $prixTop2=$data[3];
+
+$data=$reponse->fetch();
+
+        $urlTop3=$data[0];
+        $nomTop3=$data[1];
+        $descriptionTop3=$data[2];
+        $prixTop3=$data[3];
+
+   $reponse->closeCursor();
 ?>
