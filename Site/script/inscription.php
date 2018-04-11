@@ -16,11 +16,10 @@ $verifMail = $requeteVerifMail->fetch();
 
 if($mail == $verifMail['mail']){
     echo '<script>alert("mail already use")</script>';
-    $bdd=null;
-    header("Location: ../formsConnexion.php");
-    exit;
 }
 else{
+    echo '<script>alert("Je prépare les requetes")</script>';
+
     $inscription = $bdd->prepare("INSERT INTO utilisateurs (nom, prenom, mdp, adresse, mail)
     VALUES (:nom, :prenom, :mdp, :adresse, :mail)");
     $inscription->bindValue(':nom',$nom,PDO::PARAM_STR);
@@ -29,7 +28,6 @@ else{
     $inscription->bindValue(':adresse',$adresse,PDO::PARAM_STR);
     $inscription->bindValue(':mail',$mail,PDO::PARAM_STR);
     $inscription->execute();
-    $bdd=null;
     header("Location: ../accueil.php");
     exit;
 }
