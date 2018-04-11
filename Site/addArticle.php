@@ -14,7 +14,7 @@
 
         <div class="container" id="placement">
         <h1>Formulaire publication article</h1>
-        <form method="post" action="resultPhoto.php" enctype="multipart/form-data">
+        <form method="post" action="resultArticle.php" enctype="multipart/form-data">
 
         <div class="form-group">
             <label for="nomProduit">Nom produit :</label>
@@ -23,13 +23,29 @@
 
         <div class="form-group">
         <label for="descriptionProduit">Description du produit : </label>
-        <textarea class="form-control" rows="5" id="descriptionProduit"></textarea>
+        <textarea class="form-control" rows="5" id="descriptionProduit" name="descriptionProduit"></textarea>
         </div>
 
+        <div class="form-group">
+            <label for="categorie">Veuillez choisir la categorie :</label>
+            <select class="form-control" id="categorie" name='categorie'>
+                <?php
+                $reponse = $bdd->query('SELECT * FROM categories');
+                do {
+                ?>
+                    <option value="<?php echo $donnees['ID_categorie']; ?>"><?php echo $donnees['nom_categorie']; ?></option>
+                <?php
+                } while ($donnees = $reponse->fetch());
+
+            // Termine le traitement de la requête
+            $reponse->closeCursor();
+            ?>
+            </select>
+        </div>
 
         <div class="form-group">
-        <label for="prix">Prix :</label>
-        <input class="form-control" type="number" name="prix" id="prix"/>
+        <label for="prixProduit">Prix :</label>
+        <input class="form-control" type="number" name="prixProduit" id="prixProduit"/>
         </div>
         <div class="form-group">
         <label for="quantiteProduit">Quantité :</label>

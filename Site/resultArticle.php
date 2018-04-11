@@ -4,9 +4,9 @@
 
         <meta charset="utf-8" />
         <link rel="stylesheet" href="CSS/photos.css">
-        <meta http-equiv="refresh" content="10; URL=photos.php">
+        <meta http-equiv="refresh" content="10; URL=boutique.php">
         <?php include 'script/scriptBootStrapHead.php' ?>
-        <title>Publication d'un article</title>
+        <title>Publication d'une photo</title>
 
     </head>
     <header><?php include 'navbar.php';?></header>
@@ -15,15 +15,12 @@
 // Test si le fichier a bien été envoyé et s'il n'y a pas d'erreur
 if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0){
 
-    // Test la taille du fichier
-    if($_FILES['monfichier']['size'] <= 15000000){
-
         // Test si l'extension est autorisé
         $infosfichier=pathinfo($_FILES['monfichier']['name']);
         $extension_upload=$infosfichier['extension'];
         $extension_autorisees=array('jpg','jpeg','png');
 
-        if(isset($_POST['username']) AND isset($_POST['titre_photo']) AND isset($_POST['choix'])){
+        if(isset($_POST['username']) AND isset($_POST['nomProduit']) AND isset($_POST['prixProduit']) AND isset($_POST['quantiteProduit']) AND isset($_POST['categorieProduit']) ){
 
             include('script/connexionBDD.php');
             // On récupère le contenu du champ nom_evenement
@@ -39,7 +36,15 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
 
             $today=date("Y-m-d H:i:s");
 
-            $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur, ID_evenement) VALUES ('".$_POST["titre_photo"]."','". $today ."','".'uploads/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username'].",".(int)$_POST['choix'].")";
+            //Faire une transaction
+
+            $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur) VALUES ('".$_POST["nomProduit"]."','". $today ."','".'uploads_articles/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username'].")";
+
+            $bdd->exec($sql);
+
+            // Mettre des categories pour rendre le code fonctionnel
+            /*$sql = "INSERT INTO produits (nom_produit, image_produit, description_produit, prix_produit, quantite_produit, ID_categorie) VALUES ('".$_POST["nomProduit"]."','".$donnees['ID_photo'] . '.' . $extension_upload."','".'uploads_articles/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['prixProduit'].",".(int)$_POST['quantiteProduit'].",".(int)$_POST['categorieProduit'].")"; */
+
             $bdd->exec($sql);
 
 
@@ -47,17 +52,16 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
             if(in_array($extension_upload, $extension_autorisees)){
 
                 // Création automatique du répertoire
-                if (!file_exists("uploads")) {
-                    mkdir("uploads", 0777, true);
+                if (!file_exists("uploads_articles")) {
+                    mkdir("uploads_articles", 0777, true);
                 }
 
 
                 // Validation du fichier et stockage définitif sur le serveur à l'adresse uploads/
-                move_uploaded_file($_FILES['monfichier']['tmp_name'],'uploads/' . $donnees['ID_photo'] . '.' . $extension_upload);
-                echo "<h1>L'envoi a bien été effectué</h1>
-                <p>Redirection automatique dans 10s ou <a href='photos.php'>cliquez ici</a></p>";
+                move_uploaded_file($_FILES['monfichier']['tmp_name'],'uploads_articles/' . $donnees['ID_photo'] . '.' . $extension_upload);
+                echo "<h1>L'article a bien été ajouté</h1>
+                <p>Redirection automatique dans 10s ou <a href='boutique.php'>cliquez ici</a></p>";
             }
-    }
 }
 
 ?>
