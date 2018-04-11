@@ -1,3 +1,48 @@
 .boiteAIdees{
 	font-weight: bold;
 }
+
+.BAI{
+    margin-top: 100px;
+}
+
+h1{
+    text-align: center;
+    border-top: 15px;
+    padding: 5px;
+
+}
+
+.prop{
+    margin-top: 10px;
+    align-content: center;
+}
+
+.prop{
+border:1px solid #d63031;
+text-align: center;
+margin-left: 10px;
+margin-right: 10px;
+margin-top: 20px;
+color:#C2242A;
+font-size: 20px;
+background:white;
+padding:10px;
+border-radius:5px;
+}
+.prop:hover{
+background:#d63031;
+color:white;
+}
+.prop:link{
+text-decoration:none;
+}
+
+.person{
+  border: 1px solid #d63031;
+  display: block;
+  margin: 20px;
+  box-shadow: 5px 5px 5px #d63031;
+  width: 800px;
+  padding: 20px;
+}
