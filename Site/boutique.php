@@ -38,14 +38,14 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="images/manteau.jpg" alt="Chicago">
+                        <img src="<?php echo "../".$urlTop2 ?>" alt="Chicago">
                         <div class="carousel-caption">
-                            <h3><?php echo $nomTop3 ?></h3>
+                            <h3><?php echo $nomTop2 ?></h3>
                             <!-- <p><?php echo $descriptionTop2 ?></p> -->
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="images/hoodie.jpg" alt="New York">
+                        <img src="<?php echo "../".$urlTop3 ?>" alt="New York">
                         <div class="carousel-caption">
                             <h3><?php echo $nomTop3 ?></h3>
                             <!-- <p><?php echo $descriptionTop3 ?></p> -->
