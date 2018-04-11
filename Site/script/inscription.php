@@ -16,7 +16,9 @@ $verifMail = $requeteVerifMail->fetch();
 
 if($mail == $verifMail['mail']){
     echo '<script>alert("mail already use")</script>';
+    $bdd=null;
     header("Location: ../formsConnexion.php");
+    exit;
 }
 else{
     $inscription = $bdd->prepare("INSERT INTO Utilisateur (nom, prenom, mot_de_passe, adresse, mail)
@@ -27,9 +29,8 @@ else{
     $inscription->bindValue(':adresse',$adresse,PDO::PARAM_STR);
     $inscription->bindValue(':mail',$mail,PDO::PARAM_STR);
     $inscription->execute();
-    echo '<script>alert("Je suis la")</script>';
+    $bdd=null;
+    header("Location: ../accueil.php");
+    exit;
 }
-$bdd=null;
-$requeteVerifMail=null;
-$inscription=null;
 ?>
