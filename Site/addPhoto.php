@@ -8,23 +8,14 @@
         <title>Publication d'une photo</title>
 
     </head>
+
+    <header><?php include 'navbar.php';?></header>
     <body>
-        <?php include 'navbar.php';?>
-
         <?php
-        try
-        {
-            // On se connecte à MySQL
-            $bdd = new PDO('mysql:host=localhost;dbname=bddphoto','root','');
-        }
-        catch(Exception $e)
-        {
-            // En cas d'erreur, on affiche un message et on arrête tout
-            die('Erreur : '.$e->getMessage());
-        }
+        include ('script/connexionBDD.php');
 
-            // On récupère le contenu du champ nom_evenement
-            $reponse = $bdd->query('SELECT * FROM evenements');
+        // On récupère le contenu du champ nom_evenement
+        $reponse = $bdd->query('SELECT * FROM evenements');
 
         ?>
 
@@ -32,7 +23,7 @@
 
         <div class="container" id="placement">
         <h1>Formulaire publication photo</h1>
-        <form method="post" action="resultPhoto.php" enctype="multipart/form-data">
+        <form method="post" action="resultArticle.php" enctype="multipart/form-data">
 
         <div class="form-group">
             <label for="titre_photo">Titre de l'image</label>
@@ -62,7 +53,7 @@
             Limite du fichier : 15 Mo</label>
         </div>
 
-        <input type="hidden" name="username" value=1 />
+        <input type="hidden" name="username" value=11 />
         <button type="submit" class="btn btn-default">Publier</button>
 
         </form>

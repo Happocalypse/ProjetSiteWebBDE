@@ -9,8 +9,8 @@
         <title>Publication d'une photo</title>
 
     </head>
+    <header><?php include 'navbar.php';?></header>
     <body>
-        <?php include 'navbar.php';?>
        <?php
 // Test si le fichier a bien été envoyé et s'il n'y a pas d'erreur
 if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0){
@@ -25,52 +25,36 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
 
         if(isset($_POST['username']) AND isset($_POST['titre_photo']) AND isset($_POST['choix'])){
 
-            try
-                {
-                    // On se connecte à MySQL
-                    $bdd = new PDO('mysql:host=localhost;dbname=bddphoto','root','');
-                }
-                catch(Exception $e)
-                {
-                    // En cas d'erreur, on affiche un message et on arrête tout
-                    die('Erreur : '.$e->getMessage());
-                }
-
+            include('script/connexionBDD.php');
             // On récupère le contenu du champ nom_evenement
                 $reponse=$bdd->query('SELECT (ID_photo) FROM photos ORDER BY ID_photo Desc LIMIT 0,1');
 
                 if($donnees = $reponse->fetch()){
                     $donnees['ID_photo']++;
                 }
+                else{
+                    $donnees['ID_photo']=1;
+                }
                 $reponse->closeCursor();
 
             $today=date("Y-m-d H:i:s");
-            echo $today;
 
-            //$sql = "INSERT INTO photos (titre_photo, url_image, ID_utilisateur, ID_evenement) VALUES ('".$_POST["titre_photo"]."','".$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username'].",".(int)$_POST['username'].")";
-            $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur, ID_evenement) VALUES ('".$_POST["titre_photo"]."','". $today ."','".$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username'].",".(int)$_POST['username'].")";
-
-
+            $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur, ID_evenement) VALUES ('".$_POST["titre_photo"]."','". $today ."','".'uploads/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username'].",".(int)$_POST['choix'].")";
             $bdd->exec($sql);
-
-            //echo $_POST["titre_photo"];
-            //echo 'Nom utilisateur : ' . (int)$_POST['username'] .'<br />';
-            //echo 'Titre de l\'image : ' .$donnees['ID_photo'] . '.' . $extension_upload.'<br />';
-            //echo 'Nom événement : ' .$_POST['choix'].'<br />';
 
 
         }
             if(in_array($extension_upload, $extension_autorisees)){
 
                 // Création automatique du répertoire
-                if (!file_exists("../uploads/")) {
-                    mkdir("../uploads/", 0777, true);
+                if (!file_exists("uploads")) {
+                    mkdir("uploads", 0777, true);
                 }
 
 
                 // Validation du fichier et stockage définitif sur le serveur à l'adresse uploads/
-                move_uploaded_file($_FILES['monfichier']['tmp_name'],'../uploads/' . $donnees['ID_photo'] . '.' . $extension_upload);
-                echo "<br /><br /><br /><h1>L'envoi a bien été effectué</h1>
+                move_uploaded_file($_FILES['monfichier']['tmp_name'],'uploads/' . $donnees['ID_photo'] . '.' . $extension_upload);
+                echo "<h1>L'envoi a bien été effectué</h1>
                 <p>Redirection automatique dans 10s ou <a href='photos.php'>cliquez ici</a></p>";
             }
     }

@@ -2,6 +2,12 @@
     font-weight: bold;
 }
 
-#placement{
-    margin-top: 100px;
+body{
+    padding-top: 100px;
+}
+
+#buttonAjouter{
+    float:right;
+    margin-right: 1%;
+
 }
