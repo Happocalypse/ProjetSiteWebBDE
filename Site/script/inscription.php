@@ -8,7 +8,7 @@ $prenom = $_POST['prenom'];
 $adresse = $_POST['adresse'];
 $mdp_hash = password_hash($mdp, PASSWORD_DEFAULT);
 
-$requeteVerifMail = $bdd->prepare("SELECT mail FROM Utilisateur WHERE mail= :mail");
+$requeteVerifMail = $bdd->prepare("SELECT mail FROM utilisateurs WHERE mail= :mail");
 $requeteVerifMail->bindValue(':mail',$mail,PDO::PARAM_STR);
 $requeteVerifMail->execute();
 
@@ -21,7 +21,7 @@ if($mail == $verifMail['mail']){
     exit;
 }
 else{
-    $inscription = $bdd->prepare("INSERT INTO Utilisateur (nom, prenom, mot_de_passe, adresse, mail)
+    $inscription = $bdd->prepare("INSERT INTO utilisateurs (nom, prenom, mdp, adresse, mail)
     VALUES (:nom, :prenom, :mdp, :adresse, :mail)");
     $inscription->bindValue(':nom',$nom,PDO::PARAM_STR);
     $inscription->bindValue(':prenom',$prenom,PDO::PARAM_STR);
