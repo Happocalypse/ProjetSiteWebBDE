@@ -20,7 +20,7 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
         $extension_upload=$infosfichier['extension'];
         $extension_autorisees=array('jpg','jpeg','png');
 
-        if(isset($_POST['username']) AND isset($_POST['nomProduit']) AND isset($_POST['prixProduit']) AND isset($_POST['quantiteProduit']) AND isset($_POST['categorieProduit']) ){
+        if(isset($_POST['username']) AND isset($_POST['nomProduit']) AND isset($_POST['prixProduit']) AND isset($_POST['quantiteProduit'])){
 
             include('script/connexionBDD.php');
             // On récupère le contenu du champ nom_evenement
@@ -43,7 +43,7 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
             $bdd->exec($sql);
 
             // Mettre des categories pour rendre le code fonctionnel
-            /*$sql = "INSERT INTO produits (nom_produit, image_produit, description_produit, prix_produit, quantite_produit, ID_categorie) VALUES ('".$_POST["nomProduit"]."','".$donnees['ID_photo'] . '.' . $extension_upload."','".'uploads_articles/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['prixProduit'].",".(int)$_POST['quantiteProduit'].",".(int)$_POST['categorieProduit'].")"; */
+            $sql = "INSERT INTO produits (nom_produit, image_produit, description_produit, prix_produit, quantite_produit, ID_categorie) VALUES ('".$_POST["nomProduit"]."','".$donnees['ID_photo'] . '.' . $extension_upload."','".'uploads_articles/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['prixProduit'].",".(int)$_POST['quantiteProduit'].")";
 
             $bdd->exec($sql);
 

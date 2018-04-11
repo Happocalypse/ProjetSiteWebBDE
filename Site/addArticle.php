@@ -27,23 +27,6 @@
         </div>
 
         <div class="form-group">
-            <label for="categorie">Veuillez choisir la categorie :</label>
-            <select class="form-control" id="categorie" name='categorie'>
-                <?php
-                $reponse = $bdd->query('SELECT * FROM categories');
-                do {
-                ?>
-                    <option value="<?php echo $donnees['ID_categorie']; ?>"><?php echo $donnees['nom_categorie']; ?></option>
-                <?php
-                } while ($donnees = $reponse->fetch());
-
-            // Termine le traitement de la requête
-            $reponse->closeCursor();
-            ?>
-            </select>
-        </div>
-
-        <div class="form-group">
         <label for="prixProduit">Prix :</label>
         <input class="form-control" type="number" name="prixProduit" id="prixProduit"/>
         </div>
