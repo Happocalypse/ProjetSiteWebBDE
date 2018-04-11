@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group">
                              <label for="dateHeureActivite">Date et heure de l'activité</label>
-                             <input type="text" class="form-control" id="dateHeureActivite" name="dateHeureActivite" maxlength="19" placeholder="aaaa/mm/jj hh:mm:ss"/>
+                             <input type="text" class="form-control" id="dateHeureActivite" name="dateHeureActivite" maxlength="19" placeholder="aaaa-mm-jj hh:mm:ss"/>
                         </div>
 
                         <div class="form-group">
