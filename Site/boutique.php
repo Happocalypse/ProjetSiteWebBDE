@@ -11,63 +11,62 @@
 
 <body>
     <?php include 'script/connexionBDD.php' ?>
-        <?php include 'navbar.php' ?>
+    <?php include 'navbar.php' ?>
 
-        <?php include('editButton.php');?>
-        <?php include('top3Vente.php');?>
+    <?php include('editButton.php');?>
+    <?php include('top3Vente.php');?>
 
-        <section>
+    <section>
 
-            <article>
-                <div id="shopCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-                    <!--Indicators-->
-                    <ol class="carousel-indicators">
-                        <li data-target="#shopCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#shopCarousel" data-slide-to="1"></li>
-                        <li data-target="#shopCarousel" data-slide-to="2"></li>
-                    </ol>
-                    <!--/.Indicators-->
-                    <!--Slides-->
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                            <img src="images/slide1.jpg" alt="First slide">
-                            <div class="carousel-caption">
-                                <h3 class="h3-responsive">Light mask</h3>
-                                <p>First text</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/slide3.jpg" alt="Second slide">
-                            <div class="carousel-caption">
-                                <h3 class="h3-responsive">Strong mask</h3>
-                                <p>Secondary text</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/slide3.jpg" alt="Third slide">
-                            <div class="carousel-caption">
-                                <h3 class="h3-responsive">Slight mask</h3>
-                                <p>Third text</p>
-                            </div>
+        <article>
+            <div id="shopCarousel" class="carousel slide" data-ride="carousel">
+
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                    <li data-target="#shopCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#shopCarousel" data-slide-to="1"></li>
+                    <li data-target="#shopCarousel" data-slide-to="2"></li>
+                </ul>
+
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="<?php echo "../".$urlTop1 ?>" alt="Los Angeles">
+                        <div class="carousel-caption">
+                            <h3><?php echo $nomTop1 ?></h3>
+                            <!-- <p><?php echo $descriptionTop1 ?></p> -->
                         </div>
                     </div>
-                    <!--/.Slides-->
-                    <!--Controls-->
-                    <a class="carousel-control-prev" href="#shopCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-                    <a class="carousel-control-next" href="#shopCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-                    <!--/.Controls-->
+                    <div class="carousel-item">
+                        <img src="images/manteau.jpg" alt="Chicago">
+                        <div class="carousel-caption">
+                            <h3><?php echo $nomTop3 ?></h3>
+                            <!-- <p><?php echo $descriptionTop2 ?></p> -->
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/hoodie.jpg" alt="New York">
+                        <div class="carousel-caption">
+                            <h3><?php echo $nomTop3 ?></h3>
+                            <!-- <p><?php echo $descriptionTop3 ?></p> -->
+                        </div>
+                    </div>
                 </div>
-            </article>
-        </section>
+
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#shopCarousel" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+                <a class="carousel-control-next" href="#shopCarousel" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+            </div>
+        </article>
+    </section>
 
 
-        <?php
+    <?php
         // On récupère le contenu du champ nom_evenement
         $reponse=$bdd->query('SELECT (ID_produit) FROM produits ');
 
@@ -103,44 +102,44 @@
                     }
     ?>
 
-            <?php
+        <?php
                 $reponse=$bdd->query('SELECT `nom_produit`, `image_produit`, `description_produit`, `prix_produit` FROM `produits`');
 
                 for($ligne=1;$ligne<=$lastLigne;$ligne++){?>
-                <section id="flex_card">
-                    <?php
+            <section id="flex_card">
+                <?php
 
                         if($ligne == $lastLigne){
                             $nbLigneMax=$nbItemLastLigne;
                         }
                     ?>
-                        <?php
+                    <?php
                     for($colonne=0;$colonne<$nbLigneMax;$colonne++){
                             $data=$reponse->fetch();?>
-                            <div class="card">
-                                <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <?php echo $data['nom_produit'] ?>
-                                    </h5>
-                                    <p class="card-text">
-                                        <?php echo $data['description_produit'] ?>
-                                    </p>
-                                    <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
+                        <div class="card">
+                            <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <?php echo $data['nom_produit'] ?>
+                                </h5>
+                                <p class="card-text">
+                                    <?php echo $data['description_produit'] ?>
+                                </p>
+                                <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
 
-                                </div>
-                                <div class="card-footer">
-                                    <?php echo $data['prix_produit'] ?>€</div>
                             </div>
+                            <div class="card-footer">
+                                <?php echo $data['prix_produit'] ?>€</div>
+                        </div>
 
-                            <?php }?>
-                </section>
-                <?php }$reponse->closeCursor();?>
+                        <?php }?>
+            </section>
+            <?php }$reponse->closeCursor();?>
 
 
-                <?php } ?>
+            <?php } ?>
 
-                <?php include 'script/scriptBootStrapBody.php' ?>
+            <?php include 'script/scriptBootStrapBody.php' ?>
 </body>
 
 </html>
