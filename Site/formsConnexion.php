@@ -8,7 +8,7 @@
     </head>
     <body>
         <?php include 'navbar.php' ?>
-        <section>
+        <section id="form_connexion">
             <div class="mx-auto" id="formulaire" style="width: 700px;">
                 <div class="row">
                     <div class="col-xs-12 col-md-6">
