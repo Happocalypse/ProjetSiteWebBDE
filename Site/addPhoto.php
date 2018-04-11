@@ -23,7 +23,7 @@
 
         <div class="container" id="placement">
         <h1>Formulaire publication photo</h1>
-        <form method="post" action="resultArticle.php" enctype="multipart/form-data">
+        <form method="post" action="resultPhoto.php" enctype="multipart/form-data">
 
         <div class="form-group">
             <label for="titre_photo">Titre de l'image</label>

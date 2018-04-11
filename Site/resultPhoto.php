@@ -40,6 +40,7 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
             $today=date("Y-m-d H:i:s");
 
             $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur, ID_evenement) VALUES ('".$_POST["titre_photo"]."','". $today ."','".'uploads/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username'].",".(int)$_POST['choix'].")";
+
             $bdd->exec($sql);
 
 
