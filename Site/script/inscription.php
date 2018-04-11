@@ -1,6 +1,4 @@
 <?php
-include 'securite.php';
-
 include 'connexionBDD.php';
 
 $mail = $_POST['mailInscription'];

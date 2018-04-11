@@ -1,5 +1,4 @@
 <?php
-//include 'securite.php';
 
 include 'connexionBDD.php';
 
