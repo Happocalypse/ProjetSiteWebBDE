@@ -6,10 +6,108 @@
         <title>Staff</title>
         <?php include 'script/scriptBootStrapHead.php' ?>
     </head>
+
     <body>
         <?php include 'navbar.php' ?>
-        <h1>Staff</h1>
-        <?php include 'script/scriptBootStrapBody.php' ?>
+        <section>
+            <div align="center">
+                <h1 id="staff">Description du BDE</h1>
+            </div>
+            <div>
+                <h3 class="affichageamoi">Presidence</h3>
+            </div>
 
+
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <div class="col-lg-12 col-md-12 mb-12">
+                        <div class="text-center">
+                            <div>
+                                <img src="images/sophienG.jpg" class="rounded-circle imgBDE">
+                            </div>
+                            <div class="description2">
+                                <h4>Sophien Gardey A2</h4>
+                                <p>Co-president</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-lg-12 col-md-12 mb-12">
+                        <div id="card-1" class="card-rotating effect__click text-center h-100 w-100">
+
+
+                            <div>
+                                <img src="images/jeanL.jpg" class="rounded-circle imgBDE">
+                            </div>
+                            <div class="description2">
+                                <h4>Jean Lacadée A2</h4>
+                                <p>Co-president</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="affichageamoi">Bureau</h3>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-12 col-md-3">
+                    <div class="text-center">
+                        <div>
+                            <img src="images/jeanG.jpg" class="rounded-circle imgBDE">
+                        </div>
+                        <div class="description" >
+                            <h4>Jean Guerci A2</h4>
+                            <p>Trésorier</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <div>
+                            <img src="images/tristanH.jpg" class="rounded-circle imgBDE">
+                        </div>
+                        <div class="description">
+                            <h4>Tristan Houllier A1</h4>
+                            <p>vice-Trésorier</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <div>
+                            <img src="images/romainT.png" class="rounded-circle imgBDE">
+                        </div>
+                        <div class="description">
+                            <h4>Romain Tisnera A1</h4>
+                            <p>Secrétaire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <div>
+                            <img src="images/maximeM.jpg" class="rounded-circle imgBDE">
+                        </div>
+                        <div class="description">
+                            <h4>Maxime Minvielle A1</h4>
+                            <p>Vice-Secrétaire</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+
+
+
+
+        <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>

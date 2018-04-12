@@ -1,3 +1,38 @@
 .staff{
     font-weight: bold;
 }
+
+
+#staff{
+    margin-top: 100px;
+}
+
+.affichageamoi{
+    border:1px solid #d63031;
+    text-align: center;
+    margin-left: -10px;
+    margin-right: -10px;
+    background:#C0C0C0;
+    padding:10px;
+
+}
+
+.imgBDE{
+    width: 200px;
+    height: 200px;
+}
+
+.description{
+    border:1px solid #d63031;
+    padding:5px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 20px;
+}
+.description2{
+    border:1px solid #d63031;
+    padding:5px;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 20px;
+}
