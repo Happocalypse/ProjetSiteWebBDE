@@ -31,21 +31,18 @@
                         <img src="<?php echo "../".$urlTop1 ?>" alt="Slide1">
                         <div class="carousel-caption">
                             <h3><?php echo $nomTop1 ?></h3>
-                            <!-- <p><?php echo $descriptionTop1 ?></p> -->
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="<?php echo "../".$urlTop2 ?>" alt="Slide2">
                         <div class="carousel-caption">
                             <h3><?php echo $nomTop2 ?></h3>
-                            <!-- <p><?php echo $descriptionTop2 ?></p> -->
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="<?php echo "../".$urlTop3 ?>" alt="Slide3">
                         <div class="carousel-caption">
                             <h3><?php echo $nomTop3 ?></h3>
-                            <!-- <p><?php echo $descriptionTop3 ?></p> -->
                         </div>
                     </div>
                 </div>
@@ -100,7 +97,7 @@
     ?>
 
         <?php
-                $reponse=$bdd->query('SELECT `nom_produit`, `image_produit`, `description_produit`, `prix_produit` FROM `produits`');
+                $reponse=$bdd->query('SELECT `nom_produit`, `image_produit`, `description_produit`, `prix_produit`, `ID_produit` FROM `produits`');
 
                 for($ligne=1;$ligne<=$lastLigne;$ligne++){?>
             <section id="flex_card">
@@ -126,7 +123,8 @@
 
                             </div>
                             <div class="card-footer">
-                                <?php echo $data['prix_produit'] ?>€</div>
+                                <?php echo $data['prix_produit'] ?>€
+                            </div>
                         </div>
 
                         <?php }?>
