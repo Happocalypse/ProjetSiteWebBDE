@@ -13,16 +13,18 @@
                 <li class="nav-item link-wrapper evenements yes">
                     <a class="nav-link link sixth before after" href="evenements.php">Evenements</a>
                 </li>
+                <?php if(isset($_SESSION['id'])){ ?>
                 <li class="nav-item link-wrapper boiteAIdees yes">
                     <a class="nav-link link sixth before after" href="boiteAIdees.php">Boite à idées</a>
                 </li>
+                <?php } ?>
                 <li class="nav-item link-wrapper photos yes">
                     <a class="nav-link link sixth before after" href="photos.php">Photos</a>
                 </li>
                 <li class="nav-item link-wrapper boutique yes">
                     <a class="nav-link link sixth before after" href="boutique.php">Boutique</a>
                 </li>
-                <?php if(isset($_SESSION['Nom'])){ ?>
+                <?php if(isset($_SESSION['id'])){ ?>
                 <li class="nav-item link-wrapper boutique yes">
                     <a class="nav-link link sixth before after" href="#">Profil</a>
                 </li>
@@ -33,7 +35,7 @@
                 <li class="nav-item link-wrapper connexion yes">
                     <a class="nav-link link sixth before after" href="formsConnexion.php">Connexion</a>
                 </li>
-                <?php }?>
+                <?php } ?>
             </ul>
         </div>
     </nav>

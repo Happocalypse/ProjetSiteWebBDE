@@ -12,7 +12,6 @@
 <body>
     <?php include 'script/connexionBDD.php' ?>
     <?php include 'navbar.php' ?>
-
     <?php include('editButton.php');?>
     <?php include('top3Vente.php');?>
 
@@ -21,31 +20,29 @@
         <article>
             <div id="shopCarousel" class="carousel slide" data-ride="carousel">
 
-                <!-- Indicators -->
                 <ul class="carousel-indicators">
                     <li data-target="#shopCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#shopCarousel" data-slide-to="1"></li>
                     <li data-target="#shopCarousel" data-slide-to="2"></li>
                 </ul>
 
-                <!-- The slideshow -->
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="<?php echo "../".$urlTop1 ?>" alt="Los Angeles">
+                        <img src="<?php echo "../".$urlTop1 ?>" alt="Slide1">
                         <div class="carousel-caption">
                             <h3><?php echo $nomTop1 ?></h3>
                             <!-- <p><?php echo $descriptionTop1 ?></p> -->
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="<?php echo "../".$urlTop2 ?>" alt="Chicago">
+                        <img src="<?php echo "../".$urlTop2 ?>" alt="Slide2">
                         <div class="carousel-caption">
                             <h3><?php echo $nomTop2 ?></h3>
                             <!-- <p><?php echo $descriptionTop2 ?></p> -->
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="<?php echo "../".$urlTop3 ?>" alt="New York">
+                        <img src="<?php echo "../".$urlTop3 ?>" alt="Slide3">
                         <div class="carousel-caption">
                             <h3><?php echo $nomTop3 ?></h3>
                             <!-- <p><?php echo $descriptionTop3 ?></p> -->
@@ -95,7 +92,7 @@
 
                 $nbItemLastLigne=$nbTotalProduits-($nbLigneMax * (floor($nbLigne))); /*nombre d'item sur la dernière ligne */
 
-                echo '<br /> Nombre d\'item sur la '.$lastLigne .'ème ligne : ' . $nbItemLastLigne;
+               // echo '<br /> Nombre d\'item sur la '.$lastLigne .'ème ligne : ' . $nbItemLastLigne;
 
                     if($nbItemLastLigne==0){
                         $nbItemLastLigne=5;
@@ -117,7 +114,7 @@
                     for($colonne=0;$colonne<$nbLigneMax;$colonne++){
                             $data=$reponse->fetch();?>
                         <div class="card">
-                            <img class="card-img-top" src="images/pull.jpg" alt="Card image cap">
+                            <img class="card-img-top" src="<?php echo "../".$data['image_produit'] ?>" alt="Product Card">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <?php echo $data['nom_produit'] ?>

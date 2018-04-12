@@ -19,20 +19,23 @@ if($mail == $connexionMail['mail'] && password_verify($mdp,$connexionMdp['mdp'])
     $requeteNom = $bdd->prepare("SELECT nom FROM utilisateurs WHERE mail = :mail");
     $requetePrenom = $bdd->prepare("SELECT prenom FROM utilisateurs WHERE mail = :mail");
     $requeteID = $bdd->prepare("SELECT ID_utilisateur FROM utilisateurs WHERE mail = :mail");
+
     $requeteNom->bindValue(':mail',$mail,PDO::PARAM_STR);
     $requetePrenom->bindValue(':mail',$mail,PDO::PARAM_STR);
     $requeteID->bindValue(':mail',$mail,PDO::PARAM_STR);
+
     $requeteNom->execute();
     $requetePrenom->execute();
     $requeteID->execute();
+
     $nom = $requeteNom->fetch();
     $prenom = $requetePrenom->fetch();
     $id = $requeteID->fetch();
 
     $_SESSION['Nom'] = $nom['nom'];
     $_SESSION['Prenom'] = $prenom['prenom'];
-    $_SESSION['id'] = $id['id'];
-    $idverif = $_SESSION['id'];
+    $_SESSION['id'] = $id['ID_utilisateur'];
+
     $bdd=null;
     header("Location: ../accueil.php");
     exit;
