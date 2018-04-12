@@ -36,8 +36,8 @@ if($mail == $connexionMail['mail'] && password_verify($mdp,$connexionMdp['mdp'])
     $id = $requeteID->fetch();
     $groupe = $requeteGroupe->fetch();
 
-    $_SESSION['Nom'] = $nom['nom'];
-    $_SESSION['Prenom'] = $prenom['prenom'];
+    $_SESSION['nom'] = $nom['nom'];
+    $_SESSION['prenom'] = $prenom['prenom'];
     $_SESSION['id'] = $id['ID_utilisateur'];
     $_SESSION['groupe'] = $groupe['ID_groupe'];
 

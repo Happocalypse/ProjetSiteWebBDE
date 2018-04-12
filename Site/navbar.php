@@ -30,7 +30,7 @@
                 </li>
                 <?php if($_SESSION['groupe'] == 2){ ?>
                 <li class="nav-item link-wrapper admin yes">
-                    <a class="nav-link link sixth before after" href="#">Admin</a>
+                    <a class="nav-link link sixth before after" href="admin.php">Admin</a>
                 </li>
                 <?php } ?>
                 <li class="nav-item link-wrapper deconnexion yes">
