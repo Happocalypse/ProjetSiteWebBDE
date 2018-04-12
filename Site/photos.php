@@ -41,7 +41,7 @@
         print_r ($nom_evenements);
         echo '</pre>';
 
-         for($index=0;$index<sizeof($nom_evenements);$index++){
+        /* for($index=0;$index<sizeof($nom_evenements);$index++){
 
             $reponse=$bdd->query('SELECT (url_image)FROM photos WHERE ID_evenement='. $nom_evenements[$index]);
             $data=$reponse->fetch();
@@ -57,7 +57,7 @@
             $reponse->closeCursor();
 
         }
-    }
+    }*/
 
 
     ?>
