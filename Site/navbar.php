@@ -25,10 +25,15 @@
                     <a class="nav-link link sixth before after" href="boutique.php">Boutique</a>
                 </li>
                 <?php if(isset($_SESSION['id'])){ ?>
-                <li class="nav-item link-wrapper boutique yes">
+                <li class="nav-item link-wrapper profil yes">
                     <a class="nav-link link sixth before after" href="#">Profil</a>
                 </li>
-                <li class="nav-item link-wrapper boutique yes">
+                <?php if($_SESSION['groupe'] == 2){ ?>
+                <li class="nav-item link-wrapper admin yes">
+                    <a class="nav-link link sixth before after" href="#">Admin</a>
+                </li>
+                <?php } ?>
+                <li class="nav-item link-wrapper deconnexion yes">
                     <a class="nav-link link sixth before after" href="script/deconnexion.php">Deconnexion</a>
                 </li>
                 <?php } else{ ?>
