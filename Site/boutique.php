@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="CSS/editButton.css">
     <title>Boutique</title>
     <?php include 'script/scriptBootStrapHead.php' ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 
 <body>
     <?php include 'script/connexionBDD.php' ?>
     <?php include 'navbar.php' ?>
-    <?php include('editButton.php');?>
-    <?php include('top3Vente.php');?>
+    <?php include 'editButton.php';?>
+    <?php include 'top3Vente.php';?>
 
     <section>
 
@@ -30,19 +31,25 @@
                     <div class="carousel-item active">
                         <img src="<?php echo "../".$urlTop1 ?>" alt="Slide1">
                         <div class="carousel-caption">
-                            <h3><?php echo $nomTop1 ?></h3>
+                            <h3>
+                                <?php echo $nomTop1 ?>
+                            </h3>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="<?php echo "../".$urlTop2 ?>" alt="Slide2">
                         <div class="carousel-caption">
-                            <h3><?php echo $nomTop2 ?></h3>
+                            <h3>
+                                <?php echo $nomTop2 ?>
+                            </h3>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="<?php echo "../".$urlTop3 ?>" alt="Slide3">
                         <div class="carousel-caption">
-                            <h3><?php echo $nomTop3 ?></h3>
+                            <h3>
+                                <?php echo $nomTop3 ?>
+                            </h3>
                         </div>
                     </div>
                 </div>
@@ -119,8 +126,20 @@
                                 <p class="card-text">
                                     <?php echo $data['description_produit'] ?>
                                 </p>
-                                <button type="button" class="btn float-right btn-outline-primary" id="button_">Ajouter au panier</button>
+                                <button type="button" class="btn float-right btn-outline-primary" id="button_ajout_panier" onclick="ajouterPanier()">Ajouter au panier</button>
+<script type="text/javascript">
+function ajouterPanier(){
+    //alert ("hello");
+    <?php
 
+    $addPanier = "INSERT INTO `PANIER`(`quantite`, `ID_produit`, `ID_utilisateur`) VALUES (1,".$data['ID_produit'].",".$_SESSION['id'].")";
+
+    $bdd->exec($addPanier);
+    ?>
+
+
+}
+</script>
                             </div>
                             <div class="card-footer">
                                 <?php echo $data['prix_produit'] ?>€
@@ -130,11 +149,9 @@
                         <?php }?>
             </section>
             <?php }$reponse->closeCursor();?>
-
-
             <?php } ?>
 
-            <?php include 'script/scriptBootStrapBody.php' ?>
+<?php include 'script/scriptBootStrapBody.php' ?>
 </body>
 
 </html>
