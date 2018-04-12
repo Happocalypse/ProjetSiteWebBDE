@@ -15,7 +15,9 @@
         include ('script/connexionBDD.php');
 
         // On récupère le contenu du champ nom_evenement
-        $reponse = $bdd->query('SELECT * FROM evenements');
+        // TASK : Changer PARTICIPER.ID_utilisateur=1 par le vrai ID
+        $sql='SELECT * FROM PARTICIPER INNER JOIN evenements ON PARTICIPER.ID_evenement = evenements.ID_evenement WHERE valide=\'1\' AND PARTICIPER.ID_utilisateur=1';
+        $reponse = $bdd->query($sql);
 
         ?>
 
@@ -53,7 +55,8 @@
             Limite du fichier : 15 Mo</label>
         </div>
 
-        <input type="hidden" name="username" value=11 />
+        <!-- TASK : Changer 1 par le nom de l'utilisateur -->
+        <input type="hidden" name="username" value=1 />
         <button type="submit" class="btn btn-default">Publier</button>
 
         </form>
@@ -61,7 +64,7 @@
 
         <?php
         }else{
-            echo "<br/><br /><br /><h1>Vous ne pouvez pas publier une photo car il n'y a pas d'événement.</h1>";
+            echo "<h1>Vous ne pouvez pas publier une photo car il n'y a pas d'événement.</h1>";
         }
         ?>
 

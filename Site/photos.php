@@ -19,7 +19,7 @@
     <?php include('script/connexionBDD.php');
 
     //TASK : MODIFIER ID_utilisateur
-    $reponse=$bdd->query('SELECT (ID_evenement)FROM PARTICIPER WHERE ID_utilisateur=11');
+    $reponse=$bdd->query('SELECT (ID_evenement)FROM PARTICIPER WHERE ID_utilisateur=1');
     $data=$reponse->fetch();
 
         if($data==NULL){
@@ -29,10 +29,9 @@
             echo "<a href=\"addPhoto.php\" class=\"btn btn-primary btn-lg\" role=\"button\" aria-disabled=\"true\" id=\"buttonAjouter\">Ajouter une photo</a>";
 
             $i=0;
+            $nom_evenements=array();
         do{
-
-            $nom_evenents[$i]=$data['ID_evenement'];
-            $i++;
+            array_push($nom_evenements,$data['ID_evenement']);
 
         } while($data=$reponse->fetch());
 
@@ -41,7 +40,26 @@
         echo '<pre>';
         print_r ($nom_evenements);
         echo '</pre>';
+
+         for($index=0;$index<sizeof($nom_evenements);$index++){
+
+            $reponse=$bdd->query('SELECT (url_image)FROM photos WHERE ID_evenement='. $nom_evenements[$index]);
+            $data=$reponse->fetch();
+
+                if($data==NULL AND $index=0){
+                    echo "Il y a aucune photo sur l'événénement.";
+                }else{
+                    do{
+                        echo '<br />'.$data['url_image'];
+                    } while ($data=$reponse->fetch());
+                }
+
+            $reponse->closeCursor();
+
         }
+    }
+
+
     ?>
 
     </div>
