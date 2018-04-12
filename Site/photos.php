@@ -36,26 +36,28 @@
             } while($data=$reponse->fetch());
 
             $reponse->closeCursor();
-            ?><div class="container" style="float:left;"><?php
+            ?><div class="container-fluid" style="float:left;"><?php
 
             for($index=0;$index<sizeof($nom_evenements);$index++){
-                echo "<h1>Formulaire publication article</h1>";
-                echo "<div class=\"row\">";
-                $reponse=$bdd->query('SELECT (url_image)FROM photos WHERE ID_evenement='. $nom_evenements[$index]);
-                $data=$reponse->fetch();
+                $reponse=$bdd->query('SELECT photos.ID_evenement, evenements.nom_evenement, photos.url_image, titre_photo FROM photos INNER JOIN evenements ON (photos.ID_evenement =
+                evenements.ID_evenement) WHERE photos.ID_evenement ='.$nom_evenements[$index]);
+                $data=$reponse->fetch();?>
+        <h1><?php echo $data['nom_evenement']; ?></h1>
 
-                    if($data == NULL){
+        <?php
+                echo "<div class=\"row\">";
+
+
+
+                if($data == NULL){
                         echo "Il y a aucune photo sur l'événénement.";
                     }else{
                         do{
                             ?>
-                            <div class="col-md-3">
+                            <div class="col-s-5">
                             <div class="thumbnail">
                               <a href="<?php echo $data['url_image']; ?>">
-                                <img src="<?php echo $data['url_image']; ?>" alt="Lights" style="width:100%">
-                                <div class="caption">
-                                  <p>Lorem ipsum...</p>
-                                </div>
+                                <img src="<?php echo $data['url_image']; ?>" alt="<?php echo $data['titre_photo']; ?>" style="width:100%">
                               </a>
                             </div>
                           </div>
@@ -68,6 +70,7 @@
                 $reponse->closeCursor();
 
             }
+
 
         }
 
