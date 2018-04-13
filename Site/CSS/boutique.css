@@ -19,39 +19,13 @@
 }
 
 body{
-    height: 2000px;
-}
-
-
-#flex_card{
-    display: flex;
-    margin-left: 10%;
-    margin-right: 8%
-}
-
-.card{
-    width: 16rem;
-    margin-right: 50px;
-    margin-top: 50px;
-}
-
-/**/
-
-.card img{
-    width: 100%;
-
 
 }
-.card button{
-    width: 100%;
-    height: auto;
-}
-
-.card-footer{
-    text-align: center;
-}
-
  .carousel-inner img {
       width: 100%;
       height: 100%;
   }
+
+#container-fluid{
+    display:flex;
+}

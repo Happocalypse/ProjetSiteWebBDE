@@ -15,151 +15,114 @@
     <?php include 'script/connexionBDD.php';
     if(isset($_SESSION['id'])) {
 
-            if($_SESSION['groupe']=2){
+            if($_SESSION['groupe']==2){
                 ?>
-                 <!-- Vérifier si l'utilisateur est membre du BDE -->
-                <?php include 'editButton.php'?>
-                <?php
+    <!-- Vérifier si l'utilisateur est membre du BDE -->
+    <?php include 'editButton.php'?>
+    <?php
             }
         }
     ?>
-    <?php include 'top3Vente.php';?>
+        <?php include 'top3Vente.php';?>
 
-    <section>
+        <section>
 
-        <article>
-            <div id="shopCarousel" class="carousel slide" data-ride="carousel">
+            <article>
+                <div id="shopCarousel" class="carousel slide" data-ride="carousel">
 
-                <ul class="carousel-indicators">
-                    <li data-target="#shopCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#shopCarousel" data-slide-to="1"></li>
-                    <li data-target="#shopCarousel" data-slide-to="2"></li>
-                </ul>
+                    <ul class="carousel-indicators">
+                        <li data-target="#shopCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#shopCarousel" data-slide-to="1"></li>
+                        <li data-target="#shopCarousel" data-slide-to="2"></li>
+                    </ul>
 
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="<?php echo $urlTop1 ?>" alt="Slide1">
-                        <div class="carousel-caption">
-                            <h3>
-                                <?php echo $nomTop1 ?>
-                            </h3>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="<?php echo $urlTop1 ?>" alt="Slide1">
+                            <div class="carousel-caption">
+                                <h3>
+                                    <?php echo $nomTop1 ?>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<?php echo $urlTop2 ?>" alt="Slide2">
+                            <div class="carousel-caption">
+                                <h3>
+                                    <?php echo $nomTop2 ?>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<?php echo $urlTop3 ?>" alt="Slide3">
+                            <div class="carousel-caption">
+                                <h3>
+                                    <?php echo $nomTop3 ?>
+                                </h3>
+                            </div>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <img src="<?php echo $urlTop2 ?>" alt="Slide2">
-                        <div class="carousel-caption">
-                            <h3>
-                                <?php echo $nomTop2 ?>
-                            </h3>
+
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#shopCarousel" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+                    <a class="carousel-control-next" href="#shopCarousel" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+                </div>
+            </article>
+        </section>
+
+        <?php
+
+                $reponse=$bdd->query('SELECT `nom_produit`, `image_produit`, `description_produit`, `prix_produit`, `ID_produit` FROM `produits`');
+                $data=$reponse->fetch();
+
+             if($data==NULL){
+                echo '<h1>Il n\'y a pas de produit dans la base de donnée.</h1>';
+             }
+
+            else
+
+            { ?>
+            <div class="container-fluid">
+            <div class="row">
+                <?php
+            do{
+
+//                echo '<pre>'.print_r($data).'</pre>';
+             ?>
+
+
+
+                <div class="col-s-5">
+                    <div class="card">
+                        <img class="card-img-top" src="<?php echo $data['image_produit'] ?>" alt="Product Card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <?php echo $data['nom_produit'] ?>
+                            </h5>
+                            <p class="card-text">
+                                <?php echo $data['description_produit'] ?>
+                            </p>
+                            <button type="button" class="btn float-right btn-outline-primary" id="button_ajout_panier">Ajouter au panier</button>
+
                         </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="<?php echo $urlTop3 ?>" alt="Slide3">
-                        <div class="carousel-caption">
-                            <h3>
-                                <?php echo $nomTop3 ?>
-                            </h3>
+                        <div class="card-footer">
+                            <?php echo $data['prix_produit'] ?>€
                         </div>
                     </div>
                 </div>
 
-                <!-- Left and right controls -->
-                <a class="carousel-control-prev" href="#shopCarousel" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-                <a class="carousel-control-next" href="#shopCarousel" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
 
+        <?php }while($data=$reponse->fetch()); ?>
+        <?php } ?>
             </div>
-        </article>
-    </section>
+        </div>
 
-
-    <?php
-        // On récupère le contenu du champ nom_evenement
-        $reponse=$bdd->query('SELECT (ID_produit) FROM produits ');
-
-        $data=$reponse->fetch();
-
-
-            if($data==NULL){
-
-                echo "<br /><br /><br /><br /><br /><h1>Il n'y a pas de produit dans la base de données</h1>";
-
-            }else{
-
-                $nbTotalProduits=0;
-
-                do{
-                    $nbTotalProduits++;
-
-                } while($data=$reponse->fetch());
-
-                $reponse->closeCursor();
-                $nbLigneMax=5;
-
-                $nbLigne=$nbTotalProduits/$nbLigneMax;
-
-                $lastLigne = ceil($nbLigne);    /*Nombre de ligne totale (dernière ligne)*/
-
-                $nbItemLastLigne=$nbTotalProduits-($nbLigneMax * (floor($nbLigne))); /*nombre d'item sur la dernière ligne */
-
-               // echo '<br /> Nombre d\'item sur la '.$lastLigne .'ème ligne : ' . $nbItemLastLigne;
-
-                    if($nbItemLastLigne==0){
-                        $nbItemLastLigne=5;
-                    }
-    ?>
-
-        <?php
-                $reponse=$bdd->query('SELECT `nom_produit`, `image_produit`, `description_produit`, `prix_produit`, `ID_produit` FROM `produits`');
-
-                for($ligne=1;$ligne<=$lastLigne;$ligne++){?>
-            <section id="flex_card">
-                <?php
-
-                        if($ligne == $lastLigne){
-                            $nbLigneMax=$nbItemLastLigne;
-                        }
-                    ?>
-                    <?php
-                    for($colonne=0;$colonne<$nbLigneMax;$colonne++){
-                            $data=$reponse->fetch();?>
-                        <div class="card">
-                            <img class="card-img-top" src="<?php echo $data['image_produit'] ?>" alt="Product Card">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <?php echo $data['nom_produit'] ?>
-                                </h5>
-                                <p class="card-text">
-                                    <?php echo $data['description_produit'] ?>
-                                </p>
-                                <button type="button" class="btn float-right btn-outline-primary" id="button_ajout_panier" onclick="ajouterPanier()">Ajouter au panier</button>
-                                <script type="text/javascript">
-                                    function ajouterPanier()
-                                    {
-                                    //alert ("hello");
-                                <?php
-
-                                    $addPanier = "INSERT INTO `PANIER`(`quantite`, `ID_produit`, `ID_utilisateur`) VALUES (1,".$data['ID_produit'].",".$_SESSION['id'].")";
-
-                                    $bdd->exec($addPanier);
-                                    ?>
-                                    }
-                                </script>
-                            </div>
-                            <div class="card-footer">
-                                <?php echo $data['prix_produit'] ?>€
-                            </div>
-                        </div>
-
-                        <?php }?>
-            </section>
-            <?php }$reponse->closeCursor();?>
-            <?php } ?>
-
-<?php include 'script/scriptBootStrapBody.php' ?>
+        <?php include 'script/scriptBootStrapBody.php' ?>
 </body>
 
 </html>
