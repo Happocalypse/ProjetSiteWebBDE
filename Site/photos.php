@@ -12,10 +12,18 @@
     <header><?php include 'navbar.php';?></header>
 
 <body>
+    <?php
 
-    <!-- Vérifier si l'utilisateur est membre du BDE -->
-    <a href="addPhoto.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true" id="buttonAjouter">Ajouter une photo</a>
+    // TASK : Faire un inner join pour récupérer le nom du groupe au lieu de l'ID du groupe
+        if(isset($_SESSION['id']) and ($_SESSION['groupe']=1 or $_SESSION['groupe']=2)) {
+            ?>
 
+            <!-- Vérifier si l'utilisateur est membre du BDE -->
+            <a href="addPhoto.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true" id="buttonAjouter">Ajouter une photo</a>
+            <?php
+        }
+
+    ?>
 
     <?php include('script/connexionBDD.php');
 
