@@ -1,9 +1,12 @@
 <?php session_start(); ?>
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="barmenu">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top" id="barmenu">
         <a class="navbar-brand" href="accueil.php"><img src="images/bear-footprint.png" width="50" height="50" alt=""></a>
-        <div class="collapse navbar-collapse d-flex justify-content-center wrapper" id="navbarSupportedContent">
-            <ul class="navbar-nav menuPrincipal">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center wrapper" id="navbarSupportedContent">
+            <ul class="navbar-nav mt-2 mt-lg-2 menuPrincipal">
                 <li class="nav-item link-wrapper accueil yes">
                     <a class="nav-link link sixth before after" href="accueil.php">Accueil</a>
                 </li>
@@ -46,4 +49,3 @@
             </ul>
         </div>
     </nav>
-</div>
