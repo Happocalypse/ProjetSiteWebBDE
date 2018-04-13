@@ -21,7 +21,8 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
+<!--                <form method="post" action="script/deleteFromTable.php">-->
+                    <?php
     include 'script/connexionBDD.php';
         function supprUsers($idCurrent){
             $suppr = $bdd->prepare("");
@@ -32,16 +33,16 @@
         $utilisateurs->execute();
 
         foreach($utilisateurs as $row){
-            echo '<th scope="row">'.$row["ID_utilisateur"].'</th>'.
-                    '<td>'.$row["nom"].'</td>'.
-                    '<td>'.$row["prenom"].'</td>'.
-                    '<td>'.$row["mail"].'</td>'.
-                    '<td>'.$row["ID_groupe"].'</td>'.
-                    '<td><button type="button" class="btn btn-danger">Supprimer</button></td>'.
-                    '</tr>';
+            echo '<form method="post" action="script/deleteFromTable.php"><th scope="row"><input type="text" readonly class="form-control-plaintext" name="id" value="'.$row["ID_utilisateur"].'"></th>'.
+                '<td>'.$row["nom"].'</td>'.
+                '<td>'.$row["prenom"].'</td>'.
+                '<td>'.$row["mail"].'</td>'.
+                '<td>'.$row["ID_groupe"].'</td>'.
+                '<td><button type="submit" class="btn btn-danger">Supprimer</button></td></form>'.
+                '</tr>';
         }
-
-                ?>
+                    ?>
+<!--                </form>-->
                 <?php include 'script/scriptBootStrapBody.php' ?>
             </tbody>
         </table>
