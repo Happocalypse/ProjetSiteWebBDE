@@ -11,9 +11,18 @@
 </head>
 
 <body>
-    <?php include 'script/connexionBDD.php' ?>
     <?php include 'navbar.php' ?>
-    <?php include 'editButton.php';?>
+    <?php include 'script/connexionBDD.php';
+    if(isset($_SESSION['id'])) {
+
+            if($_SESSION['groupe']=2){
+                ?>
+                 <!-- Vérifier si l'utilisateur est membre du BDE -->
+                <?php include 'editButton.php'?>
+                <?php
+            }
+        }
+    ?>
     <?php include 'top3Vente.php';?>
 
     <section>
