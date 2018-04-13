@@ -25,16 +25,18 @@
                     <a class="nav-link link sixth before after" href="boutique.php">Boutique</a>
                 </li>
                 <?php if(isset($_SESSION['id'])){ ?>
-                <li class="nav-item link-wrapper profil yes">
-                    <a class="nav-link link sixth before after" href="#">Profil</a>
-                </li>
-                <?php if($_SESSION['groupe'] == 2){ ?>
-                <li class="nav-item link-wrapper admin yes">
-                    <a class="nav-link link sixth before after" href="admin.php">Admin</a>
-                </li>
-                <?php } ?>
-                <li class="nav-item link-wrapper deconnexion yes">
-                    <a class="nav-link link sixth before after" href="script/deconnexion.php">Deconnexion</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php echo $_SESSION['nom'].' '.$_SESSION['prenom'] ?>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Profil</a>
+                        <?php if($_SESSION['groupe'] == 2){ ?>
+                        <a class="dropdown-item" href="admin.php">Admin</a>
+
+                        <?php } ?>
+                        <a class="dropdown-item" href="script/deconnexion.php">Deconnexion</a>
+                    </div>
                 </li>
                 <?php } else{ ?>
                 <li class="nav-item link-wrapper connexion yes">
