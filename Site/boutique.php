@@ -107,7 +107,10 @@
                             <p class="card-text">
                                 <?php echo $data['description_produit'] ?>
                             </p>
-                            <button type="button" class="btn float-right btn-outline-primary" id="button_ajout_panier">Ajouter au panier</button>
+                            <form method="post" action="">
+                            <?php echo '<input type="hidden" name="idProduit" value='.$data['ID_produit'].' />' ?>
+                            <button type="submit" name="submitPanier" class="btn float-right btn-outline-primary">Ajouter au panier</button>
+                            </form>
 
                         </div>
                         <div class="card-footer">
@@ -118,9 +121,15 @@
 
 
         <?php }while($data=$reponse->fetch()); ?>
+        <?php $reponse->closeCursor();?>
         <?php } ?>
             </div>
         </div>
+    <?php
+    if(isset($_POST['submitPanier']) and isset($_POST['idProduit'])){
+        echo $_POST['idProduit'];
+    }
+    ?>
 
         <?php include 'script/scriptBootStrapBody.php' ?>
 </body>
