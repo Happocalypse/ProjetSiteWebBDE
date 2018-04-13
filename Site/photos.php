@@ -86,6 +86,7 @@
                                                     echo '<input type=hidden name="idEvenement" value='.$data['ID_evenement'].' />';
                                                 }
                                             ?>
+                                            <!-- TASK : Réservé le bouton téléchargement aux membres du groupe 'CESI' -->
                                             <a style="float:right;" download="custom-filename.jpg" href="<?php echo $data['url_image'] ?>" title="Téléchargement de l'image">
                                                 <img src="https://icon-icons.com/icons2/692/PNG/32/seo-social-web-network-internet_12_icon-icons.com_61498.png" alt="" style="width:70%" />
                                                 <!-- TASK : Afficher le nombre de like -->
