@@ -3,8 +3,8 @@
     		Edition
   		</button>
 	<div class="dropdown-menu">
-		<button class="dropdown-item" type="button" onclick="window.location='http://google.com'">Ajouter</button>
-		<button class="dropdown-item" type="button">Supprimer</button>
-		<button class="dropdown-item" type="button">Modifier</button>
+		<a href="addArticle.php"><button id="ajouter" class="dropdown-item" type="button">Ajouter/Modifier</button></a>
+
+		<a href="#"> <button class="dropdown-item" type="button">Supprimer</button></a>
 	</div>
 </div>

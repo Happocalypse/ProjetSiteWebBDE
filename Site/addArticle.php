@@ -5,7 +5,7 @@
         <meta charset="utf-8" />
         <link rel="stylesheet" href="CSS/photos.css">
         <?php include 'script/scriptBootStrapHead.php' ?>
-        <title>Publication d'une photo</title>
+        <title>Publication d'un article</title>
 
     </head>
 
@@ -29,10 +29,6 @@
         <div class="form-group">
         <label for="prixProduit">Prix :</label>
         <input class="form-control" type="number" name="prixProduit" id="prixProduit"/>
-        </div>
-        <div class="form-group">
-        <label for="quantiteProduit">Quantité :</label>
-        <input class="form-control" type="number" name="quantiteProduit" id="quantiteProduit"/>
         </div>
 
         <div class="form-group">

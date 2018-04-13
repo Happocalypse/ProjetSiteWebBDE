@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="CSS/photos.css">
         <meta http-equiv="refresh" content="10; URL=boutique.php">
         <?php include 'script/scriptBootStrapHead.php' ?>
-        <title>Publication d'une photo</title>
+        <title>Publication d'un article</title>
 
     </head>
     <header><?php include 'navbar.php';?></header>
@@ -20,7 +20,7 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
         $extension_upload=$infosfichier['extension'];
         $extension_autorisees=array('jpg','jpeg','png');
 
-        if(isset($_POST['username']) AND isset($_POST['nomProduit']) AND isset($_POST['prixProduit']) AND isset($_POST['quantiteProduit'])){
+        if(isset($_POST['username']) AND isset($_POST['nomProduit']) AND isset($_POST['prixProduit'])){
 
             include('script/connexionBDD.php');
             // On récupère le contenu du champ nom_evenement
@@ -41,11 +41,11 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
             $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur) VALUES ('".$_POST["nomProduit"]."','". $today ."','".'uploads_articles/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username'].")";
 
             $bdd->exec($sql);
-
-            // Mettre des categories pour rendre le code fonctionnel
-            $sql = "INSERT INTO produits (nom_produit, image_produit, description_produit, prix_produit, quantite_produit, ID_categorie) VALUES ('".$_POST["nomProduit"]."','".$donnees['ID_photo'] . '.' . $extension_upload."','".'uploads_articles/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['prixProduit'].",".(int)$_POST['quantiteProduit'].")";
-
-            $bdd->exec($sql);
+//
+//            // Mettre des categories pour rendre le code fonctionnel
+//            $sql = "INSERT INTO produits (nom_produit, image_produit, description_produit, prix_produit) VALUES ('".$_POST["nomProduit"]."','".$donnees['ID_photo'] . '.' . $extension_upload."','".'uploads_articles/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['prixProduit'].")";
+//
+//            $bdd->exec($sql);
 
 
         }
