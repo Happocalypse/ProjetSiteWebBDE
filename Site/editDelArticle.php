@@ -64,7 +64,7 @@
 
                                 </tr>
                                 </form>
-                            <?php } while($data=$reponse->fetch()); ?>
+                            <?php } while($data=$reponse->fetch()); $reponse->closeCursor(); ?>
                         </table>
 
                 </div>
