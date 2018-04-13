@@ -23,18 +23,15 @@
                 <a href="addPhoto.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true" id="buttonAjouter">Ajouter une photo</a>
                 <?php
             }
-            if(isset($_POST['submit']))
+            if(isset($_POST['SubmitButton']))
             {
-                echo "TEST";
+                // TASK : Ne pas oublier ajouter ID de l'image
                 $sql = 'INSERT INTO LIKER (ID_utilisateur, ID_evenement) VALUES ('.(int)$_POST['idUtilisateur'].','.(int)$_POST['idEvenement'].')';
 
             $bdd->exec($sql);
             }
 
         }
-
-
-
     ?>
 
     <?php
@@ -82,14 +79,20 @@
                                     <img src="<?php echo $data['url_image']; ?>" alt="<?php echo $data['titre_photo']; ?>" style="width:100%">
                                    </a>
                                     <div class="caption">
-                                        <form method="post" action='#'>
+                                        <form method="post" action=''>
                                             <?php
                                                 if(isset($_SESSION['id']) and isset($data['ID_evenement']) ) {
                                                     echo '<input type=hidden name="idUtilisateur" value='.$_SESSION['id'].' />';
                                                     echo '<input type=hidden name="idEvenement" value='.$data['ID_evenement'].' />';
                                                 }
                                             ?>
-                                            <button type="submit" class="btn btn-link"><img src="https://icon-icons.com/icons2/909/PNG/32/thumb-up_icon-icons.com_70845.png" alt="" style="width:70%"></button>
+                                            <a style="float:right;" download="custom-filename.jpg" href="<?php echo $data['url_image'] ?>" title="Téléchargement de l'image">
+                                                <img src="https://icon-icons.com/icons2/692/PNG/32/seo-social-web-network-internet_12_icon-icons.com_61498.png" alt="" style="width:70%" />
+                                                <!-- TASK : Afficher le nombre de like -->
+                                                <p><?php echo  ?></p>
+
+                                            </a>
+                                            <button style="float:left;" type="submit" class="btn btn-link" name="SubmitButton"><img src="https://icon-icons.com/icons2/909/PNG/32/thumb-up_icon-icons.com_70845.png" alt="" style="width:70%" /></button>
                                         </form>
                                     </div>
                                 </div>
