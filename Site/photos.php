@@ -12,23 +12,34 @@
     <header><?php include 'navbar.php';?></header>
 
 <body>
-    <?php
+    <?php include('script/connexionBDD.php');
 
     // TASK : Faire un inner join pour récupérer le nom du groupe au lieu de l'ID du groupe
-        if(isset($_SESSION['id']) and ($_SESSION['groupe']=1 or $_SESSION['groupe']=2)) {
-            ?>
+        if(isset($_SESSION['id'])) {
 
-            <!-- Vérifier si l'utilisateur est membre du BDE -->
-            <a href="addPhoto.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true" id="buttonAjouter">Ajouter une photo</a>
-            <?php
+            if($_SESSION['groupe']=1 or $_SESSION['groupe']=2){
+                ?>
+                 <!-- Vérifier si l'utilisateur est membre du BDE -->
+                <a href="addPhoto.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true" id="buttonAjouter">Ajouter une photo</a>
+                <?php
+            }
+            if(isset($_POST['submit']))
+            {
+                echo "TEST";
+                $sql = 'INSERT INTO LIKER (ID_utilisateur, ID_evenement) VALUES ('.(int)$_POST['idUtilisateur'].','.(int)$_POST['idEvenement'].')';
+
+            $bdd->exec($sql);
+            }
+
         }
+
+
 
     ?>
 
-    <?php include('script/connexionBDD.php');
+    <?php
 
-    //TASK : MODIFIER ID_utilisateur
-    $reponse=$bdd->query('SELECT (ID_evenement)FROM PARTICIPER WHERE ID_utilisateur=1');
+    $reponse=$bdd->query('SELECT (ID_evenement)FROM evenements WHERE valide=\'1\' ORDER BY date_evenement DESC');
     $data=$reponse->fetch();
 
 
@@ -36,59 +47,68 @@
             echo "<h1 class='my-4 text-center text-lg-left'>Il n'y a aucun événement</h1>";
         }else{
 
-            $i=0;
+            // Déclation d'un tableau qui contiendra l'ID des événements
             $nom_evenements=array();
-            do{
-                array_push($nom_evenements,$data['ID_evenement']);
 
-            } while($data=$reponse->fetch());
+                // Ajout des événements dans le tableau $nom_evenements
+                do{
+                    array_push($nom_evenements,$data['ID_evenement']);
+
+                } while($data=$reponse->fetch());
 
             $reponse->closeCursor();
-            ?><div class="container-fluid" style="float:left;"><?php
+            ?>
 
-            for($index=0;$index<sizeof($nom_evenements);$index++){
-                $reponse=$bdd->query('SELECT photos.ID_evenement, evenements.nom_evenement, photos.url_image, titre_photo FROM photos INNER JOIN evenements ON (photos.ID_evenement =
-                evenements.ID_evenement) WHERE photos.ID_evenement ='.$nom_evenements[$index]);
-                $data=$reponse->fetch();?>
-        <h1><?php echo $data['nom_evenement']; ?></h1>
+            <div class="container-fluid" style="float:left;">
+            <?php
 
-        <?php
-                echo "<div class=\"row\">";
+                for($index=0;$index<sizeof($nom_evenements);$index++){
+                    $reponse=$bdd->query('SELECT photos.ID_evenement, evenements.nom_evenement, photos.url_image, titre_photo FROM photos INNER JOIN evenements ON (photos.ID_evenement =
+                    evenements.ID_evenement) WHERE photos.ID_evenement ='.$nom_evenements[$index]);
+                    $data=$reponse->fetch();
+                    ?>
+                    <h1><?php echo $data['nom_evenement']; ?></h1>
+
+                    <?php
+                    echo "<div class=\"row\">";
+                        if($data == NULL){
+                            echo "Il y a aucune photo sur l'événénement.";
+                        }else{
+                            do{
+                                ?>
+                                <div class="col-s-5">
+                                <div class="thumbnail">
+                                  <a href="<?php echo $data['url_image']; ?>">
+                                    <img src="<?php echo $data['url_image']; ?>" alt="<?php echo $data['titre_photo']; ?>" style="width:100%">
+                                   </a>
+                                    <div class="caption">
+                                        <form method="post" action='#'>
+                                            <?php
+                                                if(isset($_SESSION['id']) and isset($data['ID_evenement']) ) {
+                                                    echo '<input type=hidden name="idUtilisateur" value='.$_SESSION['id'].' />';
+                                                    echo '<input type=hidden name="idEvenement" value='.$data['ID_evenement'].' />';
+                                                }
+                                            ?>
+                                            <button type="submit" class="btn btn-link"><img src="https://icon-icons.com/icons2/909/PNG/32/thumb-up_icon-icons.com_70845.png" alt="" style="width:70%"></button>
+                                        </form>
+                                    </div>
+                                </div>
+                              </div>
+
+                             <?php
+                            } while ($data=$reponse->fetch());
+                            echo "</div>";
+                        }
 
 
+                    $reponse->closeCursor();
 
-                if($data == NULL){
-                        echo "Il y a aucune photo sur l'événénement.";
-                    }else{
-                        do{
-                            ?>
-                            <div class="col-s-5">
-                            <div class="thumbnail">
-                              <a href="<?php echo $data['url_image']; ?>">
-                                <img src="<?php echo $data['url_image']; ?>" alt="<?php echo $data['titre_photo']; ?>" style="width:100%">
-                              </a>
-                            </div>
-                          </div>
-
-                         <?php
-                        } while ($data=$reponse->fetch());
-                        echo "</div>";
-                    }
-
-                $reponse->closeCursor();
-
+                }
             }
-
-
-        }
-
-
-
     ?>
-
     </div>
 
-        <?php include 'script/scriptBootStrapBody.php' ?>
+    <?php include 'script/scriptBootStrapBody.php' ?>
 </body>
 
 </html>
