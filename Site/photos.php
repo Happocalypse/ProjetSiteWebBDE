@@ -90,7 +90,7 @@
                                             <a style="float:right;" download="custom-filename.jpg" href="<?php echo $data['url_image'] ?>" title="Téléchargement de l'image">
                                                 <img src="https://icon-icons.com/icons2/692/PNG/32/seo-social-web-network-internet_12_icon-icons.com_61498.png" alt="" style="width:70%" />
                                                 <!-- TASK : Afficher le nombre de like -->
-                                                <p><?php echo  ?></p>
+
 
                                             </a>
                                             <button style="float:left;" type="submit" class="btn btn-link" name="SubmitButton"><img src="https://icon-icons.com/icons2/909/PNG/32/thumb-up_icon-icons.com_70845.png" alt="" style="width:70%" /></button>
