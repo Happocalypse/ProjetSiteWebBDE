@@ -17,7 +17,7 @@
     // TASK : Faire un inner join pour récupérer le nom du groupe au lieu de l'ID du groupe
         if(isset($_SESSION['id'])) {
 
-            if($_SESSION['groupe']=1 or $_SESSION['groupe']=2){
+            if($_SESSION['groupe']==1 or $_SESSION['groupe']==2){
                 ?>
                  <!-- Vérifier si l'utilisateur est membre du BDE -->
                 <a href="addPhoto.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true" id="buttonAjouter">Ajouter une photo</a>
@@ -76,7 +76,7 @@
                                 <div class="col-s-5">
                                 <div class="thumbnail">
                                   <a href="<?php echo $data['url_image']; ?>">
-                                    <img src="<?php echo $data['url_image']; ?>" alt="<?php echo $data['titre_photo']; ?>" style="width:100%">
+                                    <img src="<?php echo $data['url_image']; ?>" alt="<?php echo $data['titre_photo']; ?>" style="width:393px;height:263px;">
                                    </a>
                                     <div class="caption">
                                         <form method="post" action=''>
