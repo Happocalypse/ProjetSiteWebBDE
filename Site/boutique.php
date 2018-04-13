@@ -29,7 +29,7 @@
 
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="<?php echo "uploads_articles/".$urlTop1 ?>" alt="Slide1">
+                        <img src="<?php echo $urlTop1 ?>" alt="Slide1">
                         <div class="carousel-caption">
                             <h3>
                                 <?php echo $nomTop1 ?>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="<?php echo "uploads_articles/".$urlTop2 ?>" alt="Slide2">
+                        <img src="<?php echo $urlTop2 ?>" alt="Slide2">
                         <div class="carousel-caption">
                             <h3>
                                 <?php echo $nomTop2 ?>
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="<?php echo "uploads_articles/".$urlTop3 ?>" alt="Slide3">
+                        <img src="<?php echo $urlTop3 ?>" alt="Slide3">
                         <div class="carousel-caption">
                             <h3>
                                 <?php echo $nomTop3 ?>
@@ -118,7 +118,7 @@
                     for($colonne=0;$colonne<$nbLigneMax;$colonne++){
                             $data=$reponse->fetch();?>
                         <div class="card">
-                            <img class="card-img-top" src="<?php echo "uploads_articles/".$data['image_produit'] ?>" alt="Product Card">
+                            <img class="card-img-top" src="<?php echo $data['image_produit'] ?>" alt="Product Card">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <?php echo $data['nom_produit'] ?>

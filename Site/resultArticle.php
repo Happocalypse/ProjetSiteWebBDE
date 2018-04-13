@@ -65,8 +65,6 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
 }
 
 ?>
-
-
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>
