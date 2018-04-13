@@ -30,7 +30,7 @@
                         <?php echo $_SESSION['nom'].' '.$_SESSION['prenom'] ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Profil</a>
+                        <a class="dropdown-item" href="profil.php">Profil</a>
                         <?php if($_SESSION['groupe'] == 2){ ?>
                         <a class="dropdown-item" href="admin.php">Admin</a>
 
