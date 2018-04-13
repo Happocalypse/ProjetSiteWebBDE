@@ -11,9 +11,10 @@
     </head>
     <header><?php include 'navbar.php';?></header>
     <body>
+
        <?php
 // Test si le fichier a bien été envoyé et s'il n'y a pas d'erreur
-if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0){
+if(isset($_FILES['monfichier']['name']) and $_FILES['monfichier']['error'] == 0){
 
     // Test la taille du fichier
     if($_FILES['monfichier']['size'] <= 15000000){
@@ -23,7 +24,7 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
         $extension_upload=$infosfichier['extension'];
         $extension_autorisees=array('jpg','jpeg','png');
 
-        if(isset($_POST['username']) AND isset($_POST['titre_photo']) AND isset($_POST['choix'])){
+        if(isset($_POST['titre_photo']) and isset($_POST['choix'])){
 
             include('script/connexionBDD.php');
             // On récupère le contenu du champ nom_evenement
@@ -39,7 +40,7 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
 
             $today=date("Y-m-d H:i:s");
 
-            $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur, ID_evenement) VALUES ('".$_POST["titre_photo"]."','". $today ."','".'uploads/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username'].",".(int)$_POST['choix'].")";
+            $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur, ID_evenement) VALUES ('".$_POST["titre_photo"]."','". $today ."','".'uploads/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_SESSION['id'].",".(int)$_POST['choix'].")";
 
             $bdd->exec($sql);
 

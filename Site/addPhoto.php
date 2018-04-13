@@ -54,9 +54,6 @@
             <label for="piecejointe">Format accepté : png, jpeg et jpg <br />
             Limite du fichier : 15 Mo</label>
         </div>
-
-        <!-- TASK : Changer 1 par le nom de l'utilisateur -->
-        <input type="hidden" name="username" value=1 />
         <button type="submit" class="btn btn-default">Publier</button>
 
         </form>
