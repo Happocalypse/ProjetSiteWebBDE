@@ -20,11 +20,12 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
         $extension_upload=$infosfichier['extension'];
         $extension_autorisees=array('jpg','jpeg','png');
 
-        if(isset($_POST['username']) AND isset($_POST['nomProduit']) AND isset($_POST['prixProduit'])){
+        if(isset($_POST['username']) AND isset($_POST['nomProduit']) AND isset($_POST['prixProduit']) AND isset($_POST['descriptionProduit'])){
 
             include('script/connexionBDD.php');
+
             // On récupère le contenu du champ nom_evenement
-                $reponse=$bdd->query('SELECT (ID_photo) FROM photos ORDER BY ID_photo Desc LIMIT 0,1');
+            $reponse=$bdd->query('SELECT (ID_photo) FROM photos ORDER BY ID_photo Desc LIMIT 0,1');
 
                 if($donnees = $reponse->fetch()){
                     $donnees['ID_photo']++;
@@ -32,7 +33,7 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
                 else{
                     $donnees['ID_photo']=1;
                 }
-                $reponse->closeCursor();
+            $reponse->closeCursor();
 
             $today=date("Y-m-d H:i:s");
 
@@ -41,11 +42,11 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
             $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur) VALUES ('".$_POST["nomProduit"]."','". $today ."','".'uploads_articles/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username'].")";
 
             $bdd->exec($sql);
-//
-//            // Mettre des categories pour rendre le code fonctionnel
-//            $sql = "INSERT INTO produits (nom_produit, image_produit, description_produit, prix_produit) VALUES ('".$_POST["nomProduit"]."','".$donnees['ID_photo'] . '.' . $extension_upload."','".'uploads_articles/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['prixProduit'].")";
-//
-//            $bdd->exec($sql);
+
+            // Mettre des categories pour rendre le code fonctionnel
+            $sql = "INSERT INTO produits (nom_produit, description_produit, prix_produit, ID_photo) VALUES ('".$_POST["nomProduit"]."','".$_POST["descriptionProduit"]."',". (int)$_POST['prixProduit'].",". $donnees['ID_photo'] .")";
+
+            $bdd->exec($sql);
 
 
         }
@@ -58,7 +59,7 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
 
 
                 // Validation du fichier et stockage définitif sur le serveur à l'adresse uploads/
-                move_uploaded_file($_FILES['monfichier']['tmp_name'],'uploads_articles/' . $donnees['ID_photo'] . '.' . $extension_upload);
+                move_uploaded_file($_FILES['monfichier']['tmp_name'],'uploads_articles/' . $_POST["nomProduit"] . '.' . $extension_upload);
                 echo "<h1>L'article a bien été ajouté</h1>
                 <p>Redirection automatique dans 10s ou <a href='boutique.php'>cliquez ici</a></p>";
             }

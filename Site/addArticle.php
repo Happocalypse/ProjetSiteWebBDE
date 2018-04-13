@@ -36,6 +36,8 @@
             <input class="form-control" type="file" name="monfichier" id="piecejointe" />
             <label for="piecejointe">Format accepté : png, jpeg et jpg</label>
         </div>
+        <!-- TASK : Changer 1 par le nom de l'utilisateur -->
+        <input type="hidden" name="username" value=1 />
         <button type="submit" class="btn btn-default">Publier</button>
 
         </form>
