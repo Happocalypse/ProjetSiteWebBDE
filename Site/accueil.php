@@ -14,7 +14,7 @@
 
         <?php include 'editButton.php';?>
         <div id="discord">
-            <iframe src="https://discordapp.com/widget?id=232574906829766656&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" ></iframe>
+            <iframe src="https://discordapp.com/widget?id=401825719195402240&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
         </div>
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
