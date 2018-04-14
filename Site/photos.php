@@ -86,8 +86,6 @@
                                     <img src="<?php echo $data['url_image']; ?>" alt="<?php echo $data['titre_photo']; ?>" style="width:393px;height:263px;">
                                    </a>
                                     <div class="caption">
-
-
                                             <!-- TASK : Réservé le bouton téléchargement aux membres du groupe 'CESI' -->
                                             <a style="float:right;" download="custom-filename.jpg" href="<?php echo $data['url_image'] ?>" title="Téléchargement de l'image">
                                                 <img src="https://icon-icons.com/icons2/692/PNG/32/seo-social-web-network-internet_12_icon-icons.com_61498.png" alt="" style="width:70%" />
@@ -117,8 +115,28 @@
                                                       <h4 class="modal-title">Commentaires</h4>
                                                   </div>
                                                   <div class="modal-body">
-                                                      <h4>Damien</h4>
-                                                    <p>Il y aura bientôt d'affichage des commentaires</p>
+
+                                                      <?php
+                                                    try{
+                                                        $bdd2 = new PDO('mysql:host=178.62.4.64;dbname=Projet_BDE','groupeMN','1234');
+                                                    }
+                                                    catch (PDOException $e) {
+                                                        print "Error!: " . $e->getMessage() . "<br/>";
+                                                        die();
+                                                    }
+                                                // TASK : Remplacer commentaires par commentaire
+                                                $reponseComment=$bdd2->query('SELECT utilisateurs.ID_utilisateur, utilisateurs.nom,utilisateurs.prenom, commentaires FROM COMMENTER INNER JOIN utilisateurs ON COMMENTER.ID_utilisateur = utilisateurs.ID_utilisateur');
+                                                $dataComment=$reponseComment->fetch();
+                                                if(!$dataComment==NULL){
+                                                    do{?>
+                                                      <!-- TASK : Remplacer commentaires par commentaire -->
+                                                       <h4><?php echo $dataComment['prenom'].' '.$dataComment['nom']; ?></h4>
+                                                    <p><?php echo $dataComment['commentaires']; ?></p>
+                                                    <?php } while($dataComment=$reponseComment->fetch());
+                                                    $reponseComment->closeCursor();
+                                                }
+?>
+
                                                     <hr>
                                                         <form method="post" action="">
                                                             <div class="form-group">
