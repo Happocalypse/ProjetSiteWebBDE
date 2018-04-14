@@ -86,22 +86,23 @@
                                     <img src="<?php echo $data['url_image']; ?>" alt="<?php echo $data['titre_photo']; ?>" style="width:393px;height:263px;">
                                    </a>
                                     <div class="caption">
-                                    <form method="post" action="">
-                                            <?php
-                                                if(isset($_SESSION['id']) and isset($data['ID_evenement']) ) {
-                                                    echo '<input type=hidden name="idUtilisateur" value='.$_SESSION['id'].' />';
-                                                    echo '<input type=hidden name="idEvenement" value='.$data['ID_evenement'].' />';
-                                                }
-                                            ?>
+
+
                                             <!-- TASK : Réservé le bouton téléchargement aux membres du groupe 'CESI' -->
                                             <a style="float:right;" download="custom-filename.jpg" href="<?php echo $data['url_image'] ?>" title="Téléchargement de l'image">
                                                 <img src="https://icon-icons.com/icons2/692/PNG/32/seo-social-web-network-internet_12_icon-icons.com_61498.png" alt="" style="width:70%" />
                                                 <!-- TASK : Afficher le nombre de like -->
-
-
                                             </a>
-                                            <button style="float:left;" type="submit" class="btn btn-link" name="likeButton"><img src="https://icon-icons.com/icons2/909/PNG/32/thumb-up_icon-icons.com_70845.png" alt="" style="width:70%" /></button>
-                                        </form>
+                                        <?php
+                                                if(isset($_SESSION['id']) and isset($data['ID_evenement']) ) {?>
+                                                    <form method="post" action="">
+                                                     <button style="float:left;" type="submit" class="btn btn-link" name="likeButton"><img src="https://icon-icons.com/icons2/909/PNG/32/thumb-up_icon-icons.com_70845.png" alt="" style="width:70%" /></button>
+                                                    </form> <?php
+                                                    echo '<input type=hidden name="idUtilisateur" value='.$_SESSION['id'].' />';
+                                                    echo '<input type=hidden name="idEvenement" value='.$data['ID_evenement'].' />';
+                                                }
+                                            ?>
+
 
                                             <!-- Trigger the modal with a button -->
                                             <button style="float:right" class="btn btn-link" type="button" data-toggle="modal" data-target="#<?php echo $data['ID_photo']; ?>"><img src="https://icon-icons.com/icons2/935/PNG/32/chat-comment-oval-speech-bubble-with-text-lines_icon-icons.com_73302.png" alt="" style="width:70%" /></button>
