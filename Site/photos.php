@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
     <meta charset="utf-8" />
     <link rel="stylesheet" href="CSS/photos.css">
     <?php include 'script/scriptBootStrapHead.php' ?>
@@ -12,18 +11,26 @@
     <header><?php include 'navbar.php';?></header>
 
 <body>
+    <?php
+        if(isset($_POST['sendButton']) and isset($_SESSION['id']) and isset($_POST['idPhotoComment']) and isset($_POST['comment']) )
+            {
+
+                $sql = 'INSERT INTO COMMENTER (commentaires, ID_utilisateur, ID_evenement, ID_photo) VALUES ("'.$_POST['sendButton'].'",'.$_SESSION['id'].',';
+                //$bdd->exec($sql);
+            }
+    ?>
     <?php include('script/connexionBDD.php');
 
     // TASK : Faire un inner join pour récupérer le nom du groupe au lieu de l'ID du groupe
         if(isset($_SESSION['id'])) {
-
+            //Vérifier si l'utilisateur est membre du BDE
             if($_SESSION['groupe']==1 or $_SESSION['groupe']==2){
                 ?>
-                 <!-- Vérifier si l'utilisateur est membre du BDE -->
+
                 <a href="addPhoto.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true" id="buttonAjouter">Ajouter une photo</a>
                 <?php
             }
-            if(isset($_POST['SubmitButton']))
+            if(isset($_POST['likeButton']))
             {
                 // TASK : Ne pas oublier ajouter ID de l'image
                 $sql = 'INSERT INTO LIKER (ID_utilisateur, ID_evenement) VALUES ('.(int)$_POST['idUtilisateur'].','.(int)$_POST['idEvenement'].')';
@@ -60,7 +67,7 @@
             <?php
 
                 for($index=0;$index<sizeof($nom_evenements);$index++){
-                    $reponse=$bdd->query('SELECT photos.ID_evenement, evenements.nom_evenement, photos.url_image, titre_photo FROM photos INNER JOIN evenements ON (photos.ID_evenement =
+                    $reponse=$bdd->query('SELECT photos.ID_photo, photos.ID_evenement, evenements.nom_evenement, photos.url_image, titre_photo FROM photos INNER JOIN evenements ON (photos.ID_evenement =
                     evenements.ID_evenement) WHERE photos.ID_evenement ='.$nom_evenements[$index]);
                     $data=$reponse->fetch();
                     ?>
@@ -79,7 +86,7 @@
                                     <img src="<?php echo $data['url_image']; ?>" alt="<?php echo $data['titre_photo']; ?>" style="width:393px;height:263px;">
                                    </a>
                                     <div class="caption">
-                                        <form method="post" action=''>
+                                    <form method="post" action="">
                                             <?php
                                                 if(isset($_SESSION['id']) and isset($data['ID_evenement']) ) {
                                                     echo '<input type=hidden name="idUtilisateur" value='.$_SESSION['id'].' />';
@@ -93,11 +100,48 @@
 
 
                                             </a>
-                                            <button style="float:left;" type="submit" class="btn btn-link" name="SubmitButton"><img src="https://icon-icons.com/icons2/909/PNG/32/thumb-up_icon-icons.com_70845.png" alt="" style="width:70%" /></button>
+                                            <button style="float:left;" type="submit" class="btn btn-link" name="likeButton"><img src="https://icon-icons.com/icons2/909/PNG/32/thumb-up_icon-icons.com_70845.png" alt="" style="width:70%" /></button>
                                         </form>
+
+                                            <!-- Trigger the modal with a button -->
+                                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#<?php echo $data['ID_photo']; ?>">Open Modal</button>
+
+                                            <!-- Modal -->
+                                            <div id="<?php echo $data['ID_photo']; ?>" class="modal fade" role="dialog">
+                                              <div class="modal-dialog modal-lg">
+
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                      <h4 class="modal-title">Commentaires</h4>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                      <h4>Damien</h4>
+                                                    <p>Il y aura bientôt d'affichage des commentaires</p>
+                                                    <hr>
+                                                        <form method="post" action="">
+                                                            <div class="form-group">
+                                                                <label for="message-text" class="col-form-label">Message :</label>
+                                                                <textarea class="form-control" id="message-text" name="comment"></textarea>
+                                                            </div>
+
+                                                            <input type="hidden" name="idPhotoComment" value="<?php echo $data['ID_photo']; ?>" />
+                                                            <button type="submit" class="btn btn-primary" name="sendButton" style="float:right;">Envoyer un message</button>
+                                                        </form>
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                  </div>
+                                                </div>
+
+                                              </div>
+                                            </div>
+
+
                                     </div>
                                 </div>
                               </div>
+
 
                              <?php
                             } while ($data=$reponse->fetch());
