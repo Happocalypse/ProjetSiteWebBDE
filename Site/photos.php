@@ -104,7 +104,7 @@
                                         </form>
 
                                             <!-- Trigger the modal with a button -->
-                                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#<?php echo $data['ID_photo']; ?>">Open Modal</button>
+                                            <button style="float:right" class="btn btn-link" type="button" data-toggle="modal" data-target="#<?php echo $data['ID_photo']; ?>"><img src="https://icon-icons.com/icons2/935/PNG/32/chat-comment-oval-speech-bubble-with-text-lines_icon-icons.com_73302.png" alt="" style="width:70%" /></button>
 
                                             <!-- Modal -->
                                             <div id="<?php echo $data['ID_photo']; ?>" class="modal fade" role="dialog">
