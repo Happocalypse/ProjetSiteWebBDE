@@ -4,13 +4,9 @@
 
 .BAI{
     margin-top: 100px;
+    text-align: center;
 }
 
-h1{
-    text-align: center;
-    border-top: 15px;
-    padding: 5px;
-}
 
 .prop{
     margin-top: 10px;
@@ -45,7 +41,7 @@ h1{
     background:#FBEFEF;
 }
 
-.description{
+.descriptionI{
     background:white;
     border:1px solid black;
     margin-right: 5%;
@@ -53,7 +49,7 @@ h1{
     padding:5px;
 }
 
-.date{
+.presentationI{
     margin-left: 5%;
     margin-right: 5%;
 }

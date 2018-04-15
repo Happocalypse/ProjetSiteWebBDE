@@ -31,14 +31,12 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8 idees">
-
-                    <h1><?php echo $ideas['nom_evenement']; ?></h1>
-
-                    <p class="date">Idée proposée le : <?php echo $ideas['date_evenement']; ?></p>
-
-                    <p class="description">
+                    <div class="presentationI">
+                        <h1><?php echo $ideas['nom_evenement']; ?></h1>
+                        <p>Idée proposée le : <?php echo $ideas['date_evenement']; ?></p>
+                    </div>
+                    <p class="descriptionI">
                         <?php echo $ideas['description_evenement']; ?> </p>
-
                 </div>
                 <div class="col-md-2"></div>
             </div>
