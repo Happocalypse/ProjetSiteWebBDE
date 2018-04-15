@@ -30,13 +30,13 @@
                             <h1>Inscription</h1>
                             <div class="form-group">
                                 <label for="mail">Adresse mail</label>
-                                <input type="email" class="form-control" id="mailInscription" name="mailInscription" aria-describedby="descEmail" placeholder="prenom.nom@viacesi.fr"/>
+                                <input type="email" class="form-control" id="mailInscription" name="mailInscription" aria-describedby="descEmail" placeholder="prenom.nom@viacesi.fr" onblur="verifMail()" />
                                 <small id="descEmail" class="form-text text-muted">Nous ne partagerons jamais votre email.</small>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="password">Mot de Passe</label>
-                                    <input type="password" class="form-control" id="motDePasseInscription" name="mdpInscription" aria-describedby="descMdP" placeholder="Mot de Passe">
+                                    <input type="password" class="form-control" id="motDePasseInscription" name="mdpInscription" aria-describedby="descMdP" placeholder="Mot de Passe" onblur="verifMdp()">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="password">Confirmation</label>
@@ -66,20 +66,27 @@
             </div>
         </section>
         <script>
-            function verifMdp(){
-                var mdp1 = document.getElementById("motDePasseInscription");
-
-            }
             function verifMdpConfirm(){
                 var mdp = document.getElementById("motDePasseInscription");
                 var confirm = document.getElementById("motDePasseInscriptionConfirm");
                 if(mdp.value == confirm.value){
                     confirm.classList.add("is-valid");
-                    mdp.classList.add("is-valid");
+//                    mdp.classList.add("is-valid");
                 }
                 else{
                     confirm.classList.add("is-invalid");
-                    mdp.classList.add("is-invalid");
+//                    mdp.classList.add("is-invalid");
+                }
+
+                function verifMdp(){
+                    var mdp1 = document.getElementById("motDePasseInscription").value;
+                    var regexMdp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+                    if(regexMdp.test(mdp1)){
+                        mdp1.classList.add("is-valid");
+                    }
+                    else{
+                        mdp1.classList.add("is-invalid");
+                    }
                 }
             }
         </script>
