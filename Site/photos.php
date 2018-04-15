@@ -71,7 +71,7 @@
                     evenements.ID_evenement) WHERE photos.ID_evenement ='.$nom_evenements[$index]);
                     $data=$reponse->fetch();
                     ?>
-                    <h1><?php echo $data['nom_evenement']; ?></h1>
+                    <h2><?php echo $data['nom_evenement']; ?></h2>
 
                     <?php
                     echo "<div class=\"row\">";
@@ -91,7 +91,7 @@
                                                 if(isset($_SESSION['id']) and isset($data['ID_evenement']) ) {?>
                                                     <form method="post" action="">
                                                     <!-- Coder l'afichage des likes -->
-                                                     <button type="submit" class="btn btn-link" name="likeButton"><img src="images/like_logo.png" alt="" /><span class="badge badge-light"> 10</span></button>
+                                                     <button type="submit" class="btn btn-link" name="likeButton"><img src="images/like_logo.png" alt="like_logo" /><span class="badge badge-light"> 10</span></button>
                                                     </form> <?php
                                                     echo '<input type=hidden name="idUtilisateur" value='.$_SESSION['id'].' />';
                                                     echo '<input type=hidden name="idEvenement" value='.$data['ID_evenement'].' />';
@@ -100,9 +100,9 @@
 
 
                                             <!-- Trigger the modal with a button -->
-                                            <button class="btn btn-link" type="button" data-toggle="modal" data-target="#<?php echo $data['ID_photo']; ?>"><img src="images/comment_logo.png" alt=""/></button>
+                                            <button class="btn btn-link" type="button" data-toggle="modal" data-target="#<?php echo $data['ID_photo']; ?>"><img src="images/comment_logo.png" alt="comment_logo"/></button>
 
-                                            <button class="btn btn-link"><a href="<?php echo $data['url_image'] ?>" download title="Téléchargement de l'image"><img src="images/download_logo.png" alt=""  />
+                                            <button class="btn btn-link"><a href="<?php echo $data['url_image'] ?>" download title="Téléchargement de l'image"><img src="images/download_logo.png" alt="download_logo"  />
                                             </a></button>
 
                                             <!-- Modal -->
