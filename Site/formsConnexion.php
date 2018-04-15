@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="password">Confirmation</label>
-                                    <input type="password" class="form-control" id="motDePasseInscriptionConfirm" name="mdpInscriptionConfirm" placeholder="Mot de passe">
+                                    <input type="password" class="form-control" id="motDePasseInscriptionConfirm" name="mdpInscriptionConfirm" placeholder="Mot de passe" onblur="verifMdpConfirm()">
                                 </div>
                                 <small id="descMdP" class="form-text text-muted">Votre mot de passe doit contenir une majuscule et un chiffre.</small>
                             </div>
@@ -65,6 +65,24 @@
                 </div>
             </div>
         </section>
+        <script>
+            function verifMdp(){
+                var mdp1 = document.getElementById("motDePasseInscription");
+
+            }
+            function verifMdpConfirm(){
+                var mdp = document.getElementById("motDePasseInscription");
+                var confirm = document.getElementById("motDePasseInscriptionConfirm");
+                if(mdp.value == confirm.value){
+                    confirm.classList.add("is-valid");
+                    mdp.classList.add("is-valid");
+                }
+                else{
+                    confirm.classList.add("is-invalid");
+                    mdp.classList.add("is-invalid");
+                }
+            }
+        </script>
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>
