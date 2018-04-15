@@ -29,7 +29,7 @@
 
                         <div class="form-group">
                             <label for="description">Description (255 caractères max)</label>
-                            <textarea class="form-control" id="description" name="description" maxlength="255" placeholder="Décrivez l'activité proposée"></textarea>
+                            <textarea style="resize:none" class="form-control" id="description" name="description" maxlength="255" placeholder="Décrivez l'activité proposée"></textarea>
                         </div>
 
                        <button align="center" type="submit" class="btn btn-outline-danger">Soumettre</button>

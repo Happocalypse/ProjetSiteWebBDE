@@ -8,7 +8,42 @@
     </head>
     <body>
         <?php include 'navbar.php' ?>
-        <h1>Evenements</h1>
+        <h1 class="E">Evenements</h1>
+
+
+
+
+
+
+        <?php
+    include('script/connexionBDD.php');
+
+        $readIdeas = $bdd->query('SELECT nom_evenement, description_evenement, date_evenement FROM evenements WHERE valide=1');
+        while( $ideas = $readIdeas->fetch()){
+
+        ?>
+
+
+        <form>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 event">
+<div class="presentation">
+                    <h1><?php echo $ideas['nom_evenement']; ?></h1>
+
+                    <p class="dateE">Idée proposée le : <?php echo $ideas['date_evenement']; ?></p>
+</div>
+                    <p class="descriptionE">
+                        <?php echo $ideas['description_evenement']; ?> </p>
+
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </form>
+
+
+
+        <?php   } $readIdeas->closeCursor();?>
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>

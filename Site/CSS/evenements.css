@@ -1,3 +1,28 @@
 .evenements{
-	font-weight: bold;
+    font-weight: bold;
+}
+
+.E{
+    margin-top: 100px;
+    text-align :center;
+}
+
+.event{
+    border:1px solid #d63031;
+    margin-top: 50px;
+    border-radius:5px;
+    background:#FBEFEF;
+}
+
+.descriptionE{
+    background:white;
+    border:1px solid black;
+    margin-right: 5%;
+    margin-left: 5%;
+    padding:5px;
+}
+
+.presentation{
+    margin-left: 5%;
+    margin-right: 5%;
 }
