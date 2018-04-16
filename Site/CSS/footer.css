@@ -1,14 +1,8 @@
-footer{
+.general{
     background-color: #d63031;
     color: white;
     padding-top: 20px;
     padding-bottom: 10px;
-
-    position:absolute;
-
-    bottom:0;
-
-    width:100%;
 }
 
 .row{

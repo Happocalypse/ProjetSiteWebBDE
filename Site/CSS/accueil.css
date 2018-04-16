@@ -1,6 +1,12 @@
 .accueil{
     font-weight: bold;
 }
-#discord{
-    margin-top: 80px;
+section{
+    margin-top: 100px;
+    margin-bottom: 200px;
 }
+
+#map {
+  height: 500px;
+  width: 500px;
+ }
