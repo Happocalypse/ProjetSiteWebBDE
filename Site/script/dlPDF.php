@@ -1,11 +1,11 @@
 <?php
 
-include 'connexionBDD';
+include 'connexionBDD.php';
 
 //Prepare our SQL query.
-$statement = $bdd->prepare("SELECT nom, prenom FROM utilisateurs WHERE ID_utilisateur = :assos");
+$statement = $bdd->prepare("SELECT nom, prenom FROM utilisateurs WHERE ID_association = :assos");
 
-$statement->bindValue
+$statement->bindValue(':assos',$_POST['idAssos'],PDO::PARAM_INT);
 //Executre our SQL query.
 $statement->execute();
 

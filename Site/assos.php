@@ -31,7 +31,7 @@
         $utilisateurs->execute();
 
         foreach($utilisateurs as $row){
-            echo '<form method="post" action="script/dlPDF.php"><th scope="row"><input type="text" readonly class="form-control-plaintext" name="id" value="'.$row["ID_association"].'"></th>'.
+            echo '<form method="post" action="script/dlPDF.php"><th scope="row"><input type="text" readonly class="form-control-plaintext" name="idAssos" value="'.$row["ID_association"].'"></th>'.
                 '<td>'.$row["nom_association"].'</td>'.
                 '<td>'.$row["president_association"].'</td>'.
                 '<td>'.$row["description_association"].'</td>'.
