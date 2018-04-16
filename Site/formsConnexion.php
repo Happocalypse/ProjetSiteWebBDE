@@ -92,7 +92,7 @@
             }
             function verifMail(){
                 var mail = document.getElementById("mailInscription");
-                var regexMail = new RegExp("/([\w]{0,})[.]?([\w]{1,})[@](viacesi.fr|cesi.fr)/")
+                var regexMail = new RegExp("([\w]{0,})[.]?([\w]{1,})[@](viacesi.fr|cesi.fr)")
                 if(regexMail.test(mail.value)){
                     mail.classList.add("is-valid");
                 }
