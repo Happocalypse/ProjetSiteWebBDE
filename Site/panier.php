@@ -49,7 +49,7 @@
                                     <?php echo $data['prix_produit'] ?>
                                 </td>
                                 <td>
-                                    <form method="post" action="">
+                                    <form method="post" action="script/resultPanier.php">
                                         <?php echo '<input type="hidden" name="idProduit" value='.$data['ID_produit'].' />' ?>
                                         <button type="submit" name="DeletePanier" class="btn "><img src="images/delete.svg" /></button>
                                     </form>
@@ -59,13 +59,7 @@
                         <?php }while($data=$reponse->fetch());
                         $reponse->closeCursor(); ?>
 
-<?php if(isset($_POST['DeletePanier'])){
-    $sql ='DELETE FROM PANIER WHERE ID_utilisateur='.$_SESSION['id'].' AND ID_produit='.$_POST['idProduit'];
-    $bdd->exec($sql);
-}
 
-
- ?>
 
                     </table>
                 </div>
