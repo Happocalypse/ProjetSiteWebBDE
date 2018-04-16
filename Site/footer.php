@@ -1,4 +1,4 @@
-<footer class="fixed-bottom">
+<footer class="fixed-bottom general">
     <div class="container">
         <div class="row justify-content-md-center" id="social">
             <div class="col-md-auto">

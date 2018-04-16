@@ -36,7 +36,7 @@
                         <a class="dropdown-item" href="profil.php">Profil</a>
                         <?php if($_SESSION['groupe'] == 2){ ?>
                         <a class="dropdown-item" href="admin.php">Admin</a>
-
+                        <a class="dropdown-item" href="assos.php">Assos</a>
                         <?php } ?>
                         <a class="dropdown-item" href="script/deconnexion.php">Deconnexion</a>
                     </div>
