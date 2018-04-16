@@ -29,3 +29,7 @@ body{
 #container-fluid{
     display:flex;
 }
+
+.carouselPanier{
+    display: flex;
+}

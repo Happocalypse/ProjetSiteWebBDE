@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="CSS/boutique.css">
     <link rel="stylesheet" href="CSS/editButton.css">
+    <link rel="stylesheet" href="CSS/panier.css">
     <title>Boutique</title>
     <?php include 'script/scriptBootStrapHead.php' ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -28,6 +29,7 @@
         <section>
 
             <article>
+                <div class="carouselPanier">
                 <div id="shopCarousel" class="carousel slide" data-ride="carousel">
 
                     <ul class="carousel-indicators">
@@ -72,12 +74,14 @@
   </a>
 
                 </div>
+                    <?php include 'panier.php';?>
+                    </div>
             </article>
         </section>
 
         <?php
 
-                $reponse=$bdd->query('SELECT `nom_produit`, `image_produit`, `description_produit`, `prix_produit`, `ID_produit` FROM `produits`');
+                $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image,  `description_produit` ,  `prix_produit`  FROM  `produits`  INNER JOIN photos WHERE photos.ID_photo = produits.ID_photo');
                 $data=$reponse->fetch();
 
              if($data==NULL){
@@ -91,15 +95,10 @@
             <div class="row">
                 <?php
             do{
-
-//                echo '<pre>'.print_r($data).'</pre>';
              ?>
-
-
-
                 <div class="col-s-5">
                     <div class="card">
-                        <img class="card-img-top" src="<?php echo $data['image_produit'] ?>" alt="Product Card">
+                        <img class="card-img-top" src="<?php echo $data['url_image'] ?>" alt="Product Card">
                         <div class="card-body">
                             <h5 class="card-title">
                                 <?php echo $data['nom_produit'] ?>
@@ -107,10 +106,16 @@
                             <p class="card-text">
                                 <?php echo $data['description_produit'] ?>
                             </p>
+
+                            <?php if(isset($_SESSION['id'])){  ?>
+
                             <form method="post" action="">
                             <?php echo '<input type="hidden" name="idProduit" value='.$data['ID_produit'].' />' ?>
                             <button type="submit" name="submitPanier" class="btn float-right btn-outline-primary">Ajouter au panier</button>
                             </form>
+
+                            <?php }  ?>
+
 
                         </div>
                         <div class="card-footer">
@@ -120,17 +125,24 @@
                 </div>
 
 
-        <?php }while($data=$reponse->fetch()); ?>
-        <?php $reponse->closeCursor();?>
-        <?php } ?>
-            </div>
+        <?php }while($data=$reponse->fetch());
+         $reponse->closeCursor();
+         } ?>
+                </div>
         </div>
+
+
     <?php
     if(isset($_POST['submitPanier']) and isset($_POST['idProduit'])){
-        echo $_POST['idProduit'];
-    }
-    ?>
+        echo $_POST['idProduit'] . '<br />';
+        echo $_SESSION['id'];
 
+        $sql= 'INSERT INTO PANIER (quantite, ID_produit, ID_utilisateur) VALUES (1,'.$_POST['idProduit'].','.$_SESSION['id'].')';
+        $bdd->exec($sql);
+
+    }
+
+    ?>
         <?php include 'script/scriptBootStrapBody.php' ?>
 </body>
 

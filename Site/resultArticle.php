@@ -39,7 +39,7 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
 
             //Faire une transaction
 
-            $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur) VALUES ('".$_POST["nomProduit"]."','". $today ."','".'uploads_articles/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username'].")";
+            $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur) VALUES ('".$_POST["nomProduit"]."','". $today ."','".'uploads_articles/'.$_POST["nomProduit"] . '.' . $extension_upload."',".(int)$_POST['username'].")";
 
             $bdd->exec($sql);
 
