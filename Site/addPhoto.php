@@ -15,8 +15,8 @@
         include ('script/connexionBDD.php');
 
         // On récupère le contenu du champ nom_evenement
-        // TASK : Changer PARTICIPER.ID_utilisateur=1 par le vrai ID
-        $sql='SELECT * FROM PARTICIPER INNER JOIN evenements ON PARTICIPER.ID_evenement = evenements.ID_evenement WHERE valide=\'1\' AND PARTICIPER.ID_utilisateur=1';
+        // TASK : Optimiser le SELECT, Et que l'événément est outdate
+        $sql='SELECT * FROM PARTICIPER INNER JOIN evenements ON PARTICIPER.ID_evenement = evenements.ID_evenement WHERE valide=\'1\' AND PARTICIPER.ID_utilisateur='.$_SESSION['id'];
         $reponse = $bdd->query($sql);
 
         ?>

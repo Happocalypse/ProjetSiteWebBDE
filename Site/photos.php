@@ -11,41 +11,50 @@
     <header><?php include 'navbar.php';?></header>
 
 <body>
-    <?php
-        if(isset($_POST['sendButton']) and isset($_SESSION['id']) and isset($_POST['idPhotoComment']) and isset($_POST['comment']) )
-            {
-
-                $sql = 'INSERT INTO COMMENTER (commentaires, ID_utilisateur, ID_evenement, ID_photo) VALUES ("'.$_POST['comment'].'",'.$_SESSION['id'].','.$_POST['idPhotoComment'].')';
-                //$bdd->exec($sql);
-            }
-    ?>
     <?php include('script/connexionBDD.php');
 
-    // TASK : Faire un inner join pour récupérer le nom du groupe au lieu de l'ID du groupe
         if(isset($_SESSION['id'])) {
-            //Vérifier si l'utilisateur est membre du BDE
-            if($_SESSION['groupe']==1 or $_SESSION['groupe']==2){
-                ?>
 
-                <a href="addPhoto.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true" id="buttonAjouter">Ajouter une photo</a>
-                <?php
-            }
-            if(isset($_POST['likeButton']))
-            {
-                // TASK : Ne pas oublier ajouter ID de l'image
-                $sql = 'INSERT INTO LIKER (ID_utilisateur, ID_evenement) VALUES ('.(int)$_POST['idUtilisateur'].','.(int)$_POST['idEvenement'].')';
+            // Affiche si l'utilisateur a participé à au moins un événement un bouton pour ajouter des photos
+            $reponse=$bdd->query('SELECT (ID_evenement)FROM evenements WHERE valide=\'1\' AND ID_utilisateur='.$_SESSION['id'].' LIMIT 0,1');
+            $data=$reponse->fetch();
+                if(!$data==NULL){ ?>
+                   <a href="addPhoto.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true" id="buttonAjouter">Ajouter une photo</a>
+                 <?php }
 
-            $bdd->exec($sql);
-            }
 
+                // Stockage du like lié à une photo dans la BDD
+                if(isset($_POST['likeButton']) and isset($_POST['idPhoto']) )
+                {
+                    $reponse=$bdd->query('SELECT (ID_photo) FROM AIMER WHERE ID_utilisateur='.$_SESSION['id'].' and ID_photo='.$_POST['idPhoto'].' LIMIT 0,1');
+                    $data=$reponse->fetch();
+                    if($data==NULL){
+                        $sql = 'INSERT INTO AIMER (ID_utilisateur, ID_photo) VALUES ('.$_SESSION['id'].','.$_POST['idPhoto'].')';
+                        $bdd->exec($sql);
+                    }else{
+                        $sql='DELETE FROM AIMER WHERE ID_utilisateur='.$_SESSION['id'].' AND ID_photo='.$_POST['idPhoto'];
+                        $bdd->exec($sql);
+                    }
+
+
+                }
+            // Fermeture pour permettre d'être de nouveau exécutée
+            $reponse->closeCursor();
+
+
+                // Stockage du commentaire lié à une photo dans la BDD
+                if(isset($_POST['sendButton']) and isset($_POST['idPhotoComment']) and isset($_POST['comment']) )
+                {
+                        $sql = 'INSERT INTO COMMENTER (commentaires, ID_utilisateur, ID_evenement, ID_photo) VALUES ("'.$_POST['comment'].'",'.$_SESSION['id'].','.$_POST['idPhotoComment'].')';
+                        //$bdd->exec($sql);
+                }
         }
     ?>
 
     <?php
-
-    $reponse=$bdd->query('SELECT (ID_evenement)FROM evenements WHERE valide=\'1\' ORDER BY date_evenement DESC');
+    // Récupère les événements validées et passées
+    $reponse=$bdd->query('SELECT (ID_evenement) FROM evenements WHERE valide =  \'1\' AND ((date_evenement) >=  NOW()) ORDER BY date_evenement DESC ');
     $data=$reponse->fetch();
-
 
         if($data==NULL){
             echo "<h1 class='my-4 text-center text-lg-left'>Il n'y a aucun événement</h1>";
@@ -57,7 +66,6 @@
                 // Ajout des événements dans le tableau $nom_evenements
                 do{
                     array_push($nom_evenements,$data['ID_evenement']);
-
                 } while($data=$reponse->fetch());
 
             $reponse->closeCursor();
@@ -81,20 +89,24 @@
                             do{
                                 ?>
                                 <div class="col-s-5">
-                                <div class="thumbnail">
+                                    <div class="thumbnail">
                                   <a href="<?php echo $data['url_image']; ?>">
                                     <img src="<?php echo $data['url_image']; ?>" alt="<?php echo $data['titre_photo']; ?>" style="width:393px;height:263px;">
                                    </a>
                                     <div class="caption" style="display:flex;justify-content:flex-end;">
 
                                         <?php
-                                                if(isset($_SESSION['id']) and isset($data['ID_evenement']) ) {?>
+                                                if(isset($_SESSION['id'])) {?>
                                                     <form method="post" action="">
-                                                    <!-- Coder l'afichage des likes -->
-                                                     <button type="submit" class="btn btn-link" name="likeButton"><img src="images/like_logo.png" alt="like_logo" /><span class="badge badge-light"> 10</span></button>
+                                                        <?php
+                                                        $reponseLike=$bdd3->query('SELECT COUNT( ID_photo ) AS nbLike FROM AIMER WHERE ID_photo='.$data['ID_photo']);
+                                                        $dataLike=$reponseLike->fetch();
+                                                        ?>
+
+                                                     <button type="submit" class="btn btn-link" name="likeButton"><img src="images/like_logo.png" alt="like_logo" /><span class="badge badge-light"><?php echo $dataLike['nbLike'] ?></span></button>
+                                                    <?php echo '<input type=hidden name="idPhoto" value='.$data['ID_photo'].' />'; ?>
                                                     </form> <?php
-                                                    echo '<input type=hidden name="idUtilisateur" value='.$_SESSION['id'].' />';
-                                                    echo '<input type=hidden name="idEvenement" value='.$data['ID_evenement'].' />';
+
                                                 }
                                             ?>
 
@@ -113,17 +125,12 @@
                                                 <div class="modal-content">
                                                   <div class="modal-header">
                                                       <h4 class="modal-title">Commentaires</h4>
+                                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                                                   </div>
                                                   <div class="modal-body">
 
                                                       <?php
-                                                    try{
-                                                        $bdd2 = new PDO('mysql:host=178.62.4.64;dbname=Projet_BDE','groupeMN','1234');
-                                                    }
-                                                    catch (PDOException $e) {
-                                                        print "Error!: " . $e->getMessage() . "<br/>";
-                                                        die();
-                                                    }
+
                                                 // TASK : Remplacer commentaires par commentaire
                                                 $reponseComment=$bdd2->query('SELECT utilisateurs.ID_utilisateur, utilisateurs.nom,utilisateurs.prenom, commentaires FROM COMMENTER INNER JOIN utilisateurs ON COMMENTER.ID_utilisateur = utilisateurs.ID_utilisateur WHERE ID_photo='.$data['ID_photo']);
                                                 $dataComment=$reponseComment->fetch();
@@ -134,22 +141,19 @@
                                                     <p><?php echo $dataComment['commentaires']; ?></p>
                                                     <?php } while($dataComment=$reponseComment->fetch());
                                                     $reponseComment->closeCursor();
+                                                    echo "<hr>";
                                                 }
 ?>
-
-                                                    <hr>
                                                         <form method="post" action="">
                                                             <div class="form-group">
                                                                 <label for="message-text" class="col-form-label">Message :</label>
                                                                 <textarea class="form-control" id="message-text" name="comment"></textarea>
                                                             </div>
 
+
                                                             <input type="hidden" name="idPhotoComment" value="<?php echo $data['ID_photo']; ?>" />
                                                             <button type="submit" class="btn btn-primary" name="sendButton" style="float:right;">Envoyer un message</button>
                                                         </form>
-                                                  </div>
-                                                  <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                                                   </div>
                                                 </div>
 

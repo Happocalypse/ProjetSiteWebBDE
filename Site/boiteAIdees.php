@@ -21,7 +21,16 @@
         <?php
     include('script/connexionBDD.php');
 
-        $readIdeas = $bdd->query('SELECT nom_evenement, description_evenement, date_evenement FROM evenements WHERE valide=0');
+        if(isset($_SESSION['id'])) {
+            //Vérifier si l'utilisateur est membre du BDE
+            if($_SESSION['groupe']==2){
+        ?>
+        <a href="gestionIdees.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true" id="gestionIdees">Administrer les idées</a><br /><br /><br />
+
+
+        <?php
+            }}
+        $readIdeas = $bdd->query('SELECT nom_evenement, description_evenement, date_evenement FROM evenements WHERE valide=0 ORDER BY date_evenement ASC');
         while( $ideas = $readIdeas->fetch()){
 
         ?>
