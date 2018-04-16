@@ -110,7 +110,7 @@
 
                             <?php if(isset($_SESSION['id'])){  ?>
 
-                            <form method="post" action="">
+                            <form method="post" action="script/resultBoutique.php">
                             <?php echo '<input type="hidden" name="idProduit" value='.$data['ID_produit'].' />' ?>
                             <button type="submit" name="submitPanier" class="btn float-right btn-outline-primary">Ajouter au panier</button>
                             </form>
@@ -132,18 +132,6 @@
                 </div>
         </div>
 
-
-    <?php
-    if(isset($_POST['submitPanier']) and isset($_POST['idProduit'])){
-        echo $_POST['idProduit'] . '<br />';
-        echo $_SESSION['id'];
-
-        $sql= 'INSERT INTO PANIER (quantite, ID_produit, ID_utilisateur) VALUES (1,'.$_POST['idProduit'].','.$_SESSION['id'].')';
-        $bdd->exec($sql);
-
-    }
-
-    ?>
         <?php include 'script/scriptBootStrapBody.php'?>
 
       <?php include 'panier.php' ?>
