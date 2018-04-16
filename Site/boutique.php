@@ -26,10 +26,10 @@
     ?>
         <?php include 'top3Vente.php';?>
 
+
         <section>
 
             <article>
-                <div class="carouselPanier">
                 <div id="shopCarousel" class="carousel slide" data-ride="carousel">
 
                     <ul class="carousel-indicators">
@@ -74,10 +74,11 @@
   </a>
 
                 </div>
-                    <?php include 'panier.php';?>
+                    <div>
                     </div>
             </article>
         </section>
+
 
         <?php
 
@@ -143,7 +144,10 @@
     }
 
     ?>
-        <?php include 'script/scriptBootStrapBody.php' ?>
-</body>
+        <?php include 'script/scriptBootStrapBody.php'?>
 
+      <?php include 'panier.php' ?>
+
+
+</body>
 </html>
