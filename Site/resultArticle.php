@@ -39,7 +39,7 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
 
             //Faire une transaction
 
-            $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur) VALUES ('".$_POST["nomProduit"]."','". $today ."','".'uploads_articles/'.$_POST["nomProduit"] . '.' . $extension_upload."',".(int)$_POST['username'].")";
+            $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur) VALUES ('".$_POST["nomProduit"]."','". $today ."','".'uploads_articles/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username'].")";
 
             $bdd->exec($sql);
 
@@ -59,7 +59,7 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
 
 
                 // Validation du fichier et stockage définitif sur le serveur à l'adresse uploads/
-                move_uploaded_file($_FILES['monfichier']['tmp_name'],'uploads_articles/' . $_POST["nomProduit"] . '.' . $extension_upload);
+                move_uploaded_file($_FILES['monfichier']['tmp_name'],'uploads_articles/' . $donnees['ID_photo'] . '.' . $extension_upload);
                 echo "<h1>L'article a bien été ajouté</h1>
                 <p>Redirection automatique dans 10s ou <a href='boutique.php'>cliquez ici</a></p>";
             }
