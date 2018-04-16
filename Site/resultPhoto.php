@@ -22,7 +22,7 @@ if(isset($_FILES['monfichier']['name']) and $_FILES['monfichier']['error'] == 0)
         // Test si l'extension est autorisé
         $infosfichier=pathinfo($_FILES['monfichier']['name']);
         $extension_upload=$infosfichier['extension'];
-        $extension_autorisees=array('jpg','jpeg','png');
+        $extension_autorisees=array('jpg','JPG','jpeg','JPEG','png','PNG');
 
         if(isset($_POST['titre_photo']) and isset($_POST['choix'])){
 
