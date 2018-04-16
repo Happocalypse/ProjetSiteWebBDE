@@ -7,6 +7,9 @@
     text-align: center;
 }
 
+#gestionIdees{
+     float:right;
+}
 
 .prop{
     margin-top: 10px;
