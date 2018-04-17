@@ -9,21 +9,22 @@
     <body>
         <?php include 'navbar.php' ?>
         <h1>ADMIN - Users List</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Prénom</th>
-                    <th scope="col">Mail</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Assos</th>
-                    <th scope="col">Options</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!--                <form method="post" action="script/deleteFromTable.php">-->
-                <?php
+        <section id="admin">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Mail</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Assos</th>
+                        <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--                <form method="post" action="script/deleteFromTable.php">-->
+                    <?php
     include 'script/connexionBDD.php';
 
         $utilisateurs = $bdd->prepare("SELECT * FROM utilisateurs");
@@ -39,9 +40,10 @@
                 '<td><button type="submit" class="btn btn-danger">Supprimer</button></td></form>'.
                 '</tr>';
         }
-                ?>
-            </tbody>
-        </table>
+                    ?>
+                </tbody>
+            </table>
+        </section>
         <?php include 'footer.php' ?>
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>

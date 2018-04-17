@@ -9,7 +9,7 @@
 
     <body>
         <?php include 'navbar.php' ?>
-        <section>
+        <section id="staffPage">
             <div align="center">
                 <h1 id="staff">Description du BDE</h1>
             </div>
