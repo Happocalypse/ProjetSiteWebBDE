@@ -12,7 +12,7 @@
 
 
 
-<?php
+        <?php
     include('script/connexionBDD.php');
 
         if(isset($_SESSION['id'])) {
@@ -23,26 +23,31 @@
 
 
         <?php }}
-    include('script/connexionBDD.php');
+        include('script/connexionBDD.php');
 
-        $readIdeas = $bdd->query('SELECT nom_evenement, description_evenement, date_evenement FROM evenements WHERE valide=1');
-        while( $ideas = $readIdeas->fetch()){
+        $readIdeas = $bdd->query('SELECT nom_evenement, description_evenement, date_evenement, ID_evenement FROM evenements WHERE valide=1 ORDER BY date_evenement ASC');
+        while( $idees = $readIdeas->fetch()){
 
         ?>
 
 
-        <form>
+        <form method="post" action="script/scriptvoteE.php">
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8 event">
-<div class="presentation">
-                    <h1><?php echo $ideas['nom_evenement']; ?></h1>
+                    <div class="presentation">
+                        <h1><?php echo $idees['nom_evenement']; ?></h1>
 
-                    <p class="dateE">Evenement proposée le : <?php echo $ideas['date_evenement']; ?></p>
-</div>
-                    <p class="descriptionE">
-                        <?php echo $ideas['description_evenement']; ?> </p>
+                        <p class="dateE">Evenement proposée le : <?php echo $idees['date_evenement']; ?></p>
+                    </div>
+                    <p class="descriptionE"><?= $idees['description_evenement']; ?> </p>
+                    <input type='hidden' name="id_evenement" value="<?= $idees['ID_evenement']; ?>"/>
+                    <?php
+            include('script/connexionBDD.php');
 
+            if(isset($_SESSION['id'])) { ?>
+                <button type="submit" class="btn btn-primary">Participé à l'évenement !</button>
+                    <?php } ?>
                 </div>
                 <div class="col-md-2"></div>
             </div>
