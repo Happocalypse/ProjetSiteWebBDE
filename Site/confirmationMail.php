@@ -12,7 +12,10 @@
         <h1>Merci, votre mail à été confirmé ! Vous pouvez désormais vous connecter</h1>
 
         <?php
-
+//            se connecter à la bdd
+//        requete de modification de la table
+//        envois des parametres en fonction de ce qui est envoyé à l'url
+//        envoie de la requete
         ?>
 
         <?php include 'footer.php' ?>
