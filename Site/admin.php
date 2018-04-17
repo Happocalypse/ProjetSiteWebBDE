@@ -9,27 +9,24 @@
     <body>
         <?php include 'navbar.php' ?>
         <h1>ADMIN - Users List</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Prénom</th>
-                    <th scope="col">Mail</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Assos</th>
-                    <th scope="col">Options</th>
-                </tr>
-            </thead>
-            <tbody>
-<!--                <form method="post" action="script/deleteFromTable.php">-->
+        <section id="admin">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Mail</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Assos</th>
+                        <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--                <form method="post" action="script/deleteFromTable.php">-->
                     <?php
     include 'script/connexionBDD.php';
-        function supprUsers($idCurrent){
-            $suppr = $bdd->prepare("");
-            $suppr->bindValue(':id',$idCurrent,PDO::PARAM_INT);
-            $suppr->execute();
-        }
+
         $utilisateurs = $bdd->prepare("SELECT * FROM utilisateurs");
         $utilisateurs->execute();
 
@@ -44,9 +41,10 @@
                 '</tr>';
         }
                     ?>
-<!--                </form>-->
-                <?php include 'script/scriptBootStrapBody.php' ?>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </section>
+        <?php include 'footer.php' ?>
+        <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>

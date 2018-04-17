@@ -31,7 +31,7 @@
 <div class="presentation">
                     <h1><?php echo $ideas['nom_evenement']; ?></h1>
 
-                    <p class="dateE">Idée proposée le : <?php echo $ideas['date_evenement']; ?></p>
+                    <p class="dateE">Evenement proposée le : <?php echo $ideas['date_evenement']; ?></p>
 </div>
                     <p class="descriptionE">
                         <?php echo $ideas['description_evenement']; ?> </p>

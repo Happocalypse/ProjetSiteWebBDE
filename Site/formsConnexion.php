@@ -66,28 +66,28 @@
             </div>
         </section>
         <script>
-//            var motDePasse = false;
-//            var motDePasseConfirme = false;
-//            var nomValid = false;
-//            var prenomValid = false;
-//            var adresseValid = false;
-//            var mailValid = false;
+            var motDePasse = false;
+            var motDePasseConfirme = false;
+            var nomValid = false;
+            var prenomValid = false;
+            var adresseValid = false;
+            var mailValid = false;
 
             function verifMdpConfirm(){
                 var mdp = document.getElementById("motDePasseInscription");
                 var confirm = document.getElementById("motDePasseInscriptionConfirm");
                 if(mdp.value == confirm.value && mdp.value != ""){
                     confirm.classList.add("is-valid");
-//                    motDePasseConfirme = true;
+                    motDePasseConfirme = true;
                 }
                 else if(mdp.value == ""){
                     mdp.classList.remove("is-invalid");
                     mdp.classList.remove("is-valid");
-//                    motDePasseConfirme = false;
+                    motDePasseConfirme = false;
                 }
                 else{
                     confirm.classList.add("is-invalid");
-//                    motDePasseConfirme = false;
+                    motDePasseConfirme = false;
                 }
             }
             function verifMdp(){
@@ -95,18 +95,20 @@
                 var regexMdp = new RegExp('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$');
                 if(regexMdp.test(mdp1.value)){
                     mdp1.classList.remove("is-invalid");
+                    mdp1.classList.remove("is-valid");
                     mdp1.classList.add("is-valid");
-//                    motDePasse = true;
+                    motDePasse = true;
                 }
                 else if(mdp1.value == ""){
                     mdp1.classList.remove("is-invalid");
                     mdp1.classList.remove("is-valid");
-//                    motDePasse = false;
+                    motDePasse = false;
                 }
                 else{
                     mdp1.classList.remove("is-valid");
+                    mdp1.classList.remove("is-invalid");
                     mdp1.classList.add("is-invalid");
-//                    motDePasse = false;
+                    motDePasse = false;
                 }
             }
             function verifMail(){
@@ -116,18 +118,18 @@
                     mail.classList.remove("is-invalid");
                     mail.classList.remove("is-valid");
                     mail.classList.add("is-valid");
-//                    mailValid = true;
+                    mailValid = true;
                 }
                 else if(mail.value == ""){
                     mail.classList.remove("is-invalid");
                     mail.classList.remove("is-valid");
-//                    mailValid = false;
+                    mailValid = false;
                 }
                 else{
                     mail.classList.remove("is-invalid");
                     mail.classList.remove("is-valid");
                     mail.classList.add("is-invalid");
-//                    mailValid = false;
+                    mailValid = false;
                 }
             }
             function verifNom(){
@@ -136,13 +138,13 @@
                     nom.classList.remove("is-valid");
                     nom.classList.remove("is-invalid");
                     nom.classList.add("is-invalid");
-//                    nomValid = false;
+                    nomValid = false;
                 }
                 else{
                     nom.classList.remove("is-valid");
                     nom.classList.remove("is-invalid");
                     nom.classList.add("is-valid");
-//                    nomValid = true;
+                    nomValid = true;
                 }
             }
             function verifPrenom(){
@@ -151,13 +153,13 @@
                     prenom.classList.remove("is-valid");
                     prenom.classList.remove("is-invalid");
                     prenom.classList.add("is-invalid");
-//                    prenomValid = false;
+                    prenomValid = false;
                 }
                 else{
                     prenom.classList.remove("is-valid");
                     prenom.classList.remove("is-invalid");
                     prenom.classList.add("is-valid");
-//                    prenomValid = true;
+                    prenomValid = true;
                 }
             }
             function verifAdresse(){
@@ -166,25 +168,26 @@
                     adresse.classList.remove("is-valid");
                     adresse.classList.remove("is-invalid");
                     adresse.classList.add("is-invalid");
-//                    adresseValid = false;
+                    adresseValid = false;
                 }
                 else{
                     adresse.classList.remove("is-invalid");
                     adresse.classList.remove("is-valid");
                     adresse.classList.add("is-valid");
-//                    adresseValid = true;
+                    adresseValid = true;
                 }
             }
-//            function validationEnvoi(){
-//                if(motDePasse = false || motDePasseConfirme = false || nomValid = false || prenomValid = false || adresseValid = false || mailValid = false){
-//                    alert("Vueillez valider tous les champs");
-//                    return false;
-//                }
-//                else{
-//                    return true;
-//                }
-//            }
+            function validationEnvoi(){
+                if(motDePasse & motDePasseConfirme & nomValid & prenomValid & adresseValid & mailValid){
+                    return true;
+                }
+                else{
+                    alert("Veuillez valider tous les champs");
+                    return false;
+                }
+            }
         </script>
+        <?php include 'footer.php' ?>
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>
