@@ -76,27 +76,34 @@
                 </div>
             </article>
             <div id="categorieCard">
-
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
                     Trier par :
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Défaut</a>
-                        <a class="dropdown-item" href="#">Prix croissant</a>
-                        <a class="dropdown-item" href="#">Prix décroissant</a>
+                        <a class="dropdown-item" href="boutique.php">Défaut</a>
+                        <a class="dropdown-item" href="boutique.php?categorie=croissant">Prix croissant</a>
+                        <a class="dropdown-item" href="boutique.php?categorie=decroissant">Prix décroissant</a>
                     </div>
                 </div>
-
             </div>
-
-
         </section>
-
 
         <?php
 
-                $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image,  `description_produit` ,  `prix_produit`  FROM  `produits`  INNER JOIN photos WHERE photos.ID_photo = produits.ID_photo');
+        if (isset($_GET['categorie'])){
+            if ($_GET['categorie']=='croissant'){
+                $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image,  `description_produit` ,  `prix_produit`  FROM  `produits`  INNER JOIN photos WHERE photos.ID_photo = produits.ID_photo ORDER BY prix_produit');
+
+            }if ($_GET['categorie']=='decroissant'){
+                $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image,  `description_produit` ,  `prix_produit`  FROM  `produits`  INNER JOIN photos WHERE photos.ID_photo = produits.ID_photo ORDER BY prix_produit DESC');
+            }
+
+        }else{
+            $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image,  `description_produit` ,  `prix_produit`  FROM  `produits`  INNER JOIN photos WHERE photos.ID_photo = produits.ID_photo');
+
+        }
+
                 $data=$reponse->fetch();
 
              if($data==NULL){
