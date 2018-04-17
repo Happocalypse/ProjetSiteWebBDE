@@ -20,14 +20,13 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Produit</th>
                                 <th scope="col">Quantité</th>
                                 <th scope="col">Prix</th>
                                 <th scope="col">Supprimer</th>
                             </tr>
                         </thead>
-                        <?php $reponse=$bdd->query('SELECT nom_produit, quantite, prix_produit, produits.ID_produit FROM PANIER INNER JOIN produits');
+                        <?php $reponse=$bdd->query('SELECT nom_produit, quantite, prix_produit, produits.ID_produit FROM PANIER INNER JOIN produits WHERE PANIER.ID_produit = produits.ID_produit');
                         $data=$reponse->fetch();
 
 
@@ -38,7 +37,6 @@
                         <?php   }do{?>
                         <tbody>
                             <tr>
-                                <th scope="row">1</th>
                                 <td>
                                     <?php echo $data['nom_produit'] ?>
                                 </td>
@@ -51,7 +49,7 @@
                                 <td>
                                     <form method="post" action="script/resultPanier.php">
                                         <?php echo '<input type="hidden" name="idProduit" value='.$data['ID_produit'].' />' ?>
-                                        <button type="submit" name="DeletePanier" class="btn "><img src="images/delete.svg" /></button>
+                                        <button type="submit" name="DeletePanier" class="btn"><img src="images/delete.svg" /></button>
                                     </form>
                                 </td>
                             </tr>
@@ -66,7 +64,11 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    <form method="post" name="validerCommande" value="">
+                    <button type="button" class="btn btn-primary">Valider le panier</button>
+                    </form>
+
                 </div>
 
             </div>
