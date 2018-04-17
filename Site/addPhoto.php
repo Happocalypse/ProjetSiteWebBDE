@@ -16,9 +16,9 @@
 
         // On récupère le contenu du champ nom_evenement
         // TASK : Optimiser le SELECT, Et que l'événément est outdate
-        $sql='SELECT * FROM PARTICIPER INNER JOIN evenements ON PARTICIPER.ID_evenement = evenements.ID_evenement WHERE (valide=\'1\' AND PARTICIPER.ID_utilisateur='.$_SESSION['id'].') AND (date_evenement) <= NOW() ORDER BY date_evenement DESC';
-        $reponse = $bdd->query($sql);
-
+        date_default_timezone_set('Europe/Paris');
+        $today = date("Y-m-d H:i:s");
+        $reponse=$bdd->query('SELECT * FROM PARTICIPER INNER JOIN evenements ON PARTICIPER.ID_evenement = evenements .ID_evenement WHERE evenements.valide=\'1\' AND (evenements.date_evenement) <= "'.$today.'" AND PARTICIPER.ID_utilisateur='.$_SESSION['id'].' ORDER BY evenements.date_evenement DESC');
         ?>
 
         <?php if($donnees = $reponse->fetch()){ ?>
