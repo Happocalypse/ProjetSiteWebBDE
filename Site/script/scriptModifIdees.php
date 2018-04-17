@@ -27,11 +27,15 @@ if(isset($_POST['saveIdee'])){
 
 if(isset($_POST['supprIdee'])){
 
-$id_event = $_POST['id_evenement'];
+    $id_event = $_POST['id_evenement'];
 
-$suppr = $bdd->prepare("DELETE FROM evenements WHERE ID_evenement = :id_event");
-$suppr->bindValue(':id_event',$id_event,PDO::PARAM_INT);
-$suppr->execute();
+
+    $suppr = $bdd->prepare("DELETE FROM VOTER WHERE ID_evenement = :id_event");
+    $suppr->bindValue(':id_event',$id_event,PDO::PARAM_INT);
+    $suppr->execute();
+    $suppr2 = $bdd->prepare("DELETE FROM evenements WHERE ID_evenement = :id_event");
+    $suppr2->bindValue(':id_event',$id_event,PDO::PARAM_INT);
+    $suppr2->execute();
 
 }
 header("Location: ../boiteAIdees.php");

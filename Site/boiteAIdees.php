@@ -41,13 +41,13 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8 idees">
                     <div class="presentationI">
-                        <h1><?php echo $idees['nom_evenement']; ?></h1>
+                        <h1><?= $idees['nom_evenement']; ?></h1>
                         <p>Idée proposée le : <?= $idees['date_evenement']; ?></p>
                     </div>
                     <p class="descriptionI">
                         <?= $idees['description_evenement']; ?> </p>
 
-                    <input type='hidden' name="id_evenement" Value="<?= $idees['ID_evenement']; ?>"/>
+                    <input type='hidden' name="id_evenement" value="<?= $idees['ID_evenement']; ?>"/>
 
                     <button type="submit" class="btn btn-primary">Voter pour cette idée !</button>
                 </div>
