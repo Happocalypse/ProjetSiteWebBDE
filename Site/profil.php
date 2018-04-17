@@ -8,32 +8,33 @@
     </head>
     <body>
         <?php include 'navbar.php' ?>
-        <section>
-            <h1>Profil</h1>
-            <form method="post" action="script/modificationInfo.php">
-                <div class="form-group row">
-                    <label for="nomSession" class="col-sm-2 col-form-label">Connecté en tant que :</label>
-                    <div class="col-sm-10">
-                        <input id="nomSession" type="text" readonly class="form-control-plaintext" name="nomSession" value="<?php echo $_SESSION['nom'].' '.$_SESSION['prenom']; ?>">
+        <div class="wrapper">
+            <div class="container-fluid">
+                <h1>Profil</h1>
+                <form method="post" action="script/modificationInfo.php">
+                    <div class="form-group row">
+                        <label for="nomSession" class="col-sm-4 col-form-label">Connecté en tant que :</label>
+                        <div class="col-sm-6">
+                            <input id="nomSession" type="text" readonly class="form-control-plaintext" name="nomSession" value="<?php echo $_SESSION['nom'].' '.$_SESSION['prenom']; ?>">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="mail" class="col-sm-2 col-form-label">Mail :</label>
-                    <div class="col-sm-10">
-                        <input id="mail" type="text" readonly class="form-control-plaintext" name="mail" value="<?php echo $_SESSION['mail']; ?>">
+                    <div class="form-group row">
+                        <label for="mail" class="col-sm-4 col-form-label">Mail :</label>
+                        <div class="col-sm-6">
+                            <input id="mail" type="text" readonly class="form-control-plaintext" name="mail" value="<?php echo $_SESSION['mail']; ?>">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="adresse" class="col-sm-2 col-form-label">Adresse :</label>
-                    <div class="col-sm-10">
-                        <input id="adresse" type="text" readonly class="form-control-plaintext" name="adresse" value="<?php echo $_SESSION['adresse']; ?>">
+                    <div class="form-group row">
+                        <label for="adresse" class="col-sm-4 col-form-label">Adresse :</label>
+                        <div class="col-sm-6">
+                            <input id="adresse" type="text" readonly class="form-control-plaintext" name="adresse" value="<?php echo $_SESSION['adresse']; ?>">
+                        </div>
                     </div>
-                </div>
-                <button type="button" class="btn btn-warning" onclick="modifier()">Modifier</button>
-                <button type="submit" class="btn btn-warning">Valider</button>
-            </form>
-
-        </section>
+                    <button type="button" class="btn btn-warning" onclick="modifier()">Modifier</button>
+                    <button type="submit" class="btn btn-warning">Valider</button>
+                </form>
+            </div>
+        </div>
         <script>
             function modifier(){
                 document.getElementById('nomSession').removeAttribute('readonly');

@@ -9,14 +9,15 @@
     <body>
         <?php include 'navbar.php' ?>
         <section id="intro">
-            <h1>Accueil</h1>
+            <h1 id="titre">Bienvenue sur le site du BDE de l'Exia.cesi de Pau !</h1>
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
-                        <h3>Plan</h3>
+                        <h3 id="titreMaps">Où sommes-nous ?</h3>
                         <div id="map"></div>
                     </div>
                     <div class="col-md-4">
+                        <h3 id="titreDiscord">Rejoins notre Discord !</h3>
                         <div id="discord">
                             <iframe src="https://discordapp.com/widget?id=401825719195402240&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
                         </div>
@@ -25,6 +26,7 @@
             </div>
         </section>
         <section id="assos">
+            <h1 id="titreAssos">Associations</h1>
             <div class="card-deck">
                 <div class="card">
                     <div class="card-body">
