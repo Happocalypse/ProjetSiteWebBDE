@@ -65,9 +65,9 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
-                    <form method="post" name="validerCommande" value="">
-                    <button type="button" class="btn btn-primary">Valider le panier</button>
-                    </form>
+                        <form method="post" action="script/resultValiderCommande.php">
+                            <button name="validerCommande" type="submit" class="btn btn-primary">Valider le panier</button>
+                        </form>
 
                 </div>
 

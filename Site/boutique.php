@@ -74,9 +74,23 @@
   </a>
 
                 </div>
-                    <div>
-                    </div>
             </article>
+            <div id="categorieCard">
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                    Trier par :
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Défaut</a>
+                        <a class="dropdown-item" href="#">Prix croissant</a>
+                        <a class="dropdown-item" href="#">Prix décroissant</a>
+                    </div>
+                </div>
+
+            </div>
+
+
         </section>
 
 
@@ -93,49 +107,50 @@
 
             { ?>
             <div class="container-fluid">
-            <div class="row">
-                <?php
+                <div class="row">
+                    <?php
             do{
              ?>
-                <div class="col-s-5">
-                    <div class="card">
-                        <img class="card-img-top" src="<?php echo $data['url_image'] ?>" alt="Product Card">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <?php echo $data['nom_produit'] ?>
-                            </h5>
-                            <p class="card-text">
-                                <?php echo $data['description_produit'] ?>
-                            </p>
+                        <div class="col-s-5">
+                            <div class="card">
+                                <img class="card-img-top" src="<?php echo $data['url_image'] ?>" alt="Product Card">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <?php echo $data['nom_produit'] ?>
+                                    </h5>
+                                    <p class="card-text">
+                                        <?php echo $data['description_produit'] ?>
+                                    </p>
 
-                            <?php if(isset($_SESSION['id'])){  ?>
+                                    <?php if(isset($_SESSION['id'])){  ?>
 
-                            <form method="post" action="script/resultBoutique.php">
-                            <?php echo '<input type="hidden" name="idProduit" value='.$data['ID_produit'].' />' ?>
-                            <button type="submit" name="submitPanier" class="btn float-right btn-outline-primary">Ajouter au panier</button>
-                            </form>
+                                    <form method="post" action="script/resultBoutique.php">
+                                        <?php echo '<input type="hidden" name="idProduit" value='.$data['ID_produit'].' />' ?>
+                                        <button type="submit" name="submitPanier" class="btn float-right btn-outline-primary">Ajouter au panier</button>
+                                    </form>
 
-                            <?php }  ?>
+                                    <?php }  ?>
 
 
+                                </div>
+                                <div class="card-footer text-right">
+                                    <?php echo $data['prix_produit'] ?> €
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-footer text-right">
-                            <?php echo $data['prix_produit'] ?>€
-                        </div>
-                    </div>
-                </div>
 
 
-        <?php }while($data=$reponse->fetch());
+                        <?php }while($data=$reponse->fetch());
          $reponse->closeCursor();
          } ?>
                 </div>
-        </div>
+            </div>
 
-        <?php include 'script/scriptBootStrapBody.php'?>
+            <?php include 'script/scriptBootStrapBody.php'?>
 
-      <?php include 'panier.php' ?>
+            <?php include 'panier.php' ?>
 
 
 </body>
+
 </html>

@@ -33,3 +33,8 @@ body{
 .carouselPanierButton{
     display: flex;
 }
+
+#categorieCard{
+    float:right;
+    margin-right: 2%;
+}
