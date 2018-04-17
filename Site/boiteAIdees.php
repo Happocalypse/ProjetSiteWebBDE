@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="CSS/boiteAIdees.css">
-        <title>Staff</title>
+        <title>Boite à Idées</title>
         <?php include 'script/scriptBootStrapHead.php' ?>
     </head>
 
@@ -30,28 +30,30 @@
 
         <?php
             }}
-        $readIdeas = $bdd->query('SELECT nom_evenement, description_evenement, date_evenement FROM evenements WHERE valide=0 ORDER BY date_evenement ASC');
-        while( $ideas = $readIdeas->fetch()){
+        $readIdeas = $bdd->query('SELECT nom_evenement, description_evenement, date_evenement, ID_evenement FROM evenements WHERE valide=0 ORDER BY date_evenement ASC');
+        while( $idees = $readIdeas->fetch()){
 
         ?>
 
 
-        <form>
+        <form method="post" action="script/scriptevote.php" >
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8 idees">
                     <div class="presentationI">
-                        <h1><?php echo $ideas['nom_evenement']; ?></h1>
-                        <p>Idée proposée le : <?php echo $ideas['date_evenement']; ?></p>
+                        <h1><?php echo $idees['nom_evenement']; ?></h1>
+                        <p>Idée proposée le : <?= $idees['date_evenement']; ?></p>
                     </div>
                     <p class="descriptionI">
-                        <?php echo $ideas['description_evenement']; ?> </p>
+                        <?= $idees['description_evenement']; ?> </p>
+
+                    <input type='hidden' name="id_evenement" Value="<?= $idees['ID_evenement']; ?>"/>
+
+                    <button type="submit" class="btn btn-primary">Voter pour cette idée !</button>
                 </div>
                 <div class="col-md-2"></div>
             </div>
         </form>
-
-
 
         <?php   } $readIdeas->closeCursor();?>
 

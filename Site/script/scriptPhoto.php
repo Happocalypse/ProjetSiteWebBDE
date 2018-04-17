@@ -20,14 +20,24 @@ include('connexionBDD.php');
             }
             // Fermeture pour permettre d'être de nouveau exécutée
 
-
-
-                // Stockage du commentaire lié à une photo dans la BDD
-                if(isset($_POST['sendButton']) and isset($_POST['idPhotoComment']) and isset($_POST['comment']) )
-                {
+            // Stockage du commentaire lié à une photo dans la BDD
+            if(isset($_POST['sendButton']) and isset($_POST['idPhotoComment']) and isset($_POST['comment']) )
+            {
                     $sql = 'INSERT INTO COMMENTER (commentaire, ID_utilisateur, ID_photo) VALUES ("'.$_POST['comment'].'",'.$_SESSION['id'].','.$_POST['idPhotoComment'].')';
                     $bdd->exec($sql);
-                }
+            }
+
+            //Envoie un mail pour signaler une photo potentiellement néfaste
+            if(isset($_POST['warningButton']) and isset($_POST['urlImage']) and isset($_POST['titreImage']) ){
+
+                // TO DO : Mettre le mail de l'administrateur
+                $to = 'damien.watteau@viacesi.fr';
+                $subject = 'Signalement d\'une image';
+                $message = 'L\'image avec l\'ID '. $_POST['titreImage'] .' a été signalée - Lien : http://localhost/Projet/Site/uploads/'.$_POST['urlImage'];
+
+                mail($to, $subject, $message);
+
+            }
         }
 header("Location: ../photos.php");
 exit;

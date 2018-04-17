@@ -16,24 +16,28 @@
         if(isset($_SESSION['id'])) {
 
             // Affiche si l'utilisateur a participé à au moins un événement un bouton pour ajouter des photos
-            $reponse=$bdd->query('SELECT (ID_evenement)FROM evenements WHERE (valide=\'1\' AND ID_utilisateur='.$_SESSION['id'].') AND (date_evenement) <= NOW() LIMIT 0,1');
+            date_default_timezone_set('Europe/Paris');
+            $today = date("Y-m-d H:i:s");
+            echo $today;
+            $reponse=$bdd->query('SELECT * FROM PARTICIPER INNER JOIN evenements ON PARTICIPER.ID_evenement = evenements .ID_evenement WHERE evenements.valide=\'1\' AND (evenements.date_evenement) <= "'.$today.'" AND PARTICIPER.ID_utilisateur='.$_SESSION['id'].' LIMIT 0,1');
             $data=$reponse->fetch();
                 if(!$data==NULL){ ?>
                     <a href="addPhoto.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true" id="buttonAjouter">Ajouter une photo</a>
                  <?php }
 
             // Fermeture pour permettre d'être de nouveau exécutée
-            $reponse->closeCursor(); ?>
-
+            $reponse->closeCursor();
+            if($_SESSION['groupe']==2) {?>
             <!-- TASK : Afficher seulement aux membres du BDE -->
             <a href="gestionPhoto.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true" id="buttonAjouter">Administrer</a>
            <?php
+            }
         }
     ?>
 
     <?php
     // Récupère les événements validées et passées
-    $reponse=$bdd->query('SELECT * FROM evenements WHERE valide =  \'1\' AND (date_evenement) <=  NOW()  ORDER BY date_evenement DESC');
+    $reponse=$bdd->query('SELECT * FROM evenements WHERE valide =  \'1\' AND (date_evenement) >=  NOW()  ORDER BY date_evenement DESC');
     $data=$reponse->fetch();
 
         if($data==NULL){
@@ -101,6 +105,19 @@
                                                     <img src="images/download_logo.png" alt="download_logo" />
                                                 </a>
                                             </button>
+
+                                            <?php
+                                                if(isset($_SESSION['id'])) {?>
+                                                    <form method="post" action="script/scriptPhoto.php">
+                                                        <button type="submit" class="btn btn-link" name="warningButton"><img src="images/warning_logo.png" alt="warning_logo" /></button>
+
+                                                        <?php echo '<input type=hidden name="titreImage" value='.$data['titre_photo'].' />'; ?>
+                                                        <?php echo '<input type=hidden name="urlImage" value='.$data['url_image'].' />'; ?>
+                                                    </form>
+
+                                                <?php } ?>
+
+
 
                                             <!-- Modal -->
                                             <div id="<?php echo $data['ID_photo']; ?>" class="modal fade" role="dialog">

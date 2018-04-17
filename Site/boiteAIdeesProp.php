@@ -16,7 +16,7 @@
         <div class="mx-auto" style="width: 800px;">
             <div class="row">
                 <div class="col-xs-12 col-md-12">
-                    <form method="post" action="script/srciptBoiteAIdeesProp.php" autocomplete="on">
+                    <form method="post" action="script/scriptBoiteAIdeesProp.php" autocomplete="on">
 
                         <div class="form-group">
                              <label for="nomActivite">Nom de l'activité</label>

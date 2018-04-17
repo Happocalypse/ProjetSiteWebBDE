@@ -49,6 +49,7 @@
                 document.getElementById('adresse').classList.add('form-control');
             }
         </script>
+        <?php include 'footer.php' ?>
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>
