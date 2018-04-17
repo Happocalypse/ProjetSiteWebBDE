@@ -22,14 +22,10 @@
                 </tr>
             </thead>
             <tbody>
-<!--                <form method="post" action="script/deleteFromTable.php">-->
-                    <?php
+                <!--                <form method="post" action="script/deleteFromTable.php">-->
+                <?php
     include 'script/connexionBDD.php';
-        function supprUsers($idCurrent){
-            $suppr = $bdd->prepare("");
-            $suppr->bindValue(':id',$idCurrent,PDO::PARAM_INT);
-            $suppr->execute();
-        }
+
         $utilisateurs = $bdd->prepare("SELECT * FROM utilisateurs");
         $utilisateurs->execute();
 
@@ -43,10 +39,10 @@
                 '<td><button type="submit" class="btn btn-danger">Supprimer</button></td></form>'.
                 '</tr>';
         }
-                    ?>
-<!--                </form>-->
-                <?php include 'script/scriptBootStrapBody.php' ?>
+                ?>
             </tbody>
         </table>
+        <?php include 'footer.php' ?>
+        <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>

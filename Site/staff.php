@@ -102,12 +102,7 @@
             </div>
 
         </section>
-
-
-
-
-
-
+        <?php include 'footer.php' ?>
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>
