@@ -12,10 +12,17 @@
 
 
 
+<?php
+    include('script/connexionBDD.php');
+
+        if(isset($_SESSION['id'])) {
+            //Vérifier si l'utilisateur est membre du BDE
+            if($_SESSION['groupe']==2){
+        ?>
+        <a href="gestionEvenement.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true" id="gestionEvenement">Administrer les évenements</a><br /><br /><br />
 
 
-
-        <?php
+        <?php }}
     include('script/connexionBDD.php');
 
         $readIdeas = $bdd->query('SELECT nom_evenement, description_evenement, date_evenement FROM evenements WHERE valide=1');

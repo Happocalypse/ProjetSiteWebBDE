@@ -3,6 +3,11 @@
     text-align: center;
 }
 
+.ADM{
+
+    margin: 10px;
+}
+
 .idees{
     border:1px solid #d63031;
     margin-top: 50px;
@@ -22,3 +27,4 @@
     margin-left: 5%;
     margin-right: 5%;
 }
+

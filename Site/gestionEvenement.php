@@ -2,20 +2,20 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Gestion des Idées</title>
+        <title>Gestion des évenements</title>
         <link rel="stylesheet" href="CSS/gestionIE.css">
         <?php include 'script/scriptBootStrapHead.php' ?>
     </head>
     <body>
         <?php include 'navbar.php' ?>
 
-        <h1 class="gestidees" >Gestion des Idées</h1>
+        <h1 class="gestidees" >Gestion des évenements</h1>
 
         <?php
     include('script/connexionBDD.php');
 
 
-        $readIdeas = $bdd->query('SELECT nom_evenement, description_evenement, date_evenement, valide, ID_evenement FROM evenements WHERE valide=0 ORDER BY date_evenement ASC');
+        $readIdeas = $bdd->query('SELECT nom_evenement, description_evenement, date_evenement, valide, ID_evenement FROM evenements WHERE valide=1 ORDER BY date_evenement ASC');
         while( $idees = $readIdeas->fetch()){
         ?>
         <form method="post" action="script/scriptModifIdees.php" autocomplete="on">
@@ -30,14 +30,10 @@
                         <label for="description">Description (255 caractères max)</label>
                         <textarea style="resize:none" class="form-control" id="description" name="description" maxlength="255"><?= $idees['description_evenement']; ?></textarea>
 
-                        <div>
-                            <input type="checkbox" name="valide" value="1">
-                            <label>Passer l'idée en évenement</label>
-                        </div>
                         <input type='hidden' name="id_evenement" Value="<?= $idees['ID_evenement']; ?>"/>
                         <tr>
-                            <td><button type="submit" class="btn btn-warning" name="saveIdee">Enregistrer les changements</button></td>
-                            <td><button type="" class="btn btn-danger" name="supprIdee">Suppression de l'idee</button></td>
+                            <td><button type="submit" class="btn btn-warning ADM" name="saveIdee">Enregistrer les changements</button></td>
+                            <td><button class="btn btn-danger ADM droite" name="supprIdee">Suppression de l'évenement</button></td>
                         </tr>
                     </div>
                 </div>
