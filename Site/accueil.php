@@ -37,7 +37,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Squash</h5>
-                        <p class="card-text">La seule Asso de Sport de école actuellement si tu veux casser le clicher de l'informaticien qui ne sort jamais et qui sais pas faire deux pas sans être éssouffler viens te défouler  au squash !</p>
+                        <p class="card-text">La seule Asso de Sport de école actuellement si tu veux casser le cliché de l'informaticien qui ne sort jamais et qui ne sais pas faire deux pas sans être éssoufflé viens te défouler  au squash !</p>
                         <p class="card-text"><small class="text-muted">Président : Robin Montcoutié</small></p>
                     </div>
                 </div>

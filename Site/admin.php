@@ -17,6 +17,7 @@
                     <th scope="col">Prénom</th>
                     <th scope="col">Mail</th>
                     <th scope="col">Role</th>
+                    <th scope="col">Assos</th>
                     <th scope="col">Options</th>
                 </tr>
             </thead>
@@ -38,6 +39,7 @@
                 '<td>'.$row["prenom"].'</td>'.
                 '<td>'.$row["mail"].'</td>'.
                 '<td>'.$row["ID_groupe"].'</td>'.
+                '<td>'.$row["ID_association"].'</td>'.
                 '<td><button type="submit" class="btn btn-danger">Supprimer</button></td></form>'.
                 '</tr>';
         }
