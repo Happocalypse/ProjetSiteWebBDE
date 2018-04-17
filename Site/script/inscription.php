@@ -18,16 +18,37 @@ if($mail == $verifMail['mail']){
     echo '<script>alert("mail already use")</script>';
 }
 else{
-    echo '<script>alert("Je prépare les requetes")</script>';
+    $code = uniqid();
+    $url = 'http://localhost/Projet_BDE/Site/confirmationMail.php?code='.$code
+    $header="MIME-Version: 1.0\r\n";
+    $header.='From:"ExiaBDEPau.com"<no-reply@exiapau.fr>'.'\n';
+    $header.='Content-Type:test/html; charset="utf-8"'.'\n';
+    $header.='Content-Transfer-Encoding: 8bit';
 
-    $inscription = $bdd->prepare("INSERT INTO utilisateurs (nom, prenom, mdp, adresse, mail)
-    VALUES (:nom, :prenom, :mdp, :adresse, :mail)");
+    $message = '
+    <html>
+        <body>
+            <div align="center">
+                Bonjour'.$nom.' '.$prenom.',</br>
+                Confirmez votre adresse mail en cliquant <a href="'.$url.'">ici</a></br>
+                Si vous ne pouvez pas copier le liens suivant :</br>
+                '.$url.'
+            </div>
+        </body>
+    </html>'
+
+    $inscription = $bdd->prepare("INSERT INTO utilisateurs (nom, prenom, mdp, adresse, mail,code)
+    VALUES (:nom, :prenom, :mdp, :adresse, :mail, :code)");
     $inscription->bindValue(':nom',$nom,PDO::PARAM_STR);
     $inscription->bindValue(':prenom',$prenom,PDO::PARAM_STR);
     $inscription->bindValue(':mdp',$mdp_hash,PDO::PARAM_STR);
     $inscription->bindValue(':adresse',$adresse,PDO::PARAM_STR);
     $inscription->bindValue(':mail',$mail,PDO::PARAM_STR);
+    $inscription->bindValue(':code',$code,PDO::PARAM_STR);
     $inscription->execute();
+
+    mail()
+
     header("Location: ../accueil.php");
     exit;
 }

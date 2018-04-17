@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="CSS/accueil.css">
-        <link rel="stylesheet" href="CSS/editButton.css">
         <title>Accueil</title>
         <?php include 'script/scriptBootStrapHead.php' ?>
     </head>
