@@ -154,6 +154,8 @@
 
         <?php include 'panier.php' ?>
         <?php include 'script/scriptBootStrapBody.php' ?>
+
+    <?php include 'footer.php' ?>
 </body>
 
 </html>
