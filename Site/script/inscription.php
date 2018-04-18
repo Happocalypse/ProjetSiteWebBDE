@@ -47,7 +47,7 @@ else{
     $inscription->bindValue(':code',$code,PDO::PARAM_STR);
     $inscription->execute($mail,"Do not reply - validation par mail", $message, $header);
 
-    mail()
+    mail($mail, "Do not reply - Verification email", $message, $header);
 
     header("Location: ../accueil.php");
     exit;
