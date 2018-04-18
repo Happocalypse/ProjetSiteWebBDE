@@ -13,19 +13,19 @@
 
 <body>
     <?php include 'navbar.php' ?>
+	    <!-- Vérifier si l'utilisateur est membre du BDE -->
     <?php include 'script/connexionBDD.php';
     if(isset($_SESSION['id'])) {
 
             if($_SESSION['groupe']==2){
                 ?>
-    <!-- Vérifier si l'utilisateur est membre du BDE -->
+
     <?php include 'editButton.php'?>
     <?php
             }
         }
     ?>
         <?php include 'top3Vente.php';?>
-
 
         <section>
 
@@ -65,7 +65,7 @@
                         </div>
                     </div>
 
-                    <!-- Left and right controls -->
+                    <!-- Left and right carousel controls -->
                     <a class="carousel-control-prev" href="#shopCarousel" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
   </a>
@@ -151,9 +151,9 @@
                         </div>
 
 
-                        <?php }while($data=$reponse->fetch());
-         $reponse->closeCursor();
-         } ?>
+        	<?php }while($data=$reponse->fetch());
+         	$reponse->closeCursor();
+         	} ?>
                 </div>
             </div>
 
