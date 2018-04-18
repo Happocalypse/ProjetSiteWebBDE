@@ -28,6 +28,7 @@
                             <div class="description2">
                                 <h4>Sophien Gardey A2</h4>
                                 <p>Co-president</p>
+                                <a class="bouton" href="mailto:sophien.gardey@viacesi.fr">sophien.gardey@viacesi.fr</a>
                             </div>
                         </div>
                     </div>
@@ -43,6 +44,7 @@
                             <div class="description2">
                                 <h4>Jean Lacadée A2</h4>
                                 <p>Co-president</p>
+                                <a class="bouton" href="mailto:jean.lacadee@viacesi.fr">jean.lacadee@viacesi.fr</a>
                             </div>
                         </div>
                     </div>
@@ -63,6 +65,7 @@
                         <div class="description" >
                             <h4>Jean Guerci A2</h4>
                             <p>Trésorier</p>
+                            <a class="bouton" href="mailto:jean.guerci@viacesi.fr">jean.guerci@viacesi.fr</a>
                         </div>
                     </div>
                 </div>
@@ -74,6 +77,7 @@
                         <div class="description">
                             <h4>Tristan Houllier A1</h4>
                             <p>vice-Trésorier</p>
+                            <a class="bouton" href="mailto:tristant.houllier@viacesi.fr">tristant.houllier@viacesi.fr</a>
                         </div>
                     </div>
                 </div>
@@ -85,6 +89,7 @@
                         <div class="description">
                             <h4>Romain Tisnera A1</h4>
                             <p>Secrétaire</p>
+                            <a class="bouton" href="mailto:romain.tisnera@viacesi.fr">romain.tisnera@viacesi.fr</a>
                         </div>
                     </div>
                 </div>
@@ -96,6 +101,7 @@
                         <div class="description">
                             <h4>Maxime Minvielle A1</h4>
                             <p>Vice-Secrétaire</p>
+                            <a class="bouton" href="mailto:maxime.minvielle@viacesi.fr">maxime.minvielle@viacesi.fr</a>
                         </div>
                     </div>
                 </div>
