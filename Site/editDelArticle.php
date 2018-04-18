@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="CSS/photos.css">
+        <link rel="stylesheet" href="CSS/article.css">
         <title>Editer ou modifier des articles</title>
         <?php include 'script/scriptBootStrapHead.php' ?>
     </head>
