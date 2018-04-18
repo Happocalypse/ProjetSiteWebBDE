@@ -18,7 +18,7 @@
             // Affiche si l'utilisateur a participé à au moins un événement un bouton pour ajouter des photos
             date_default_timezone_set('Europe/Paris');
             $today = date("Y-m-d H:i:s");
-            echo $today;
+
             $reponse=$bdd->query('SELECT * FROM PARTICIPER INNER JOIN evenements ON PARTICIPER.ID_evenement = evenements .ID_evenement WHERE evenements.valide=\'1\' AND (evenements.date_evenement) <= "'.$today.'" AND PARTICIPER.ID_utilisateur='.$_SESSION['id'].' LIMIT 0,1');
             $data=$reponse->fetch();
                 if(!$data==NULL){ ?>
@@ -37,7 +37,7 @@
 
     <?php
     // Récupère les événements validées et passées
-    $reponse=$bdd->query('SELECT * FROM evenements WHERE valide =  \'1\' AND (date_evenement) >=  NOW()  ORDER BY date_evenement DESC');
+    $reponse=$bdd->query('SELECT * FROM evenements WHERE valide =  \'1\' AND (date_evenement) <=  NOW()  ORDER BY date_evenement DESC');
     $data=$reponse->fetch();
 
         if($data==NULL){
