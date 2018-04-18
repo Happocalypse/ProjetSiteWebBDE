@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="CSS/photos.css">
+        <link rel="stylesheet" href="CSS/article.css">
         <title>Editer ou modifier des articles</title>
         <?php include 'script/scriptBootStrapHead.php' ?>
     </head>
@@ -14,20 +14,29 @@
 
         if(isset($_POST['editButton']) and isset($_POST['idProduit']))
         {
-            $sql = 'UPDATE produits SET nom_produit="'.$_POST['nomProduit'].'", description_produit="'.$_POST['descriptionProduit'].'", prix_produit='.$_POST['prixProduit'].'WHERE ID_produit='.$_POST['idProduit'];
-            echo $_POST['nomProduit'];
-            echo $_POST['descriptionProduit'];
-            echo $_POST['prixProduit'];
-            echo $_POST['idProduit'];
+            $sql = 'UPDATE produits SET nom_produit="'.$_POST['nomProduit'].'", description_produit="'.$_POST['descriptionProduit'].'", prix_produit="'.$_POST['prixProduit'].'" WHERE ID_produit='.$_POST['idProduit'];
 
-            //$bdd->exec($sql);
+//            UPDATE produits SET nom_produit='yesPAPA', description_produit='ceci est une description', prix_produit=20 WHERE ID_produit=1
+
+            $bdd->exec($sql);
         }
-        if(isset($_POST['deleteButton']) )
-        {
-            echo "TESSST";
-            $sql = 'UPDATE produit SET nom_produit="'.$_POST['nomProduit'].'", description_produit="'.$_POST['descriptionProduit'].'", prix_produit='.$_POST['prixProduit'].'WHERE ID_produit='.$_POST['idProduit'];
+        if(isset($_POST['deleteButton'])){
+try{
 
-            //$bdd->exec($sql);
+            $sql='DELETE FROM COMPORTER WHERE ID_produit='.$_POST['idProduit'];
+            $bdd->exec($sql);
+
+            $sql='DELETE FROM produits WHERE ID_produit ='.$_POST['idProduit'];
+            $bdd->exec($sql);
+
+            $slq='DELETE FROM PANIER WHERE ID_produit='.$_POST['idProduit'];
+            $bdd->exec($sql);
+
+}catch (Exception $e) {
+    echo 'Exception reçue : ',  $e->getMessage(), "\n";
+}
+
+
         }
 
         $reponse=$bdd->query('SELECT ID_produit, nom_produit, description_produit, prix_produit FROM produits');

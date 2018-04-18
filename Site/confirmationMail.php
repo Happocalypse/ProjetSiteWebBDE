@@ -9,12 +9,14 @@
     <body>
         <?php include 'navbar.php' ?>
 
-        <h1>Merci, votre mail à été confirmé ! Vous pouvez désormais vous connecter</h1>
+        <h1 id="Merci">Merci, votre mail à été confirmé ! Vous pouvez désormais vous connecter</h1>
 
         <?php
-
+            include 'script/connexionBDD.php';
+            $confirmOk = $bdd->prepare("UPDATE  `utilisateurs` SET `code` = NULL, `mail_verif` =1 WHERE code = :code");
+            $confirmOk->bindValue(':code', $_GET['code'],PDO::PARAM_STR);
+            $confirmOk->execute();
         ?>
-
         <?php include 'footer.php' ?>
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>

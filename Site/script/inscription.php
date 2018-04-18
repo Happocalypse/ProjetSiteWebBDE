@@ -19,7 +19,7 @@ if($mail == $verifMail['mail']){
 }
 else{
     $code = uniqid();
-    $url = 'http://localhost/Projet_BDE/Site/confirmationMail.php?code='.$code
+    $url = 'http://localhost/Projet_BDE/Site/confirmationMail.php?code='.$code;
     $header="MIME-Version: 1.0\r\n";
     $header.='From:"ExiaBDEPau.com"<no-reply@exiapau.fr>'.'\n';
     $header.='Content-Type:test/html; charset="utf-8"'.'\n';
@@ -37,7 +37,7 @@ else{
         </body>
     </html>'
 
-    $inscription = $bdd->prepare("INSERT INTO utilisateurs (nom, prenom, mdp, adresse, mail,code)
+    $inscription = $bdd->prepare("INSERT INTO utilisateurs (nom, prenom, mdp, adresse, mail, code)
     VALUES (:nom, :prenom, :mdp, :adresse, :mail, :code)");
     $inscription->bindValue(':nom',$nom,PDO::PARAM_STR);
     $inscription->bindValue(':prenom',$prenom,PDO::PARAM_STR);
@@ -45,9 +45,9 @@ else{
     $inscription->bindValue(':adresse',$adresse,PDO::PARAM_STR);
     $inscription->bindValue(':mail',$mail,PDO::PARAM_STR);
     $inscription->bindValue(':code',$code,PDO::PARAM_STR);
-    $inscription->execute();
+    $inscription->execute($mail,"Do not reply - validation par mail", $message, $header);
 
-    mail()
+    mail($mail, "Do not reply - Verification email", $message, $header);
 
     header("Location: ../accueil.php");
     exit;

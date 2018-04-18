@@ -138,7 +138,6 @@
 
                                     <?php }  ?>
 
-
                                 </div>
                                 <div class="card-footer text-right">
                                     <?php echo $data['prix_produit'] ?> €

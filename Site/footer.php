@@ -1,5 +1,5 @@
 <footer class="fixed-bottom general">
-    <div class="container">
+    <div class="container" id="reseaux">
         <div class="row justify-content-md-center" id="social">
             <div class="col-md-auto">
                 <a href=""><img src="images/fb.png" alt=""/></a>

@@ -1,3 +1,14 @@
-section{
-    margin-top: 100px;
+.wrapper{
+    width: 700px;
+    display: block;
+    margin: auto;
+}
+
+.container-fluid{
+    margin-top: 25%;
+    padding: 10px;
+    border: 6px solid #9f9f9f;
+    border-radius:10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
 }

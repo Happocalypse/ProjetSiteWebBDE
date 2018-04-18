@@ -3,7 +3,7 @@
     <head>
 
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="CSS/photos.css">
+        <link rel="stylesheet" href="CSS/article.css">
         <?php include 'script/scriptBootStrapHead.php' ?>
         <title>Publication d'un article</title>
 
