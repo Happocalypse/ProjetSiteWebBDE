@@ -6,6 +6,8 @@
     color: black;
 }
 
+	/*CAROUSEL*/
+
 #shopCarousel{
     margin-left: 100px;
     margin-top: 130px;
@@ -18,21 +20,23 @@
     border-radius: 5px;
 }
 
-body{
-
-}
-
 .carousel-inner img {
       width: 100%;
       height: 100%;
   }
 
-#container-fluid{
-    display:flex;
-}
-
 .carouselPanierButton{
     display: flex;
+}
+
+	/*CARD*/
+
+.card{
+	width: 15rem;
+}
+
+.container-fluid{
+    display:flex;
 }
 
 #categorieCard{
@@ -44,4 +48,8 @@ body{
     width: 150px;
     height: 150px;
     margin-left: 20px;
+}
+
+.card card-text{
+	width: 100%;
 }

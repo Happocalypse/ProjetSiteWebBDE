@@ -130,7 +130,7 @@
                                     <h5 class="card-title">
                                         <?php echo $data['nom_produit'] ?>
                                     </h5>
-                                    <p class="card-text">
+                                    <p class="card-text text-justify">
                                         <?php echo $data['description_produit'] ?>
                                     </p>
 

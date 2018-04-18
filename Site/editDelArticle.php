@@ -32,6 +32,9 @@ try{
             $slq='DELETE FROM PANIER WHERE ID_produit='.$_POST['idProduit'];
             $bdd->exec($sql);
 
+			$sql='DELETE FROM photos WHERE ID_produit='.$_POST['idProduit'];
+			$bdd->exec($sql);
+
 }catch (Exception $e) {
     echo 'Exception reçue : ',  $e->getMessage(), "\n";
 }
