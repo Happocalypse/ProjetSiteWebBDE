@@ -17,13 +17,12 @@ if($data==null){
     $sql = 'INSERT INTO PARTICIPER (ID_utilisateur, ID_evenement) VALUES ('.$_SESSION['id'].','.$_POST['id_evenement'].')';
     $bdd->exec($sql);
 
+}else{
+    $sql='DELETE FROM PARTICIPER WHERE ID_utilisateur='.$_SESSION['id'].' AND ID_evenement='.$_POST['id_evenement'];
+    $bdd->exec($sql);
 }
 $voteIdee->closeCursor();
 
-echo $id_event;
-echo $id_user;
-
-
-//header("Location: ../evenements.php");
-//exit;
+header("Location: ../evenements.php");
+exit;
 ?>

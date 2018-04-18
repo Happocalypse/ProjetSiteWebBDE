@@ -26,7 +26,7 @@
         include('script/connexionBDD.php');
 
         $readIdeas = $bdd->query('SELECT nom_evenement, description_evenement, date_evenement, ID_evenement FROM evenements WHERE valide=1 ORDER BY date_evenement ASC');
-        while( $idees = $readIdeas->fetch()){
+        while($idees = $readIdeas->fetch()){
 
         ?>
 
@@ -43,10 +43,13 @@
                     <p class="descriptionE"><?= $idees['description_evenement']; ?> </p>
                     <input type='hidden' name="id_evenement" value="<?= $idees['ID_evenement']; ?>"/>
                     <?php
-            include('script/connexionBDD.php');
+            if(isset($_SESSION['id'])) {
 
-            if(isset($_SESSION['id'])) { ?>
-                <button type="submit" class="btn btn-primary">Participé à l'évenement !</button>
+                $nbParticiper=$bdd->query( 'SELECT COUNT( ID_evenement ) AS nbParticiper FROM PARTICIPER WHERE ID_evenement='.$idees['ID_evenement']);
+                $participer = $nbParticiper->fetch();
+
+                    ?>
+                    <button type="submit" class="btn btn-primary">Participé à l'évenement ! <span class="badge badge-light"> <?= $participer['nbParticiper'] ?> </span></button>
                     <?php } ?>
                 </div>
                 <div class="col-md-2"></div>
