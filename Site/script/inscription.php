@@ -35,7 +35,7 @@ else{
                 '.$url.'
             </div>
         </body>
-    </html>'
+    </html>';
 
     $inscription = $bdd->prepare("INSERT INTO utilisateurs (nom, prenom, mdp, adresse, mail, code)
     VALUES (:nom, :prenom, :mdp, :adresse, :mail, :code)");
