@@ -76,6 +76,7 @@
         <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtbpZd2fJeL9cJJ1SWGs6XRp-BzuL3ZU0&callback=initMap">
         </script>
+        <link rel="stylesheet" href="CSS/footer.css">
         <?php include 'footer.php' ?>
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>

@@ -152,11 +152,8 @@
                 </div>
             </div>
 
-            <?php include 'script/scriptBootStrapBody.php'?>
-
-            <?php include 'panier.php' ?>
-
-
+        <?php include 'panier.php' ?>
+        <?php include 'script/scriptBootStrapBody.php' ?>
 </body>
 
 </html>

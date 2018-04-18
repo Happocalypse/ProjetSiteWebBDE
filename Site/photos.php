@@ -178,6 +178,7 @@
     </div>
 
     <?php include 'script/scriptBootStrapBody.php' ?>
+
 </body>
 
 </html>

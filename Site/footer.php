@@ -1,4 +1,5 @@
-<footer class="fixed-bottom general">
+<!--
+<footer id="positionFooter" class="fixed-bottom general">
     <div class="container" id="reseaux">
         <div class="row justify-content-md-center" id="social">
             <div class="col-md-auto">
@@ -17,3 +18,13 @@
         </div>
     </div>
 </footer>
+-->
+<!--Copyright-->
+<footer id="footerDesign">
+    <div class="footer-copyright py-3 text-center">
+        © 2018 Copyright:
+        <a href="legalMentions.php"> BDE Exia Pau </a>
+    </div>
+</footer>
+<!--/Copyright-->
+<!--/Footer-->
