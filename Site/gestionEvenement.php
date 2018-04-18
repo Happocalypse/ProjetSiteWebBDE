@@ -18,7 +18,7 @@
         $readIdeas = $bdd->query('SELECT nom_evenement, description_evenement, date_evenement, valide, ID_evenement FROM evenements WHERE valide=1 ORDER BY date_evenement ASC');
         while( $idees = $readIdeas->fetch()){
         ?>
-        <form method="post" action="script/scriptModifIdees.php" autocomplete="on">
+        <form method="post" action="script/scriptModifEvenement.php" autocomplete="on">
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8 idees">
@@ -29,6 +29,11 @@
                         <input type="text" class="form-control" id="dateHeureActivite" name="dateHeureActivite" maxlength="19" Value="<?= $idees['date_evenement']; ?>"/>
                         <label for="description">Description (255 caractères max)</label>
                         <textarea style="resize:none" class="form-control" id="description" name="description" maxlength="255"><?= $idees['description_evenement']; ?></textarea>
+
+                        <div>
+                            <input type="checkbox" name="valide" value="2">
+                            <label>L'évenement est passé !</label>
+                        </div>
 
                         <input type='hidden' name="id_evenement" Value="<?= $idees['ID_evenement']; ?>"/>
                         <tr>

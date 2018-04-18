@@ -17,6 +17,9 @@ if($data==null){
     $sql = 'INSERT INTO VOTER (ID_utilisateur, ID_evenement) VALUES ('.$_SESSION['id'].','.$_POST['id_evenement'].')';
     $bdd->exec($sql);
 
+}else{
+    $sql='DELETE FROM VOTER WHERE ID_utilisateur='.$_SESSION['id'].' AND ID_evenement='.$_POST['id_evenement'];
+    $bdd->exec($sql);
 }
 $voteIdee->closeCursor();
 

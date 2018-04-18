@@ -30,12 +30,13 @@
 
         <?php
             }}
+
         $readIdeas = $bdd->query('SELECT nom_evenement, description_evenement, date_evenement, ID_evenement FROM evenements WHERE valide=0 ORDER BY date_evenement ASC');
         while( $idees = $readIdeas->fetch()){
 
+
+
         ?>
-
-
         <form method="post" action="script/scriptvoteI.php" >
             <div class="row">
                 <div class="col-md-2"></div>
@@ -49,7 +50,14 @@
 
                     <input type='hidden' name="id_evenement" value="<?= $idees['ID_evenement']; ?>"/>
 
-                    <button type="submit" class="btn btn-primary">Voter pour cette idée !</button>
+                    <?php
+                        $nbLike=$bdd->query( 'SELECT COUNT( ID_evenement ) AS nbVote FROM VOTER WHERE ID_evenement='.$idees['ID_evenement']);
+                        $like=$nbLike->fetch();
+                    ?>
+
+                    <button type="submit" class="btn btn-primary">Voter pour cette idée !  <span class="badge badge-light"><?= $like['nbVote'] ?> </span></button>
+
+
                 </div>
                 <div class="col-md-2"></div>
             </div>

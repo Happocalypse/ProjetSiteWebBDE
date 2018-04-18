@@ -7,24 +7,24 @@
 
         <div class="collapse navbar-collapse justify-content-center wrapper" id="navbarSupportedContent">
             <ul class="navbar-nav mt-2 mt-lg-2 menuPrincipal">
-                <li class="nav-item link-wrapper accueil yes">
+                <li class="nav-item link-wrapper accueil">
                     <a class="nav-link link sixth before after" href="accueil.php">Accueil</a>
                 </li>
-                <li class="nav-item link-wrapper staff yes">
+                <li class="nav-item link-wrapper staff">
                     <a class="nav-link link sixth before after" href="staff.php">Staff</a>
                 </li>
-                <li class="nav-item link-wrapper evenements yes">
+                <li class="nav-item link-wrapper evenements">
                     <a class="nav-link link sixth before after" href="evenements.php">Evenements</a>
                 </li>
                 <?php if(isset($_SESSION['id'])){ ?>
-                <li class="nav-item link-wrapper boiteAIdees yes">
+                <li class="nav-item link-wrapper boiteAIdees">
                     <a class="nav-link link sixth before after" href="boiteAIdees.php">Boite à idées</a>
                 </li>
                 <?php } ?>
-                <li class="nav-item link-wrapper photos yes">
+                <li class="nav-item link-wrapper photos">
                     <a class="nav-link link sixth before after" href="photos.php">Photos</a>
                 </li>
-                <li class="nav-item link-wrapper boutique yes">
+                <li class="nav-item link-wrapper boutique">
                     <a class="nav-link link sixth before after" href="boutique.php">Boutique</a>
                 </li>
                 <?php if(isset($_SESSION['id'])){ ?>
@@ -42,7 +42,7 @@
                     </div>
                 </li>
                 <?php } else{ ?>
-                <li class="nav-item link-wrapper connexion yes">
+                <li class="nav-item link-wrapper connexion">
                     <a class="nav-link link sixth before after" href="formsConnexion.php">Connexion</a>
                 </li>
                 <?php } ?>
