@@ -13,14 +13,14 @@
     <body>
        <?php
 // Test si le fichier a bien été envoyé et s'il n'y a pas d'erreur
-if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0){
+if(isset($_FILES['monfichier']['name']) and $_FILES['monfichier']['error'] == 0){
 
         // Test si l'extension est autorisé
         $infosfichier=pathinfo($_FILES['monfichier']['name']);
         $extension_upload=$infosfichier['extension'];
         $extension_autorisees=array('jpg','jpeg','png');
 
-        if(isset($_POST['username']) AND isset($_POST['nomProduit']) AND isset($_POST['prixProduit']) AND isset($_POST['descriptionProduit'])){
+        if(isset($_POST['nomProduit']) and isset($_POST['prixProduit']) and isset($_POST['descriptionProduit']) and isset($_POST['categorie_'])){
 
             include('script/connexionBDD.php');
 
@@ -37,16 +37,18 @@ if(isset($_FILES['monfichier']['name']) AND $_FILES['monfichier']['error'] == 0)
 
             $today=date("Y-m-d H:i:s");
 
-            //Faire une transaction
+//            FAIRE UNE TRANSACTION
 
             $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur) VALUES ('".$_POST["nomProduit"]."','". $today ."','".'uploads_articles/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username'].")";
-
             $bdd->exec($sql);
+
+//            FAUDRAIS FAIRE UNE VERIFICATION SUR ID_PHOTO POUR SAVOIR SI IL EST CREER PARCE QUE LA LA SECONDE REQUETE SQL NE FONCTIONNE PAS
+
 
             // Mettre des categories pour rendre le code fonctionnel
-            $sql = "INSERT INTO produits (nom_produit, description_produit, prix_produit, ID_photo) VALUES ('".$_POST["nomProduit"]."','".$_POST["descriptionProduit"]."',". (int)$_POST['prixProduit'].",". $donnees['ID_photo'] .")";
+            $sql = "INSERT INTO produits (nom_produit, description_produit, prix_produit, ID_categorie , ID_photo) VALUES ('".$_POST["nomProduit"]."','".$_POST["descriptionProduit"]."',". (int)$_POST['prixProduit'].",". (int)$_POST['categorie_'].",". $donnees['ID_photo'] .")";
 
-            $bdd->exec($sql);
+            $bdd2->exec($sql);
 
 
         }

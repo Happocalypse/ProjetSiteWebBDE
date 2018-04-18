@@ -84,6 +84,7 @@
                         <a class="dropdown-item" href="boutique.php">Défaut</a>
                         <a class="dropdown-item" href="boutique.php?categorie=croissant">Prix croissant</a>
                         <a class="dropdown-item" href="boutique.php?categorie=decroissant">Prix décroissant</a>
+                        <a class="dropdown-item" href="boutique.php?categorie=categorie">Catégorie</a>
                     </div>
                 </div>
             </div>
@@ -98,6 +99,10 @@
             }if ($_GET['categorie']=='decroissant'){
                 $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image,  `description_produit` ,  `prix_produit`  FROM  `produits`  INNER JOIN photos WHERE photos.ID_photo = produits.ID_photo ORDER BY prix_produit DESC');
             }
+
+            if ($_GET['categorie']=='categorie'){
+                $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image,  `description_produit` ,  `prix_produit` , `ID_evenement`  FROM  `produits`  INNER JOIN photos WHERE photos.ID_photo = produits.ID_photo ORDER BY ID_categorie');
+        }
 
         }else{
             $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image,  `description_produit` ,  `prix_produit`  FROM  `produits`  INNER JOIN photos WHERE photos.ID_photo = produits.ID_photo');

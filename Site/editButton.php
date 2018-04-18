@@ -1,4 +1,4 @@
-<div id="position_button" class="dropleft">
+<div id="editButton" class="dropleft">
 	<button type="button" class="btn btn-primary" data-toggle="dropdown">
     		Edition
   		</button>

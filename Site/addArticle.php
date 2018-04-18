@@ -27,6 +27,11 @@
         </div>
 
         <div class="form-group">
+        <label for="categorie_">Catégorie : </label>
+        <input class="form-control" type="number" id="categorie_" name="categorie_" min="1" max="3" placeholder="1 = vêtement ; 2 = goodies ; 3 = nourriture"/>
+        </div>
+
+        <div class="form-group">
         <label for="prixProduit">Prix :</label>
         <input class="form-control" type="number" name="prixProduit" id="prixProduit"/>
         </div>
