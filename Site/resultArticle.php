@@ -24,10 +24,11 @@ if(isset($_FILES['monfichier']['name']) and $_FILES['monfichier']['error'] == 0)
 
             include('script/connexionBDD.php');
 
-            // On récupère le contenu du champ ID_photo
+            // On récupère le contenu du champ nom_evenement
             $reponse=$bdd->query('SELECT (ID_photo) FROM photos ORDER BY ID_photo Desc LIMIT 0,1');
 
                 if($donnees = $reponse->fetch()){
+					//TASK - FAIRE UN TRUC MIEUX\\
                     $donnees['ID_photo']++;
                 }
                 else{
@@ -37,31 +38,21 @@ if(isset($_FILES['monfichier']['name']) and $_FILES['monfichier']['error'] == 0)
 
             $today=date("Y-m-d H:i:s");
 
-			$sql = "INSERT INTO produits (nom_produit, description_produit, prix_produit, ID_categorie, ID_photo) VALUES ('".$_POST['nomProduit']."','".$_POST['descriptionProduit']."',". (int)$_POST['prixProduit'].",". (int)$_POST['categorie'].",". $donnees['ID_photo'] .")";
+//            FAIRE UNE TRANSACTION
+
+            $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur) VALUES ('".$_POST["nomProduit"]."','". $today ."','".'uploads_articles/'.$donnees['ID_photo'] . '.' . $extension_upload."',".$_SESSION['id'].")";
             $bdd->exec($sql);
 
-//			$reponse1=$bdd->query('SELECT (ID_produit) FROM produits ORDER BY ID_produit DESC');
-//			$data=$reponse->fetch();
-//
-//			$sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur, ID_produit) VALUES ('".$_POST['nomProduit']."','". $today ."','".'uploads_articles/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_POST['username']." , ".$data['ID_produit'].")";
-//            $bdd->exec($sql);
-//
-//
-			echo $_POST['nomProduit']. '<br />';
-			echo $_POST['descriptionProduit'].'<br />';
-			echo $_POST['prixProduit'].'<br />';
-			echo $_POST['categorie'].'<br />';
-			echo $donnees['ID_photo'].'<br />';
+//            FAUDRAIS FAIRE UNE VERIFICATION SUR ID_PHOTO POUR SAVOIR SI IL EST CREER PARCE QUE LA LA SECONDE REQUETE SQL NE FONCTIONNE PAS
 
 
-//
-//
-//
-//        	$reponse1->closeCursor();
+            // Mettre des categories pour rendre le code fonctionnel
+            $sql = "INSERT INTO produits (nom_produit, description_produit, prix_produit, ID_categorie , ID_photo) VALUES ('".$_POST["nomProduit"]."','".$_POST["descriptionProduit"]."',". (int)$_POST['prixProduit'].",". (int)$_POST['categorie'].",". $donnees['ID_photo'] .")";
+
+            $bdd2->exec($sql);
 
 
-
-
+        }
             if(in_array($extension_upload, $extension_autorisees)){
 
                 // Création automatique du répertoire
@@ -76,7 +67,7 @@ if(isset($_FILES['monfichier']['name']) and $_FILES['monfichier']['error'] == 0)
                 <p>Redirection automatique dans 10s ou <a href='boutique.php'>cliquez ici</a></p>";
             }
 }
-}
+
 ?>
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
