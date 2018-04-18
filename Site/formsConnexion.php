@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="CSS/connexion.css">
-        <title>TITRE</title>
+        <title>Connexion/Inscription</title>
         <?php include 'script/scriptBootStrapHead.php' ?>
     </head>
     <body>
