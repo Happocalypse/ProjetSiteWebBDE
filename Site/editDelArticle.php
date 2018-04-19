@@ -33,7 +33,7 @@
                                     <?php
                                     echo '<th scope="col"> <input class="form-control" type="text" name="nomProduit" value="'.$data['nom_produit'].'"/> </th>';
                                     echo '<th scope="col"><textarea class="form-control"  name="descriptionProduit">'.$data['description_produit'].'</textarea></th>';
-                                    echo '<th scope="col"> <input class="form-control" type="number" name="prixProduit" value='.$data['prix_produit'].' /> </th>';
+                                    echo '<th scope="col"> <input class="form-control" type="number" step="0.01" name="prixProduit" value='.$data['prix_produit'].' /> </th>';
 
 
                                     ?>

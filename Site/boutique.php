@@ -13,7 +13,7 @@
 
 <body>
     <?php include 'navbar.php' ?>
-	    <!-- Vérifier si l'utilisateur est membre du BDE -->
+    <!-- Vérifier si l'utilisateur est membre du BDE -->
     <?php include 'script/connexionBDD.php';
     if(isset($_SESSION['id'])) {
 
@@ -28,7 +28,6 @@
         <?php include 'top3Vente.php';?>
 
         <section>
-
             <article>
                 <div id="shopCarousel" class="carousel slide" data-ride="carousel">
 
@@ -37,7 +36,6 @@
                         <li data-target="#shopCarousel" data-slide-to="1"></li>
                         <li data-target="#shopCarousel" data-slide-to="2"></li>
                     </ul>
-
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src="<?php echo $urlTop1 ?>" alt="Slide1">
@@ -45,7 +43,9 @@
                                 <h3 style="color: red;">
                                     #1 DES VENTES
                                 </h3>
-                                <p><?php echo $nomTop1 ?></p>
+                                <p>
+                                    <?php echo $nomTop1 ?>
+                                </p>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -54,7 +54,9 @@
                                 <h3 style="color: red;">
                                     #2 DES VENTES
                                 </h3>
-                                <p><?php echo $nomTop2 ?></p>
+                                <p>
+                                    <?php echo $nomTop2 ?>
+                                </p>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -63,11 +65,12 @@
                                 <h3 style="color: red;">
                                     #3 DES VENTES
                                 </h3>
-                                <p><?php echo $nomTop3 ?></p>
+                                <p>
+                                    <?php echo $nomTop3 ?>
+                                </p>
                             </div>
                         </div>
                     </div>
-
                     <!-- Left and right carousel controls -->
                     <a class="carousel-control-prev" href="#shopCarousel" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
@@ -75,7 +78,6 @@
                     <a class="carousel-control-next" href="#shopCarousel" data-slide="next">
     <span class="carousel-control-next-icon"></span>
   </a>
-
                 </div>
             </article>
 
@@ -120,14 +122,12 @@
                 echo '<h1>Il n\'y a pas de produit dans la base de donnée.</h1>';
              }
 
-            else
+                else
 
-            { ?>
-            <div class="container-fluid">
-                <div class="row">
-                    <?php
-            do{
-             ?>
+                { ?>
+                <div class="container-fluid">
+                    <div class="row">
+         <?php do{ ?>
                         <div class="col-s-5">
                             <div class="card">
                                 <img class="card-img-top" src="<?php echo $data['url_image'] ?>" alt="Product Card">
@@ -155,17 +155,15 @@
                             </div>
                         </div>
 
-
-        	<?php }while($data=$reponse->fetch());
+                        <?php }while($data=$reponse->fetch());
          	$reponse->closeCursor();
          	} ?>
                 </div>
             </div>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
-        <?php include 'script/scriptBootStrapBody.php' ?>
+            <?php include 'script/scriptBootStrapBody.php' ?>
 
-    <?php include 'footer.php' ?>
+            <?php include 'footer.php' ?>
 </body>
-
 </html>

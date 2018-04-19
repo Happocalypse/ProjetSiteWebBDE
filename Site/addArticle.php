@@ -33,7 +33,7 @@
 
         <div class="form-group">
         <label for="prixProduit">Prix :</label>
-        <input class="form-control" type="number" name="prixProduit" id="prixProduit"/>
+        <input class="form-control" type="number" step="0.01" name="prixProduit" id="prixProduit"/>
         </div>
 
         <div class="form-group">
