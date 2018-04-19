@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-
         <meta charset="utf-8" />
         <link rel="stylesheet" href="CSS/article.css">
         <?php include 'script/scriptBootStrapHead.php' ?>
         <title>Publication d'un article</title>
-
     </head>
-
     <header><?php include 'navbar.php';?></header>
     <body>
 
@@ -33,7 +30,7 @@
 
         <div class="form-group">
         <label for="prixProduit">Prix :</label>
-        <input class="form-control" type="number" name="prixProduit" id="prixProduit"/>
+        <input class="form-control" type="number" step="0.01" name="prixProduit" id="prixProduit"/>
         </div>
 
         <div class="form-group">
@@ -45,7 +42,6 @@
 
         </form>
         </div>
-
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>

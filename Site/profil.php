@@ -8,7 +8,7 @@
     </head>
     <body>
         <?php include 'navbar.php' ?>
-        <div class="wrapper">
+        <div class="wrapper_profil">
             <div class="container-fluid">
                 <h1>Profil</h1>
                 <form method="post" action="script/modificationInfo.php">

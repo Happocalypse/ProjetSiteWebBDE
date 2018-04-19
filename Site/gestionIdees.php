@@ -35,10 +35,10 @@
                             <label>Passer l'idée en évenement</label>
                         </div>
                         <input type='hidden' name="id_evenement" Value="<?= $idees['ID_evenement']; ?>"/>
-                        <tr>
-                            <td><button type="submit" class="btn btn-warning" name="saveIdee">Enregistrer les changements</button></td>
-                            <td><button type="" class="btn btn-danger" name="supprIdee">Suppression de l'idee</button></td>
-                        </tr>
+                        <div align="center"><tr>
+                            <td><button type="submit" class="btn btn-warning ADM" name="saveIdee">Enregistrer les changements</button></td>
+                            <td><button type="" class="btn btn-danger ADM" name="supprIdee">Suppression de l'idee</button></td>
+                            </tr></div>
                     </div>
                 </div>
                 <div class="col-md-2"></div>
