@@ -1,6 +1,6 @@
 <div class="container">
     <!-- Button to Open the Modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    <button id="panierPosition" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Mon panier
   </button>
 

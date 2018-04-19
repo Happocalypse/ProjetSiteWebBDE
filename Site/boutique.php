@@ -42,25 +42,28 @@
                         <div class="carousel-item active">
                             <img src="<?php echo $urlTop1 ?>" alt="Slide1">
                             <div class="carousel-caption">
-                                <h3>
-                                    <?php echo $nomTop1 ?>
+                                <h3 style="color: red;">
+                                    #1 DES VENTES
                                 </h3>
+                                <p><?php echo $nomTop1 ?></p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="<?php echo $urlTop2 ?>" alt="Slide2">
                             <div class="carousel-caption">
-                                <h3>
-                                    <?php echo $nomTop2 ?>
+                                <h3 style="color: red;">
+                                    #2 DES VENTES
                                 </h3>
+                                <p><?php echo $nomTop2 ?></p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="<?php echo $urlTop3 ?>" alt="Slide3">
                             <div class="carousel-caption">
-                                <h3>
-                                    <?php echo $nomTop3 ?>
+                                <h3 style="color: red;">
+                                    #3 DES VENTES
                                 </h3>
+                                <p><?php echo $nomTop3 ?></p>
                             </div>
                         </div>
                     </div>
@@ -75,7 +78,9 @@
 
                 </div>
             </article>
+
             <div id="categorieCard">
+                <?php include 'panier.php' ?>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
                     Trier par :
@@ -94,18 +99,18 @@
 
         if (isset($_GET['categorie'])){
             if ($_GET['categorie']=='croissant'){
-                $reponse=$bdd->query('SELECT produits.ID_produit, `nom_produit` , photos.url_image, `description_produit` , `prix_produit`  FROM `produits` INNER JOIN photos ORDER BY prix_produit');
+                $reponse=$bdd->query('SELECT produits.ID_produit, `nom_produit` , photos.url_image, `description_produit` , `prix_produit`  FROM `produits` INNER JOIN photos ON produits.ID_photo = photos.ID_photo ORDER BY prix_produit');
 
             }if ($_GET['categorie']=='decroissant'){
-                $reponse=$bdd->query('SELECT produits.ID_produit, `nom_produit` , photos.url_image, `description_produit` , `prix_produit`  FROM `produits` INNER JOIN photos ORDER BY prix_produit DESC');
+                $reponse=$bdd->query('SELECT produits.ID_produit, `nom_produit` , photos.url_image, `description_produit` , `prix_produit`  FROM `produits` INNER JOIN photos ON produits.ID_photo = photos.ID_photo ORDER BY prix_produit DESC');
             }
 
             if ($_GET['categorie']=='categorie'){
-                $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image, `description_produit` , `prix_produit` , `ID_evenement` FROM  `produits`  INNER JOIN photos ORDER BY ID_categorie');
+                $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image, `description_produit` , `prix_produit` , `ID_evenement` FROM  `produits`  INNER JOIN photos ON produits.ID_photo = photos.ID_photo ORDER BY ID_categorie');
         }
 
         }else{
-            $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image, `description_produit` , `prix_produit` FROM `produits` INNER JOIN photos ON produits.ID_photo= photos.ID_photo');
+            $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image, `description_produit` , `prix_produit` FROM `produits` INNER JOIN photos ON produits.ID_photo = photos.ID_photo');
 
         }
 
@@ -156,8 +161,8 @@
          	} ?>
                 </div>
             </div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
-        <?php include 'panier.php' ?>
         <?php include 'script/scriptBootStrapBody.php' ?>
 
     <?php include 'footer.php' ?>
