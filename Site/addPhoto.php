@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="CSS/photos.css">
         <?php include 'script/scriptBootStrapHead.php' ?>
         <title>Publication d'une photo</title>
+        <?php include('script/validateForm.php'); ?>
 
     </head>
 
@@ -25,7 +26,7 @@
 
         <div class="container" id="placement">
         <h1>Formulaire publication photo</h1>
-        <form method="post" action="resultPhoto.php" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <form method="post" action="resultPhoto.php" enctype="multipart/form-data" onsubmit="return validateForm('une image')">
 
         <div class="form-group">
             <label for="titre_photo">Titre de l'image</label>
@@ -64,17 +65,7 @@
             echo "<h1>Vous ne pouvez pas publier une photo car il n'y a pas d'événement.</h1>";
         }
         ?>
-        <script>
-        function validateForm() {
-            if (confirm("Vous désirez envoyer l'image?")) {
-                return true
-            }
-          else {
-            return false;
-          }
 
-        }
-        </script>
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>

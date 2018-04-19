@@ -27,6 +27,11 @@
         </div>
 
         <div class="form-group">
+        <label for="categorie">Categorie : </label>
+        <input class="form-control" type="number" id="categorie" name="categorie" min="1" max="3" placeholder="1 = vêtement ; 2 = goodies ; 3 = nourriture"/>
+        </div>
+
+        <div class="form-group">
         <label for="prixProduit">Prix :</label>
         <input class="form-control" type="number" name="prixProduit" id="prixProduit"/>
         </div>
@@ -36,8 +41,6 @@
             <input class="form-control" type="file" name="monfichier" id="piecejointe" />
             <label for="piecejointe">Format accepté : png, jpeg et jpg</label>
         </div>
-        <!-- TASK : Changer 1 par le nom de l'utilisateur -->
-        <input type="hidden" name="username" value=1 />
         <button type="submit" class="btn btn-default">Publier</button>
 
         </form>

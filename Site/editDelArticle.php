@@ -23,6 +23,14 @@
         if(isset($_POST['deleteButton'])){
 try{
 
+			$reponse=$bdd->query('SELECT ID_photo FROM produits WHERE ID_produit='.$_POST['idProduit']);
+        	$data8=$reponse->fetch();
+
+			$sql='DELETE FROM photos WHERE ID_photo='.$data8['ID_photo'];
+			$bdd->exec($sql);
+
+			$reponse->closeCursor();
+
             $sql='DELETE FROM COMPORTER WHERE ID_produit='.$_POST['idProduit'];
             $bdd->exec($sql);
 
@@ -31,6 +39,7 @@ try{
 
             $slq='DELETE FROM PANIER WHERE ID_produit='.$_POST['idProduit'];
             $bdd->exec($sql);
+
 
 }catch (Exception $e) {
     echo 'Exception reçue : ',  $e->getMessage(), "\n";

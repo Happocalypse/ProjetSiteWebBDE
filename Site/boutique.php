@@ -13,19 +13,19 @@
 
 <body>
     <?php include 'navbar.php' ?>
+	    <!-- Vérifier si l'utilisateur est membre du BDE -->
     <?php include 'script/connexionBDD.php';
     if(isset($_SESSION['id'])) {
 
             if($_SESSION['groupe']==2){
                 ?>
-    <!-- Vérifier si l'utilisateur est membre du BDE -->
+
     <?php include 'editButton.php'?>
     <?php
             }
         }
     ?>
         <?php include 'top3Vente.php';?>
-
 
         <section>
 
@@ -65,7 +65,7 @@
                         </div>
                     </div>
 
-                    <!-- Left and right controls -->
+                    <!-- Left and right carousel controls -->
                     <a class="carousel-control-prev" href="#shopCarousel" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
   </a>
@@ -84,6 +84,7 @@
                         <a class="dropdown-item" href="boutique.php">Défaut</a>
                         <a class="dropdown-item" href="boutique.php?categorie=croissant">Prix croissant</a>
                         <a class="dropdown-item" href="boutique.php?categorie=decroissant">Prix décroissant</a>
+                        <a class="dropdown-item" href="boutique.php?categorie=categorie">Catégorie</a>
                     </div>
                 </div>
             </div>
@@ -93,14 +94,18 @@
 
         if (isset($_GET['categorie'])){
             if ($_GET['categorie']=='croissant'){
-                $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image,  `description_produit` ,  `prix_produit`  FROM  `produits`  INNER JOIN photos WHERE photos.ID_photo = produits.ID_photo ORDER BY prix_produit');
+                $reponse=$bdd->query('SELECT produits.ID_produit, `nom_produit` , photos.url_image, `description_produit` , `prix_produit`  FROM `produits` INNER JOIN photos ORDER BY prix_produit');
 
             }if ($_GET['categorie']=='decroissant'){
-                $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image,  `description_produit` ,  `prix_produit`  FROM  `produits`  INNER JOIN photos WHERE photos.ID_photo = produits.ID_photo ORDER BY prix_produit DESC');
+                $reponse=$bdd->query('SELECT produits.ID_produit, `nom_produit` , photos.url_image, `description_produit` , `prix_produit`  FROM `produits` INNER JOIN photos ORDER BY prix_produit DESC');
             }
 
+            if ($_GET['categorie']=='categorie'){
+                $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image, `description_produit` , `prix_produit` , `ID_evenement` FROM  `produits`  INNER JOIN photos ORDER BY ID_categorie');
+        }
+
         }else{
-            $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image,  `description_produit` ,  `prix_produit`  FROM  `produits`  INNER JOIN photos WHERE photos.ID_photo = produits.ID_photo');
+            $reponse=$bdd->query('SELECT produits.ID_produit,  `nom_produit` , photos.url_image, `description_produit` , `prix_produit` FROM `produits` INNER JOIN photos ON produits.ID_photo= photos.ID_photo');
 
         }
 
@@ -125,7 +130,7 @@
                                     <h5 class="card-title">
                                         <?php echo $data['nom_produit'] ?>
                                     </h5>
-                                    <p class="card-text">
+                                    <p class="card-text text-justify">
                                         <?php echo $data['description_produit'] ?>
                                     </p>
 
@@ -146,9 +151,9 @@
                         </div>
 
 
-                        <?php }while($data=$reponse->fetch());
-         $reponse->closeCursor();
-         } ?>
+        	<?php }while($data=$reponse->fetch());
+         	$reponse->closeCursor();
+         	} ?>
                 </div>
             </div>
 
