@@ -43,10 +43,7 @@ if(isset($_FILES['monfichier']['name']) and $_FILES['monfichier']['error'] == 0)
             $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur) VALUES ('".$_POST["nomProduit"]."','". $today ."','".'uploads_articles/'.$donnees['ID_photo'] . '.' . $extension_upload."',".$_SESSION['id'].")";
             $bdd->exec($sql);
 
-//            FAUDRAIS FAIRE UNE VERIFICATION SUR ID_PHOTO POUR SAVOIR SI IL EST CREER PARCE QUE LA LA SECONDE REQUETE SQL NE FONCTIONNE PAS
 
-
-            // Mettre des categories pour rendre le code fonctionnel
             $sql = "INSERT INTO produits (nom_produit, description_produit, prix_produit, ID_categorie , ID_photo) VALUES ('".$_POST["nomProduit"]."','".$_POST["descriptionProduit"]."',". (int)$_POST['prixProduit'].",". (int)$_POST['categorie'].",". $donnees['ID_photo'] .")";
 
             $bdd2->exec($sql);
