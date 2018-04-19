@@ -18,7 +18,6 @@ include('connexionBDD.php');
                     }
                  $reponse->closeCursor();
             }
-            // Fermeture pour permettre d'être de nouveau exécutée
 
             // Stockage du commentaire lié à une photo dans la BDD
             if(isset($_POST['sendButton']) and isset($_POST['idPhotoComment']) and isset($_POST['comment']) )

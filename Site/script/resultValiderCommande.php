@@ -7,7 +7,7 @@ if(isset($_POST['validerCommande'])){
     date_default_timezone_set('Europe/Paris');
     $today = date("Y-m-d H:i:s");
 
-    // Créer une commande
+    // Insère la commande
     $sql='INSERT INTO commandes (date_commande, ID_utilisateur) VALUES ("'.$today.'",'.$_SESSION['id'].')';
     $bdd->exec($sql);
 
@@ -35,6 +35,17 @@ if(isset($_POST['validerCommande'])){
     // SUPPRIMER PANIER
     $sql='DELETE FROM PANIER WHERE ID_utilisateur='.$_SESSION['id'];
     $bdd->exec($sql);
+
+//ENVOIE LE MAIL A UN MEMBRE DU BDE
+//    $reponse=$bdd->query('SELECT quantite, ID_produit FROM PANIER WHERE ID_utilisateur='.$_SESSION['id']);
+//    while($MAIL=$reponse->fetch()){
+//
+//        $to = 'membre.bde@viacesi.fr';
+//        $subject = 'Signalement d\'une image';
+//        $message = 'L\'ID numero .$_SESSION['id']. a effectuer une commande comportant  ;
+//        mail($to, $subject, $message);
+//
+//    }$reponse->closeCursor();
 }
 
 echo('<script>alert("Votre commande à été envoyé!");</script>');
