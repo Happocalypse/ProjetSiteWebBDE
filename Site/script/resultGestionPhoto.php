@@ -1,10 +1,12 @@
 <?php
 include('connexionBDD.php');
 
-if(isset($_POST['idPhoto']) and isset($_POST['titrePhoto']) and isset($_POST['datePublication']) and isset($_POST['editButton'])){
+if(isset($_POST['idPhoto']) and isset($_POST['titrePhoto']) and isset($_POST['editButton'])){
 
-            $sql = 'UPDATE photos SET titre_photo="'.$_POST['titrePhoto'].'" WHERE ID_photo='.$_POST['idPhoto'];
-            $bdd->exec($sql);
+    $_POST['titrePhoto']=htmlspecialchars($_POST['titrePhoto']);
+
+    $sql = 'UPDATE photos SET titre_photo="'.$_POST['titrePhoto'].'" WHERE ID_photo='.$_POST['idPhoto'];
+    $bdd->exec($sql);
 
 }
 

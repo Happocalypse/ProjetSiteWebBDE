@@ -73,7 +73,7 @@
                     <?php
                     echo "<div class=\"row\">";
                         if($data == NULL){
-                            echo "Il y a aucune photo sur l'événénement.";
+                            echo "Il y a aucune photo sur les événements.";
                         }else{
                             do{
                                 ?>
@@ -85,90 +85,76 @@
                                         <div class="caption" style="display:flex;justify-content:flex-end;">
 
                                         <?php
-                                                if(isset($_SESSION['id'])) {?>
-                                                    <form method="post" action="script/scriptPhoto.php">
-                                                        <?php
-                                                        $reponseLike=$bdd3->query('SELECT COUNT( ID_photo ) AS nbLike FROM AIMER WHERE ID_photo='.$data['ID_photo']);
-                                                        $dataLike=$reponseLike->fetch();
-                                                        ?>
+                                            if(isset($_SESSION['id'])) {?>
+                                                <form method="post" action="script/scriptPhoto.php">
+                                                    <?php
+                                                    $reponseLike=$bdd3->query('SELECT COUNT( ID_photo ) AS nbLike FROM AIMER WHERE ID_photo='.$data['ID_photo']);
+                                                    $dataLike=$reponseLike->fetch();
+                                                    ?>
 
-                                                        <button type="submit" class="btn btn-link" name="likeButton"><img src="images/like_logo.png" alt="like_logo" /><span class="badge badge-light"><?php echo $dataLike['nbLike'] ?></span></button>
-                                                        <?php echo '<input type=hidden name="idPhoto" value='.$data['ID_photo'].' />'; ?>
-                                                    </form>
-
-                                                <?php } ?>
-
-
+                                                    <button type="submit" class="btn btn-link" name="likeButton"><img src="images/like_logo.png" alt="like_logo" /><span class="badge badge-light"><?php echo $dataLike['nbLike'] ?></span></button>
+                                                    <?php echo '<input type=hidden name="idPhoto" value='.$data['ID_photo'].' />'; ?>
+                                                </form>
+                                        <?php } ?>
 
                                             <!-- Trigger the modal with a button -->
-                                            <button class="btn btn-link" type="button" data-toggle="modal" data-target="#<?php echo $data['ID_photo']; ?>">
-                                                <img src="images/comment_logo.png" alt="comment_logo"/>
-                                            </button>
+                                        <button class="btn btn-link" type="button" data-toggle="modal" data-target="#<?php echo $data['ID_photo']; ?>">
+                                            <img src="images/comment_logo.png" alt="comment_logo"/>
+                                        </button>
 
-                                            <button class="btn btn-link">
-                                                <a href="<?php echo $data['url_image'] ?>" download title="Téléchargement de l'image">
-                                                    <img src="images/download_logo.png" alt="download_logo" />
-                                                </a>
-                                            </button>
-
-                                            <?php
-                                                if(isset($_SESSION['id'])) {?>
-                                                    <form method="post" action="script/scriptPhoto.php">
-                                                        <button type="submit" class="btn btn-link" name="warningButton"><img src="images/warning_logo.png" alt="warning_logo" /></button>
-
-                                                        <?php echo '<input type=hidden name="titreImage" value='.$data['titre_photo'].' />'; ?>
-                                                        <?php echo '<input type=hidden name="urlImage" value='.$data['url_image'].' />'; ?>
-                                                    </form>
-
-                                                <?php } ?>
-
-
+                                        <button class="btn btn-link">
+                                            <a href="<?php echo $data['url_image'] ?>" download title="Téléchargement de l'image">
+                                                <img src="images/download_logo.png" alt="download_logo" />
+                                            </a>
+                                        </button>
+                                        <?php
+                                            if(isset($_SESSION['id'])) {?>
+                                                <form method="post" action="script/scriptPhoto.php">
+                                                    <button type="submit" class="btn btn-link" name="warningButton"><img src="images/warning_logo.png" alt="warning_logo" /></button>
+                                                    <?php echo '<input type=hidden name="titreImage" value='.$data['titre_photo'].' />'; ?>
+                                                    <?php echo '<input type=hidden name="urlImage" value='.$data['url_image'].' />'; ?>
+                                                </form>
+                                            <?php } ?>
 
                                             <!-- Modal -->
                                             <div id="<?php echo $data['ID_photo']; ?>" class="modal fade" role="dialog">
-                                              <div class="modal-dialog modal-lg">
+                                                <div class="modal-dialog modal-lg">
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h3 class="modal-title">Commentaires</h3>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <?php
 
-                                                <!-- Modal content-->
-                                                <div class="modal-content">
-                                                  <div class="modal-header">
-                                                      <h3 class="modal-title">Commentaires</h3>
-                                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                                  </div>
-                                                  <div class="modal-body">
+                                                            $reponseComment=$bdd2->query('SELECT utilisateurs.ID_utilisateur, utilisateurs.nom,utilisateurs.prenom, commentaire FROM COMMENTER INNER JOIN utilisateurs ON COMMENTER.ID_utilisateur = utilisateurs.ID_utilisateur WHERE ID_photo='.$data['ID_photo']);
+                                                            $dataComment=$reponseComment->fetch();
+                                                            if(!$dataComment==NULL){
+                                                                do{?>
+                                                                   <h5><?php echo $dataComment['prenom'].' '.$dataComment['nom']; ?></h5>
+                                                                  <!-- TASK : Remplacer commentaires par commentaire -->
+                                                                <p><?php echo $dataComment['commentaire']; ?></p>
+                                                                <?php } while($dataComment=$reponseComment->fetch());
+                                                                $reponseComment->closeCursor();
+                                                                echo "<hr>";
+                                                            } ?>
 
-                                                      <?php
-
-                                                $reponseComment=$bdd2->query('SELECT utilisateurs.ID_utilisateur, utilisateurs.nom,utilisateurs.prenom, commentaire FROM COMMENTER INNER JOIN utilisateurs ON COMMENTER.ID_utilisateur = utilisateurs.ID_utilisateur WHERE ID_photo='.$data['ID_photo']);
-                                                $dataComment=$reponseComment->fetch();
-                                                if(!$dataComment==NULL){
-                                                    do{?>
-                                                       <h5><?php echo $dataComment['prenom'].' '.$dataComment['nom']; ?></h5>
-                                                      <!-- TASK : Remplacer commentaires par commentaire -->
-                                                    <p><?php echo $dataComment['commentaire']; ?></p>
-                                                    <?php } while($dataComment=$reponseComment->fetch());
-                                                    $reponseComment->closeCursor();
-                                                    echo "<hr>";
-                                                } ?>
-                                                        <form method="post" action="script/scriptPhoto.php">
-                                                            <div class="form-group">
-                                                                <label for="message-text" class="col-form-label">Message :</label>
-                                                                <textarea class="form-control" id="message-text" name="comment"></textarea>
-                                                            </div>
-                                                            <input type="hidden" name="idPhotoComment" value="<?php echo $data['ID_photo']; ?>" />
-                                                            <button type="submit" class="btn btn-primary" name="sendButton" style="float:right;">Envoyer un message</button>
-                                                        </form>
-                                                  </div>
+                                                            <form method="post" action="script/scriptPhoto.php">
+                                                                <div class="form-group">
+                                                                    <label for="message-text" class="col-form-label">Message :</label>
+                                                                    <textarea class="form-control" id="message-text" name="comment"></textarea>
+                                                                </div>
+                                                                <input type="hidden" name="idPhotoComment" value="<?php echo $data['ID_photo']; ?>" />
+                                                                <button type="submit" class="btn btn-primary" name="sendButton" style="float:right;">Envoyer un message</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
                                                 </div>
-
-                                              </div>
                                             </div>
-
-
+                                        </div>
                                     </div>
                                 </div>
-                              </div>
-
-
                              <?php
                             } while ($data=$reponse->fetch());
                             echo "</div>";

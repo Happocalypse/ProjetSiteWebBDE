@@ -39,6 +39,8 @@ if(isset($_FILES['monfichier']['name']) and $_FILES['monfichier']['error'] == 0)
             $reponse->closeCursor();
 
             $today=date("Y-m-d H:i:s");
+
+            // Evite les injections en remplaçant & : &amp, ' : &quot :
             $_POST['titre_photo']=htmlspecialchars($_POST['titre_photo']);
             $_POST['choix']=htmlspecialchars($_POST['choix']);
 
@@ -48,25 +50,22 @@ if(isset($_FILES['monfichier']['name']) and $_FILES['monfichier']['error'] == 0)
 
 
         }
-            if(in_array($extension_upload, $extension_autorisees)){
 
-                // Création automatique du répertoire
-                if (!file_exists("uploads")) {
-                    mkdir("uploads", 0777, true);
-                }
+        // Parcour le tableau en vérifiant si l'extention est autorisée
+        if(in_array($extension_upload, $extension_autorisees)){
+            // Création automatique du répertoire
+            if (!file_exists("uploads")) {
+                mkdir("uploads", 0777, true);
+            }
 
-
-                // Validation du fichier et stockage définitif sur le serveur à l'adresse uploads/
-                move_uploaded_file($_FILES['monfichier']['tmp_name'],'uploads/' . $donnees['ID_photo'] . '.' . $extension_upload);
-                echo "<h1>L'envoi a bien été effectué</h1>
-                <p>Redirection automatique dans 10s ou <a href='photos.php'>cliquez ici</a></p>";
+            // Validation du fichier et stockage définitif sur le serveur à l'adresse uploads/
+            move_uploaded_file($_FILES['monfichier']['tmp_name'],'uploads/' . $donnees['ID_photo'] . '.' . $extension_upload);
+            echo "<h1>L'envoi a bien été effectué</h1> <p>Redirection automatique dans 10s ou <a href='photos.php'>cliquez ici</a></p>";
             }
     }
 }
 
 ?>
-
-
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>
