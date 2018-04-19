@@ -9,11 +9,52 @@
     <header><?php include 'navbar.php' ?> </header>
     <body>
         <?php include('script/connexionBDD.php'); ?>
-
+        <div style="display:flex;justify-content:center;">
+            <a class="btn btn-primary" href="gestionPhoto.php" role="button">Administration des photos</a>
+            <a class="btn btn-primary" href="gestionPhoto.php?page=commentaires" role="button">Administration des commentaires</a>
+            </div>
         <?php
 
-        $reponse=$bdd->query('SELECT ID_photo, titre_photo, date_publication, url_image, evenements.nom_evenement, utilisateurs.nom, utilisateurs.prenom FROM photos INNER JOIN evenements ON photos.ID_evenement = evenements.ID_evenement INNER JOIN utilisateurs ON photos.ID_utilisateur= utilisateurs.ID_utilisateur');
-        $data=$reponse->fetch();
+        if (isset($_GET['page']) and $_GET['page']=='commentaires'){
+            $reponse=$bdd->query('SELECT commentaire, ID_utilisateur, ID_photo FROM COMMENTER');
+
+            $data=$reponse->fetch();
+            if($data==NULL){
+                echo "<h1>Il n'y a pas de commentaire</h1>";
+            }else{
+                 ?>
+                <div class="container-fluid">
+
+                        <table class="table table-striped">
+                            <tr>
+                                <th scope="col">ID de la photo</th>
+                                <th scope="col">ID de l'utilisateur</th>
+                                <th scope="col">Commentaires</th>
+                                <th scope="col">Opérations</th>
+                            </tr>
+                            <?php do{ ?>
+                             <form method="post" action="script/resultGestionPhoto.php">
+                                <tr>
+                                    <?php
+                                    echo '<th scope="col"> <input class="form-control" type="text" name="commentaire" value="'.$data['commentaire'].'" /> </th>';
+                                    echo '<th scope="col">'.$data['ID_utilisateur'].'</th>';
+                                    echo '<th scope="col">'.$data['ID_photo'].'</th>';
+                                    ?>
+
+                                    <th scope="col"><button type="submit" class="btn btn-secondary" name="editButton">Editer</button>
+                                    <button type="submit" class="btn btn-danger" name="deleteButton">Supprimer</button></th>
+
+                                </tr>
+                                </form>
+                            <?php } while($data=$reponse->fetch()); $reponse->closeCursor(); ?>
+                        </table>
+                </div>
+            <?php }
+
+        }else{
+            $reponse=$bdd->query('SELECT ID_photo, titre_photo, date_publication, url_image, evenements.nom_evenement, utilisateurs.nom, utilisateurs.prenom FROM photos INNER JOIN evenements ON photos.ID_evenement = evenements.ID_evenement INNER JOIN utilisateurs ON photos.ID_utilisateur= utilisateurs.ID_utilisateur');
+
+            $data=$reponse->fetch();
             if($data==NULL){
                 echo "<h1>Il n'y a pas de photo</h1>";
             }else{
@@ -51,7 +92,11 @@
 
                 </div>
             <?php
-            } ?>
+            }
+
+        }?>
+
+
 
     </body>
 </html>

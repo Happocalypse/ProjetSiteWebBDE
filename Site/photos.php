@@ -140,7 +140,7 @@
                                                             $dataComment=$reponseComment->fetch();
                                                             if(!$dataComment==NULL){
                                                                 do{?>
-                                                                   <h5><?php echo $dataComment['prenom'].' '.$dataComment['nom']; ?></h5>
+                                                                   <h5 style="color:red"><?php echo $dataComment['prenom'].' '.$dataComment['nom']; ?></h5>
                                                                     <p><?php echo $dataComment['commentaire']; ?></p>
                                                                 <?php } while($dataComment=$reponseComment->fetch());
                                                                 $reponseComment->closeCursor();
