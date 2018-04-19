@@ -36,12 +36,12 @@
     ?>
 
     <?php
-    // Récupère les événements validées et passées
+
 
     date_default_timezone_set('Europe/Paris');
     $today = date("Y-m-d H:i:s");
 
-    //$reponse=$bdd->query('SELECT * FROM evenements WHERE valide = \'1\' AND date_evenement <= 2018-04-19 10:12:48 ORDER BY date_evenement DESC');
+    // Récupère les événements validées et passées
     $reponse=$bdd->query('SELECT (ID_evenement) FROM evenements WHERE (valide=\'1\' OR valide=\'2\')  AND date_evenement <= "'.$today.'" ORDER BY date_evenement Desc');
     $data=$reponse->fetch();
 
@@ -68,12 +68,13 @@
                     evenements.ID_evenement) WHERE photos.ID_evenement ='.$nom_evenements[$index]);
                     $data=$reponse->fetch();
                     ?>
+                    <br />
                     <h2><?php echo $data['nom_evenement']; ?></h2>
 
                     <?php
                     echo "<div class=\"row\">";
                         if($data == NULL){
-                            echo "Il y a aucune photo sur les événements.";
+                            // Traiter si il n'y a pas d'image concernant l'événement
                         }else{
                             do{
                                 ?>
@@ -82,9 +83,12 @@
                                         <a href="<?php echo $data['url_image']; ?>">
                                             <img src="<?php echo $data['url_image']; ?>" alt="<?php echo $data['titre_photo']; ?>" style="width:393px;height:263px;">
                                         </a>
+
+                                        <!-- Footer de l'image -->
                                         <div class="caption" style="display:flex;justify-content:flex-end;">
 
                                         <?php
+                                            // Fonctionnalité et design du like
                                             if(isset($_SESSION['id'])) {?>
                                                 <form method="post" action="script/scriptPhoto.php">
                                                     <?php
@@ -97,18 +101,22 @@
                                                 </form>
                                         <?php } ?>
 
-                                            <!-- Trigger the modal with a button -->
+                                            <!-- Fonctionnalité et design des commentaires -->
                                         <button class="btn btn-link" type="button" data-toggle="modal" data-target="#<?php echo $data['ID_photo']; ?>">
                                             <img src="images/comment_logo.png" alt="comment_logo"/>
                                         </button>
 
-                                        <button class="btn btn-link">
-                                            <a href="<?php echo $data['url_image'] ?>" download title="Téléchargement de l'image">
-                                                <img src="images/download_logo.png" alt="download_logo" />
-                                            </a>
-                                        </button>
                                         <?php
-                                            if(isset($_SESSION['id'])) {?>
+                                            if(isset($_SESSION['id']) and $_SESSION['groupe']==1) {?>
+
+                                                <!-- Fonctionnalité et design du téléchargement d'une image -->
+                                                <button class="btn btn-link">
+                                                    <a href="<?php echo $data['url_image'] ?>" download title="Téléchargement de l'image">
+                                                        <img src="images/download_logo.png" alt="download_logo" />
+                                                    </a>
+                                                </button>
+
+                                                <!-- Fonctionnalité et design du signalement d'une image -->
                                                 <form method="post" action="script/scriptPhoto.php">
                                                     <button type="submit" class="btn btn-link" name="warningButton"><img src="images/warning_logo.png" alt="warning_logo" /></button>
                                                     <?php echo '<input type=hidden name="titreImage" value='.$data['titre_photo'].' />'; ?>
@@ -133,8 +141,7 @@
                                                             if(!$dataComment==NULL){
                                                                 do{?>
                                                                    <h5><?php echo $dataComment['prenom'].' '.$dataComment['nom']; ?></h5>
-                                                                  <!-- TASK : Remplacer commentaires par commentaire -->
-                                                                <p><?php echo $dataComment['commentaire']; ?></p>
+                                                                    <p><?php echo $dataComment['commentaire']; ?></p>
                                                                 <?php } while($dataComment=$reponseComment->fetch());
                                                                 $reponseComment->closeCursor();
                                                                 echo "<hr>";
