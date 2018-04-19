@@ -4,7 +4,6 @@
   		</button>
 	<div class="dropdown-menu">
 		<a href="addArticle.php"><button id="ajouter" class="dropdown-item" type="button">Ajouter</button></a>
-
 		<a href="editDelArticle.php"> <button class="dropdown-item" type="button">Supprimer/Modifier</button></a>
 	</div>
 </div>

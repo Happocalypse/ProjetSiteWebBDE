@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-
         <meta charset="utf-8" />
         <link rel="stylesheet" href="CSS/article.css">
         <?php include 'script/scriptBootStrapHead.php' ?>
         <title>Publication d'un article</title>
-
     </head>
-
     <header><?php include 'navbar.php';?></header>
     <body>
 
@@ -45,7 +42,6 @@
 
         </form>
         </div>
-
         <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>
