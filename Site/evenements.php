@@ -60,5 +60,6 @@
 
         <?php   } $readIdeas->closeCursor();?>
         <?php include 'script/scriptBootStrapBody.php' ?>
+        <?php include 'footer.php' ?>
     </body>
 </html>

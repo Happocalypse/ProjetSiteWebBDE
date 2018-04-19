@@ -24,6 +24,12 @@ if(isset($_FILES['monfichier']['name']) and $_FILES['monfichier']['error'] == 0)
 
             include('script/connexionBDD.php');
 
+            $_POST['nomProduit']=htmlspecialchars($_POST['nomProduit']);
+            $_POST['prixProduit']=htmlspecialchars($_POST['prixProduit']);
+            $_POST['descriptionProduit']=htmlspecialchars($_POST['descriptionProduit']);
+            $_POST['categorie']=htmlspecialchars($_POST['categorie']);
+
+
             // On récupère le contenu du champ nom_evenement
             $reponse=$bdd->query('SELECT (ID_photo) FROM photos ORDER BY ID_photo Desc LIMIT 0,1');
 
