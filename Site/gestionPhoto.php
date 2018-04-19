@@ -33,11 +33,10 @@
                                 <tr>
                                     <?php
                                     echo '<th scope="col"> <input class="form-control" type="text" name="titrePhoto" value="'.$data['titre_photo'].'"/> </th>';
-                                    echo '<th scope="col"> <input class="form-control" type="text" name="datePublication" value="'.$data['date_publication'].'" /></th>';
+                                    echo '<th scope="col">'.$data['date_publication'].'</th>';
                                     echo '<th scope="col">'.$data['nom_evenement'].'</th>';
-
-
                                     ?>
+
                                     <th scope="col"><p><?php echo $data['prenom'].' '.$data['nom'] ?></th>
                                     <th scope="col"><button type="submit" class="btn btn-secondary" name="editButton">Editer</button>
                                     <button type="submit" class="btn btn-danger" name="deleteButton">Supprimer</button></th>
