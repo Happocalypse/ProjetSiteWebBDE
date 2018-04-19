@@ -28,7 +28,7 @@ if(isset($_FILES['monfichier']['name']) and $_FILES['monfichier']['error'] == 0)
 
             include('script/connexionBDD.php');
             // On récupère le contenu du champ nom_evenement
-                $reponse=$bdd->query('SELECT (ID_photo) FROM photos ORDER BY ID_photo Desc LIMIT 0,1');
+            $reponse=$bdd->query('SELECT (ID_photo) FROM photos ORDER BY ID_photo Desc LIMIT 0,1');
 
                 if($donnees = $reponse->fetch()){
                     $donnees['ID_photo']++;
@@ -36,9 +36,11 @@ if(isset($_FILES['monfichier']['name']) and $_FILES['monfichier']['error'] == 0)
                 else{
                     $donnees['ID_photo']=1;
                 }
-                $reponse->closeCursor();
+            $reponse->closeCursor();
 
             $today=date("Y-m-d H:i:s");
+            $_POST['titre_photo']=htmlspecialchars($_POST['titre_photo']);
+            $_POST['choix']=htmlspecialchars($_POST['choix']);
 
             $sql = "INSERT INTO photos (titre_photo, date_publication, url_image, ID_utilisateur, ID_evenement) VALUES ('".$_POST["titre_photo"]."','". $today ."','".'uploads/'.$donnees['ID_photo'] . '.' . $extension_upload."',".(int)$_SESSION['id'].",".(int)$_POST['choix'].")";
 
