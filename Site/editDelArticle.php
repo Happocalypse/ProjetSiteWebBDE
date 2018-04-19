@@ -12,33 +12,6 @@
 
         <?php
 
-        if(isset($_POST['editButton']) and isset($_POST['idProduit']))
-        {
-            $sql = 'UPDATE produits SET nom_produit="'.$_POST['nomProduit'].'", description_produit="'.$_POST['descriptionProduit'].'", prix_produit="'.$_POST['prixProduit'].'" WHERE ID_produit='.$_POST['idProduit'];
-
-            $bdd->exec($sql);
-        }
-        if(isset($_POST['deleteButton']) and isset($_POST['idProduit']) and isset($_POST['idPhoto'])){
-try{
-
-            $sql='DELETE FROM produits WHERE ID_produit ='.$_POST['idProduit'];
-            $bdd->exec($sql);
-
-            $sql='DELETE FROM  `Projet_BDE_Final`.`photos` WHERE  `photos`.`ID_photo` ='.$_POST['idPhoto'];
-			$bdd->exec($sql);
-
-            $sql='DELETE FROM COMPORTER WHERE ID_produit='.$_POST['idProduit'];
-            $bdd->exec($sql);
-
-            $slq='DELETE FROM PANIER WHERE ID_produit='.$_POST['idProduit'];
-            $bdd->exec($sql);
-
-
-}catch (Exception $e) {
-    echo 'Exception reçue : ',  $e->getMessage(), "\n";
-}
-        }
-
         $reponse=$bdd->query('SELECT ID_produit, nom_produit, description_produit, prix_produit, photos.ID_photo FROM produits INNER JOIN photos ON produits.ID_photo = photos.ID_photo');
         $data=$reponse->fetch();
             if($data==NULL){
@@ -55,7 +28,7 @@ try{
                                 <th scope="col">Opérations</th>
                             </tr>
                             <?php do{ ?>
-                             <form method="post" action="">
+                             <form method="post" action="script/verifButtonDelEdit.php">
                                 <tr>
                                     <?php
                                     echo '<th scope="col"> <input class="form-control" type="text" name="nomProduit" value="'.$data['nom_produit'].'"/> </th>';
