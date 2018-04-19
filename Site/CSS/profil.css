@@ -1,7 +1,8 @@
-.wrapper{
+.wrapper_profil{
     width: 700px;
     display: block;
     margin: auto;
+    margin-bottom: 428px;
 }
 
 .container-fluid{

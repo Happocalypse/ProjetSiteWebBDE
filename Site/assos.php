@@ -7,7 +7,7 @@
     </head>
     <body>
         <?php include 'navbar.php' ?>
-        <section>
+        <section id="assos">
             <h1>ADMIN - Associations</h1>
             <table class="table table-striped">
                 <thead>
@@ -41,8 +41,8 @@
                     ?>
                 </tbody>
             </table>
-            <?php include 'footer.php' ?>
-            <?php include 'script/scriptBootStrapBody.php' ?>
         </section>
+        <?php include 'footer.php' ?>
+        <?php include 'script/scriptBootStrapBody.php' ?>
     </body>
 </html>
