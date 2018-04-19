@@ -28,7 +28,7 @@
 
         <div class="form-group">
         <label for="categorie">Categorie : </label>
-        <input class="form-control" type="number" id="categorie" name="categorie" min="1" max="3" placeholder="1 = vêtement ; 2 = goodies ; 3 = nourriture"/>
+        <input class="form-control" type="number" id="categorie" name="categorie" min="1" max="3" placeholder="1 = Vêtements ; 2 = Goodies ; 3 = Consommables"/>
         </div>
 
         <div class="form-group">

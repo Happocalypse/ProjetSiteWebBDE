@@ -75,7 +75,9 @@
 
                 </div>
             </article>
+
             <div id="categorieCard">
+                <?php include 'panier.php' ?>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
                     Trier par :
@@ -157,7 +159,7 @@
                 </div>
             </div>
 
-        <?php include 'panier.php' ?>
+
         <?php include 'script/scriptBootStrapBody.php' ?>
 
     <?php include 'footer.php' ?>

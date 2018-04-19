@@ -16,29 +16,22 @@
         {
             $sql = 'UPDATE produits SET nom_produit="'.$_POST['nomProduit'].'", description_produit="'.$_POST['descriptionProduit'].'", prix_produit="'.$_POST['prixProduit'].'" WHERE ID_produit='.$_POST['idProduit'];
 
-//            UPDATE produits SET nom_produit='yesPAPA', description_produit='ceci est une description', prix_produit=20 WHERE ID_produit=1
-
             $bdd->exec($sql);
         }
         if(isset($_POST['deleteButton'])){
 try{
 
-			$reponse=$bdd->query('SELECT ID_photo FROM produits WHERE ID_produit='.$_POST['idProduit']);
-        	$data8=$reponse->fetch();
-
-			$sql='DELETE FROM photos WHERE ID_photo='.$data8['ID_photo'];
+			$sql='DELETE FROM photos WHERE ID_photo='.$_POST['idPhoto'];
 			$bdd->exec($sql);
-
-			$reponse->closeCursor();
-
-            $sql='DELETE FROM COMPORTER WHERE ID_produit='.$_POST['idProduit'];
-            $bdd->exec($sql);
-
+//
+//            $sql='DELETE FROM COMPORTER WHERE ID_produit='.$_POST['idProduit'];
+//            $bdd->exec($sql);
+//
             $sql='DELETE FROM produits WHERE ID_produit ='.$_POST['idProduit'];
             $bdd->exec($sql);
-
-            $slq='DELETE FROM PANIER WHERE ID_produit='.$_POST['idProduit'];
-            $bdd->exec($sql);
+//
+//            $slq='DELETE FROM PANIER WHERE ID_produit='.$_POST['idProduit'];
+//            $bdd->exec($sql);
 
 
 }catch (Exception $e) {
@@ -48,7 +41,7 @@ try{
 
         }
 
-        $reponse=$bdd->query('SELECT ID_produit, nom_produit, description_produit, prix_produit FROM produits');
+        $reponse=$bdd->query('SELECT ID_produit, nom_produit, description_produit, prix_produit, photos.ID_photo FROM produits INNER JOIN photos ON produits.ID_photo = photos.ID_photo');
         $data=$reponse->fetch();
             if($data==NULL){
                 echo "<h1>Il n'y a pas de produit dans la boutique</h1>";
@@ -78,6 +71,7 @@ try{
                                     <button type="submit" class="btn btn-danger" name="deleteButton">Supprimer</button></th>
                                     <?php
                                     echo '<input type="hidden" name="idProduit" value='.$data['ID_produit'].' />';
+                                    echo '<input type="hidden" name="idPhoto" value='.$data['ID_photo'].' />';
                                     ?>
 
                                 </tr>
