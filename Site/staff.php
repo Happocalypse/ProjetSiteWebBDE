@@ -24,7 +24,7 @@
                     <div class="col-lg-12 col-md-12 mb-12">
                         <div class="text-center">
                             <div>
-                                <img src="images/sophienG.jpg" class="rounded-circle imgBDE">
+                                <img src="images/sophienG.jpg" class="rounded-circle imgBDE" alt="Sophien Gardey">
                             </div>
                             <div class="description">
                                 <h4>Sophien Gardey A2</h4>
@@ -40,7 +40,7 @@
 
 
                             <div>
-                                <img src="images/jeanL.jpg" class="rounded-circle imgBDE">
+                                <img src="images/jeanL.jpg" class="rounded-circle imgBDE" alt="Jean Lacadée">
                             </div>
                             <div class="description">
                                 <h4>Jean Lacadée A2</h4>
@@ -61,7 +61,7 @@
                 <div class="col-xs-12 col-md-3">
                     <div class="text-center">
                         <div>
-                            <img src="images/jeanG.jpg" class="rounded-circle imgBDE">
+                            <img src="images/jeanG.jpg" class="rounded-circle imgBDE" alt="Jean Guerci">
                         </div>
                         <div class="description" >
                             <h4>Jean Guerci A2</h4>
@@ -73,7 +73,7 @@
                 <div class="col-md-3">
                     <div class="text-center">
                         <div>
-                            <img src="images/tristanH.jpg" class="rounded-circle imgBDE">
+                            <img src="images/tristanH.jpg" class="rounded-circle imgBDE" alt="Tristan Houllier">
                         </div>
                         <div class=" description">
                             <h4>Tristan Houllier A1</h4>
@@ -85,7 +85,7 @@
                 <div class="col-md-3">
                     <div class="text-center">
                         <div>
-                            <img src="images/romainT.png" class="rounded-circle imgBDE">
+                            <img src="images/romainT.png" class="rounded-circle imgBDE" alt="Romain Tisnera">
                         </div>
                         <div class="description">
                             <h4>Romain Tisnera A1</h4>
@@ -97,7 +97,7 @@
                 <div class="col-md-3">
                     <div class="text-center">
                         <div>
-                            <img src="images/maximeM.jpg" class="rounded-circle imgBDE">
+                            <img src="images/maximeM.jpg" class="rounded-circle imgBDE" alt="Maxime Minvielle">
                         </div>
                         <div class="description">
                             <h4>Maxime Minvielle A1</h4>
