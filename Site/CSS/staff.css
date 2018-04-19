@@ -6,7 +6,7 @@
     margin-bottom: 100px;
 }
 #staff{
-    margin-top: 100px;
+    margin-top: 110px;
 }
 
 .affichageamoi{
@@ -20,21 +20,17 @@
 }
 
 .imgBDE{
-    width: 200px;
-    height: 200px;
+    width: 100px;
+
+    height: 100px;
+
 }
 
 .description{
     border:1px solid #d63031;
     padding:5px;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 5px;
+    margin-right: 5px;
     margin-bottom: 20px;
 }
-.description2{
-    border:1px solid #d63031;
-    padding:5px;
-    margin-left: 200px;
-    margin-right: 200px;
-    margin-bottom: 20px;
-}
+
