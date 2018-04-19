@@ -39,6 +39,7 @@
                         <tr>
                             <td><button type="submit" class="btn btn-warning ADM" name="saveIdee">Enregistrer les changements</button></td>
                             <td><button class="btn btn-danger ADM droite" name="supprIdee">Suppression de l'évenement</button></td>
+                            <td><button type="submit" class="btn btn-success ADM droite" name="dlCsvEvent">Télécharger la fiche inscription</button></td>
                         </tr>
                     </div>
                 </div>

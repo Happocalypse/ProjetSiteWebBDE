@@ -10,6 +10,7 @@
 }
 
 .affichageamoi{
+    margin-top: 50px;
     border:1px solid #d63031;
     text-align: center;
     margin-left: -10px;
@@ -20,6 +21,7 @@
 }
 
 .imgBDE{
+    margin-top: 20px;
     width: 100px;
 
     height: 100px;
@@ -28,6 +30,7 @@
 
 .description{
     border:1px solid #d63031;
+    margin-top: 20px;
     padding:5px;
     margin-left: 5px;
     margin-right: 5px;
