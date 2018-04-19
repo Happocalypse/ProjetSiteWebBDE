@@ -37,8 +37,14 @@
 
     <?php
     // Récupère les événements validées et passées
-    $reponse=$bdd->query('SELECT * FROM evenements WHERE valide =  \'1\' AND (date_evenement) <=  NOW()  ORDER BY date_evenement DESC');
+
+    date_default_timezone_set('Europe/Paris');
+    $today = date("Y-m-d H:i:s");
+
+    //$reponse=$bdd->query('SELECT * FROM evenements WHERE valide = \'1\' AND date_evenement <= 2018-04-19 10:12:48 ORDER BY date_evenement DESC');
+    $reponse=$bdd->query('SELECT (ID_evenement) FROM evenements WHERE (valide=\'1\' OR valide=\'2\')  AND date_evenement <= "'.$today.'" ORDER BY date_evenement Desc');
     $data=$reponse->fetch();
+
 
         if($data==NULL){
             echo "<h1 class='my-4 text-center text-lg-left'>Il n'y a aucun événement</h1>";
@@ -46,7 +52,6 @@
 
             // Déclation d'un tableau qui contiendra l'ID des événements
             $nom_evenements=array();
-
                 // Ajout des événements dans le tableau $nom_evenements
                 do{
                     array_push($nom_evenements,$data['ID_evenement']);
