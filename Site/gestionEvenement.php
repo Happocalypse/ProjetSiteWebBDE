@@ -36,11 +36,11 @@
                         </div>
 
                         <input type='hidden' name="id_evenement" Value="<?= $idees['ID_evenement']; ?>"/>
-                        <tr>
+                        <div align="center"><tr>
                             <td><button type="submit" class="btn btn-warning ADM" name="saveIdee">Enregistrer les changements</button></td>
                             <td><button class="btn btn-danger ADM droite" name="supprIdee">Suppression de l'évenement</button></td>
                             <td><button type="submit" class="btn btn-success ADM droite" name="dlCsvEvent">Télécharger la fiche inscription</button></td>
-                        </tr>
+                        </tr></div>
                     </div>
                 </div>
                 <div class="col-md-2"></div>
