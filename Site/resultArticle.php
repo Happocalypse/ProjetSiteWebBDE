@@ -46,7 +46,7 @@ if(isset($_FILES['monfichier']['name']) and $_FILES['monfichier']['error'] == 0)
 
             $sql = "INSERT INTO produits (nom_produit, description_produit, prix_produit, ID_categorie , ID_photo) VALUES ('".$_POST["nomProduit"]."','".$_POST["descriptionProduit"]."',". (int)$_POST['prixProduit'].",". (int)$_POST['categorie'].",". $donnees['ID_photo'] .")";
 
-            $bdd2->exec($sql);
+            $bdd->exec($sql);
 
 
         }
