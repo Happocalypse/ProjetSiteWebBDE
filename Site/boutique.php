@@ -42,25 +42,28 @@
                         <div class="carousel-item active">
                             <img src="<?php echo $urlTop1 ?>" alt="Slide1">
                             <div class="carousel-caption">
-                                <h3>
-                                    <?php echo $nomTop1 ?>
+                                <h3 style="color: red;">
+                                    #1 DES VENTES
                                 </h3>
+                                <p><?php echo $nomTop1 ?></p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="<?php echo $urlTop2 ?>" alt="Slide2">
                             <div class="carousel-caption">
-                                <h3>
-                                    <?php echo $nomTop2 ?>
+                                <h3 style="color: red;">
+                                    #2 DES VENTES
                                 </h3>
+                                <p><?php echo $nomTop2 ?></p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="<?php echo $urlTop3 ?>" alt="Slide3">
                             <div class="carousel-caption">
-                                <h3>
-                                    <?php echo $nomTop3 ?>
+                                <h3 style="color: red;">
+                                    #3 DES VENTES
                                 </h3>
+                                <p><?php echo $nomTop3 ?></p>
                             </div>
                         </div>
                     </div>
